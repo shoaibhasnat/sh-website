@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   CareersData,
@@ -20,8 +21,14 @@ function formatPostedDate(value) {
 }
 
 export default function CareersJobs() {
-  const { jobsSection } = CareersData;
+  const { jobsSection, categories } = CareersData;
   const jobs = getActiveJobs();
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredJobs = useMemo(() => {
+    if (activeCategory === "All") return jobs;
+    return jobs.filter((job) => job.department === activeCategory);
+  }, [activeCategory, jobs]);
 
   const scrollToApplication = (event) => {
     event.preventDefault();
@@ -43,7 +50,30 @@ export default function CareersJobs() {
           <h2 id="careers-jobs-heading" className={shared.heading}>
             {jobsSection.heading}
           </h2>
+          {jobsSection.intro ? (
+            <p className={shared.description}>{jobsSection.intro}</p>
+          ) : null}
         </div>
+
+        {jobs.length > 0 && categories?.length ? (
+          <div className={styles.filters} role="tablist" aria-label="Job categories">
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`${styles.filter} ${isActive ? styles.filterActive : ""}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
 
         {jobs.length === 0 ? (
           <div className={styles.empty} role="status">
@@ -59,9 +89,16 @@ export default function CareersJobs() {
               {jobsSection.empty.cta.label}
             </a>
           </div>
+        ) : filteredJobs.length === 0 ? (
+          <div className={styles.empty} role="status">
+            <h3 className={styles.emptyHeading}>No roles in this category.</h3>
+            <p className={styles.emptyDescription}>
+              Try another category or send your profile for future openings.
+            </p>
+          </div>
         ) : (
           <ul className={styles.list}>
-            {jobs.map((job) => {
+            {filteredJobs.map((job) => {
               const meta = [job.workMode, job.employmentType]
                 .filter(Boolean)
                 .join(" / ");
@@ -82,7 +119,9 @@ export default function CareersJobs() {
                   </div>
 
                   <p className={styles.meta}>
-                    {[job.location, meta].filter(Boolean).join(" · ")}
+                    {[job.location, meta, job.payRange]
+                      .filter(Boolean)
+                      .join(" · ")}
                   </p>
 
                   {job.shortDescription ? (

@@ -6,6 +6,49 @@
   gap: 16px;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -8px 0 28px;
+}
+
+.filter {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(143, 158, 174, 0.4);
+  background: #ffffff;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filterActive {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: #ffffff;
+}
+
+.filterActive:hover {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: #ffffff;
+}
+
+.filter:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .card {
   padding: 28px 26px;
   background: #ffffff;

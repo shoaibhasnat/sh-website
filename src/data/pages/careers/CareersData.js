@@ -1,8 +1,10 @@
 /**
  * Careers page content + job listings.
- * Add openings to `jobs` with `active: true` to show them on the page.
+ * Job roles live in `CareersJobsData.js`.
  * Individual routes use `/careers/[slug]`.
  */
+import { careersCategories, careersJobs } from "./CareersJobsData";
+
 export const CareersData = {
   hero: {
     eyebrow: "CAREERS AT SYSTEM HEURISTICS",
@@ -146,19 +148,17 @@ export const CareersData = {
   },
 
   /**
-   * Job listing schema:
-   * {
-   *   slug, title, department, location, workMode, employmentType,
-   *   shortDescription, skills[], postedDate, active,
-   *   about, responsibilities[], requirements[], niceToHave[], whatYoullWorkOn[]
-   * }
+   * Job listing schema — see CareersJobsData.js
    */
-  jobs: [],
+  categories: careersCategories,
+  jobs: careersJobs,
 
   jobsSection: {
     id: "open-positions",
     eyebrow: "OPEN POSITIONS",
     heading: "Find Your Next Challenge.",
+    intro:
+      "Find your dream job and grow your career with us. Explore opportunities across development, data, and administration.",
     empty: {
       heading: "No Open Positions Right Now.",
       description:

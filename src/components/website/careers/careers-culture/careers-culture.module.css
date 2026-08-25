@@ -1,53 +1,175 @@
-.grid {
-  list-style: none;
+.section {
+  position: relative;
+  isolation: isolate;
+  background: #f7fbff;
+}
+
+.bgGlow {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  width: min(48vw, 460px);
+  height: min(48vw, 460px);
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 179, 255, 0.1) 0%, transparent 70%);
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.eyebrowMark {
+  width: 18px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+.eyebrow {
   margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.card {
-  padding: 24px 22px;
-  background: #ffffff;
-  border-top: 2px solid var(--color-primary);
-  border-right: 1px solid rgba(143, 158, 174, 0.18);
-  border-bottom: 1px solid rgba(143, 158, 174, 0.18);
-  border-left: 1px solid rgba(143, 158, 174, 0.18);
-  border-radius: var(--radius);
-}
-
-.index {
-  display: block;
-  margin-bottom: 12px;
   color: var(--color-primary);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 12px 36px rgba(0, 24, 48, 0.04);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 12px;
+  gap: 16px 20px;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent;
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.rowActive {
+  background: linear-gradient(160deg, #001830 0%, #00284a 100%);
+  border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 24, 48, 0.18);
+  transform: translateY(-1px);
+}
+
+.index {
+  color: var(--color-primary);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.rowBody {
+  min-width: 0;
 }
 
 .title {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   color: var(--color-dark);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  transition: color 0.35s ease;
+}
+
+.rowActive .title {
+  color: #ffffff;
 }
 
 .description {
   margin: 0;
   color: var(--color-secondary);
   font-size: var(--font-size-sm);
-  line-height: 1.6;
+  line-height: 1.55;
+  transition: color 0.35s ease;
 }
 
-@media (max-width: 1000px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.rowActive .description {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 179, 255, 0.2);
+  justify-self: end;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.rowActive .indicator {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 179, 255, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .title,
+  .description,
+  .indicator {
+    transition: none;
+  }
+
+  .rowActive {
+    transform: none;
   }
 }
 
-@media (max-width: 560px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (max-width: 680px) {
+  .row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 10px 14px;
+    padding: 16px 14px;
+  }
+
+  .indicator {
+    display: none;
+  }
+
+  .header {
+    margin-bottom: 28px;
   }
 }

@@ -38,14 +38,21 @@
   border: 1px solid rgba(143, 158, 174, 0.28);
   border-radius: var(--radius);
   box-shadow: 0 6px 18px rgba(0, 24, 48, 0.04);
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
 }
 
-.nodeAccent {
+.nodeActive {
   background: var(--color-dark);
   border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 24, 48, 0.18);
+  transform: translateY(-1px);
 }
 
-.nodeAccent .stepLabel {
+.nodeActive .stepLabel {
   color: #ffffff;
 }
 
@@ -54,6 +61,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   line-height: 1.35;
+  transition: color 0.35s ease;
 }
 
 .connector {
@@ -63,10 +71,22 @@
   background: linear-gradient(
     180deg,
     rgba(0, 179, 255, 0.15),
-    var(--color-primary),
+    rgba(0, 179, 255, 0.45),
     rgba(0, 179, 255, 0.15)
   );
   position: relative;
+  transition: background 0.35s ease, opacity 0.35s ease;
+  opacity: 0.55;
+}
+
+.connectorActive {
+  opacity: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 179, 255, 0.25),
+    var(--color-primary),
+    rgba(0, 179, 255, 0.25)
+  );
 }
 
 .connector::after {
@@ -79,6 +99,14 @@
   border-radius: 50%;
   background: var(--color-primary);
   transform: translateX(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node,
+  .stepLabel,
+  .connector {
+    transition: none;
+  }
 }
 
 @media (max-width: 900px) {

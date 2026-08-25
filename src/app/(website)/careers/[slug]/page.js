@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getJobBySlug } from "@/data/pages/careers/CareersData";
+import {
+  CareersData,
+  getJobBySlug,
+} from "@/data/pages/careers/CareersData";
 import shared from "@/components/website/careers/careers-shared.module.css";
 import styles from "./job-detail.module.css";
+
+export function generateStaticParams() {
+  return (CareersData.jobs || [])
+    .filter((job) => job.active !== false && job.slug)
+    .map((job) => ({ slug: job.slug }));
+}
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -14,7 +23,8 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${job.title} — Careers`,
-    description: job.shortDescription || `Join System Heuristics as a ${job.title}.`,
+    description:
+      job.shortDescription || `Join System Heuristics as a ${job.title}.`,
   };
 }
 
@@ -26,7 +36,7 @@ export default async function CareerJobPage({ params }) {
     notFound();
   }
 
-  const meta = [job.location, job.workMode, job.employmentType]
+  const meta = [job.location, job.workMode, job.employmentType, job.payRange]
     .filter(Boolean)
     .join(" · ");
 
@@ -40,6 +50,13 @@ export default async function CareerJobPage({ params }) {
           <p className={styles.lead}>{job.shortDescription}</p>
         ) : null}
 
+        {job.aboutUs ? (
+          <section className={styles.block}>
+            <h2 className={styles.blockTitle}>About us</h2>
+            <p className={styles.copy}>{job.aboutUs}</p>
+          </section>
+        ) : null}
+
         {job.about ? (
           <section className={styles.block}>
             <h2 className={styles.blockTitle}>About the role</h2>
@@ -49,7 +66,7 @@ export default async function CareerJobPage({ params }) {
 
         {job.responsibilities?.length ? (
           <section className={styles.block}>
-            <h2 className={styles.blockTitle}>Responsibilities</h2>
+            <h2 className={styles.blockTitle}>Key responsibilities</h2>
             <ul className={styles.list}>
               {job.responsibilities.map((item) => (
                 <li key={item}>{item}</li>
@@ -60,7 +77,7 @@ export default async function CareerJobPage({ params }) {
 
         {job.requirements?.length ? (
           <section className={styles.block}>
-            <h2 className={styles.blockTitle}>Requirements</h2>
+            <h2 className={styles.blockTitle}>Qualifications required</h2>
             <ul className={styles.list}>
               {job.requirements.map((item) => (
                 <li key={item}>{item}</li>
@@ -71,7 +88,7 @@ export default async function CareerJobPage({ params }) {
 
         {job.niceToHave?.length ? (
           <section className={styles.block}>
-            <h2 className={styles.blockTitle}>Nice to have</h2>
+            <h2 className={styles.blockTitle}>Qualifications preferred</h2>
             <ul className={styles.list}>
               {job.niceToHave.map((item) => (
                 <li key={item}>{item}</li>
@@ -80,19 +97,40 @@ export default async function CareerJobPage({ params }) {
           </section>
         ) : null}
 
-        {job.whatYoullWorkOn?.length ? (
+        {job.personalAttributes ? (
           <section className={styles.block}>
-            <h2 className={styles.blockTitle}>What you&apos;ll work on</h2>
+            <h2 className={styles.blockTitle}>Personal attributes</h2>
+            <p className={styles.copy}>{job.personalAttributes}</p>
+          </section>
+        ) : null}
+
+        {job.whatWeOffer?.length ? (
+          <section className={styles.block}>
+            <h2 className={styles.blockTitle}>What we offer</h2>
             <ul className={styles.list}>
-              {job.whatYoullWorkOn.map((item) => (
+              {job.whatWeOffer.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </section>
         ) : null}
 
+        {job.applicationInstructions ? (
+          <section className={styles.block}>
+            <h2 className={styles.blockTitle}>How to apply</h2>
+            <p className={styles.copy}>{job.applicationInstructions}</p>
+          </section>
+        ) : null}
+
+        {job.equalOpportunityStatement ? (
+          <p className={styles.eoe}>{job.equalOpportunityStatement}</p>
+        ) : null}
+
         <div className={styles.actions}>
-          <Link href="/careers#general-application" className={shared.primaryCta}>
+          <Link
+            href="/careers#general-application"
+            className={shared.primaryCta}
+          >
             Apply for this role
           </Link>
           <Link href="/careers#open-positions" className={shared.secondaryCta}>

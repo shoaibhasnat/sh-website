@@ -66,6 +66,14 @@
   padding-bottom: 24px;
 }
 
+.eoe {
+  margin: 8px 0 0;
+  max-width: 720px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+}
+
 @media (max-width: 560px) {
   .actions {
     flex-direction: column;
