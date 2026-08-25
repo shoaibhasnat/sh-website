@@ -1,0 +1,77 @@
+.page {
+  font-family: var(--font-family-primary);
+  color: var(--color-text);
+  background: #ffffff;
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--color-dark);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.meta {
+  margin: 0 0 18px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.lead {
+  margin: 0 0 36px;
+  max-width: 720px;
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.block {
+  margin-bottom: 28px;
+  max-width: 720px;
+}
+
+.blockTitle {
+  margin: 0 0 10px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+}
+
+.copy {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+  padding-bottom: 24px;
+}
+
+@media (max-width: 560px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions a {
+    width: 100%;
+  }
+}

@@ -1,0 +1,79 @@
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  background: #f7fbff;
+  border: 1px solid rgba(0, 179, 255, 0.12);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 24, 48, 0.05);
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.description {
+  margin: 0 0 20px;
+  flex: 1;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.cta:hover {
+  color: var(--color-primary-hover);
+  gap: 12px;
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.ctaIcon {
+  font-size: 12px;
+}
+
+.note {
+  margin: 28px 0 0;
+  max-width: 760px;
+  color: var(--color-secondary-light);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

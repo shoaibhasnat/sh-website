@@ -1,0 +1,47 @@
+# Robots.txt for System Heuristics
+
+User-agent: *
+Allow: /
+
+# Keep crawlers away from non-public app/demo routes if they are deployed.
+Disallow: /api-demo
+Disallow: /redux-demo
+Disallow: /test
+Disallow: /under-maintenance
+
+# Major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI and answer-engine crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+Sitemap: https://www.systemheuristics.com/sitemap.xml

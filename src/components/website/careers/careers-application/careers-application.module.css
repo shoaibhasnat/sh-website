@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px 48px;
+  align-items: start;
+}
+
+.info {
+  position: sticky;
+  top: 96px;
+}
+
+.formPanel {
+  padding: 28px 28px 24px;
+  background: #f7fbff;
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .info {
+    position: static;
+  }
+
+  .formPanel {
+    padding: 22px 18px 18px;
+  }
+}

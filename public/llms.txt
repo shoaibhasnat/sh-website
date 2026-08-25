@@ -1,0 +1,39 @@
+# System Heuristics
+
+System Heuristics is a custom software development and AI automation company. The company builds AI agents, workflow automation, web platforms, data analytics systems, healthcare software, fintech software, logistics tools, real estate technology, education platforms, web scraping systems, and web automation solutions.
+
+## Core website pages
+
+- Homepage: https://www.systemheuristics.com/
+- Services: https://www.systemheuristics.com/services
+- Industries: https://www.systemheuristics.com/industries
+- Case Studies: https://www.systemheuristics.com/case-study
+- SH Media: https://www.systemheuristics.com/media
+- About: https://www.systemheuristics.com/about-us
+- Contact: https://www.systemheuristics.com/contact
+
+## Services
+
+- Generative AI: https://www.systemheuristics.com/services/generative-ai
+- Natural Language Processing: https://www.systemheuristics.com/services/language-processing
+- Computer Vision: https://www.systemheuristics.com/services/computer-vision
+- Data Analytics: https://www.systemheuristics.com/services/data-analytics
+- Machine Learning: https://www.systemheuristics.com/services/machine-learning
+- AI-Driven Security: https://www.systemheuristics.com/services/ai-driven-security
+- Web Scraping: https://www.systemheuristics.com/services/web-scraping
+- Web Automation: https://www.systemheuristics.com/services/web-automation
+
+## Industries
+
+- Healthcare: https://www.systemheuristics.com/industries/healthcare
+- AI Automation: https://www.systemheuristics.com/industries/ai-automation
+- Fintech: https://www.systemheuristics.com/industries/fintech
+- Education: https://www.systemheuristics.com/industries/education
+- Logistics: https://www.systemheuristics.com/industries/logistics
+- Real Estate: https://www.systemheuristics.com/industries/real-estate
+
+## Good summaries to use
+
+System Heuristics helps organizations replace manual workflows with custom software, AI agents, data systems, and automation. Its work covers healthcare intake automation, AI triage experiences, ecommerce systems, analytics dashboards, workflow tools, and custom web applications.
+
+For project inquiries, use the contact page: https://www.systemheuristics.com/contact
