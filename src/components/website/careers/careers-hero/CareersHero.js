@@ -1,11 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { CareersData } from "@/data/pages/careers/CareersData";
+import {
+  CareersData,
+  getActiveJobs,
+} from "@/data/pages/careers/CareersData";
 import styles from "./careers-hero.module.css";
 
+const PREVIEW_LIMIT = 4;
+
 export default function CareersHero() {
-  const { hero } = CareersData;
+  const { hero, jobsSection } = CareersData;
+  const jobs = getActiveJobs();
+  const previewJobs = jobs.slice(0, PREVIEW_LIMIT);
 
   const scrollTo = (href) => (event) => {
     if (!href.startsWith("#")) return;
@@ -21,9 +28,8 @@ export default function CareersHero() {
   return (
     <section className={styles.hero} aria-labelledby="careers-hero-heading">
       <div className={styles.bgBase} aria-hidden="true" />
-      <div className={styles.bgGrid} aria-hidden="true" />
+      <div className={styles.bgDots} aria-hidden="true" />
       <div className={styles.bgGlow} aria-hidden="true" />
-      <div className={styles.bgOrbit} aria-hidden="true" />
 
       <div className={styles.inner}>
         <div className={styles.content}>
@@ -55,43 +61,57 @@ export default function CareersHero() {
               {hero.secondaryCta.label}
             </Link>
           </div>
-        </div>
 
-        <div className={styles.visual} aria-hidden="true">
-          <div className={styles.stage}>
-            <div className={styles.ring} />
-            <div className={`${styles.ring} ${styles.ringMid}`} />
-            <div className={`${styles.ring} ${styles.ringOuter}`} />
-
-            <svg className={styles.beams} viewBox="0 0 440 440" fill="none">
-              <path d="M220 220 L220 54" />
-              <path d="M220 220 L352 118" />
-              <path d="M220 220 L352 322" />
-              <path d="M220 220 L88 322" />
-              <path d="M220 220 L88 118" />
-            </svg>
-
-            <div className={styles.core}>
-              <span className={styles.coreEyebrow}>Mission</span>
-              <span className={styles.coreLabel}>Build systems</span>
-              <span className={styles.coreSub}>that businesses use</span>
-            </div>
-
-            {hero.nodes.map((label, index) => (
-              <div
-                key={label}
-                className={`${styles.signal} ${styles[`signal${index}`]}`}
-                style={{ animationDelay: `${index * 0.18}s` }}
-              >
-                <span className={styles.signalDot} />
-                <span className={styles.signalLabel}>{label}</span>
-              </div>
+          <ul className={styles.disciplines}>
+            {hero.nodes.map((label) => (
+              <li key={label} className={styles.discipline}>
+                {label}
+              </li>
             ))}
-
-            <div className={styles.frameTL} />
-            <div className={styles.frameBR} />
-          </div>
+          </ul>
         </div>
+
+        <aside className={styles.panel} aria-label="Open positions preview">
+          <div className={styles.panelHeader}>
+            <p className={styles.panelTitle}>{jobsSection.eyebrow}</p>
+            <span className={styles.panelCount}>
+              <span className={styles.panelDot} aria-hidden="true" />
+              {jobs.length} open
+            </span>
+          </div>
+
+          {previewJobs.length > 0 ? (
+            <ul className={styles.roles}>
+              {previewJobs.map((job) => (
+                <li key={job.slug}>
+                  <Link href={`/careers/${job.slug}`} className={styles.role}>
+                    <span className={styles.roleBody}>
+                      <span className={styles.roleTitle}>{job.title}</span>
+                      <span className={styles.roleMeta}>
+                        {[job.department, job.workMode, job.employmentType]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </span>
+                    </span>
+                    <span className={styles.roleArrow} aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className={styles.panelEmpty}>{jobsSection.empty.heading}</p>
+          )}
+
+          <a
+            href={hero.primaryCta.href}
+            className={styles.panelLink}
+            onClick={scrollTo(hero.primaryCta.href)}
+          >
+            {hero.primaryCta.label}
+          </a>
+        </aside>
       </div>
     </section>
   );

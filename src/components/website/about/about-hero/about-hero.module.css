@@ -315,36 +315,6 @@
   text-align: center;
 }
 
-.top {
-  top: 11%;
-  left: 50%;
-}
-
-.topRight {
-  top: 23%;
-  left: 82%;
-}
-
-.right {
-  top: 50%;
-  left: 90%;
-}
-
-.bottomRight {
-  top: 77%;
-  left: 82%;
-}
-
-.bottomLeft {
-  top: 77%;
-  left: 18%;
-}
-
-.left {
-  top: 50%;
-  left: 10%;
-}
-
 .frameTL,
 .frameBR {
   position: absolute;
@@ -518,13 +488,5 @@
 
   .center .nodeLabel {
     font-size: var(--font-size-xs);
-  }
-
-  .right {
-    left: 88%;
-  }
-
-  .left {
-    left: 12%;
   }
 }

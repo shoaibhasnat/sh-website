@@ -6,6 +6,10 @@ export const ContactData = {
       "You don't need to know which technology you need. Tell us what's taking too long, creating manual work, losing opportunities, or preventing your business from scaling.",
     supporting:
       "We'll help determine whether automation, AI agents, integrations, or custom software is the right solution.",
+    primaryCta: {
+      label: "Send Your Request",
+      href: "#contact-form",
+    },
   },
 
   formSection: {

@@ -7,28 +7,38 @@ export default function AboutPrinciples() {
 
   return (
     <section
-      className={`${shared.section} ${shared.sectionLight}`}
+      className={`${shared.section} ${styles.section}`}
       aria-labelledby="about-principles-heading"
     >
-      <div className={shared.inner}>
-        <div className={shared.header}>
-          <p className={shared.eyebrow}>{principles.eyebrow}</p>
-          <h2 id="about-principles-heading" className={shared.heading}>
-            {principles.heading}
-          </h2>
-        </div>
+      <div className={styles.bgGrid} aria-hidden="true" />
+      <div className={styles.bgGlow} aria-hidden="true" />
 
-        <ul className={styles.grid}>
-          {principles.items.map((item, index) => (
-            <li key={item.title} className={styles.card}>
-              <span className={styles.index} aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className={styles.title}>{item.title}</h3>
-              <p className={styles.description}>{item.description}</p>
-            </li>
-          ))}
-        </ul>
+      <div className={shared.inner}>
+        <div className={styles.layout}>
+          <div className={styles.intro}>
+            <div className={styles.eyebrowRow}>
+              <span className={styles.eyebrowMark} aria-hidden="true" />
+              <p className={styles.eyebrow}>{principles.eyebrow}</p>
+            </div>
+            <h2 id="about-principles-heading" className={styles.heading}>
+              {principles.heading}
+            </h2>
+          </div>
+
+          <ol className={styles.list}>
+            {principles.items.map((item, index) => (
+              <li key={item.title} className={styles.row}>
+                <span className={styles.index} aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className={styles.body}>
+                  <h3 className={styles.title}>{item.title}</h3>
+                  <p className={styles.description}>{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

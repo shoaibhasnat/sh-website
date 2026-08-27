@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,11 @@ import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import { NavbarData } from "@/data/components/navbar/NavbarData";
 import { colors } from "@/app/variables";
 import styles from "./navbar.module.css";
+
+/** Smallest scroll movement that counts as a deliberate direction change. */
+const SCROLL_DELTA = 5;
+/** Keep the bar visible while near the top of the page. */
+const REVEAL_ZONE = 80;
 
 function isActivePath(pathname, href) {
   const current = pathname.replace(/\/$/, "") || "/";
@@ -24,13 +29,54 @@ function isActivePath(pathname, href) {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastYRef = useRef(0);
 
   const { brand, navItems, cta } = NavbarData;
 
   const closeDrawer = () => setOpen(false);
 
+  useEffect(() => {
+    lastYRef.current = window.scrollY;
+
+    const onScroll = () => {
+      // Rounded so sub-pixel scroll positions can't land either side of the
+      // threshold comparison by accident.
+      const y = Math.round(window.scrollY);
+      const delta = y - lastYRef.current;
+
+      if (y <= REVEAL_ZONE) {
+        lastYRef.current = y;
+        setHidden(false);
+        return;
+      }
+
+      // Leave the anchor untouched for jitter so small movements accumulate
+      // until they add up to a deliberate direction change.
+      if (delta <= -SCROLL_DELTA) {
+        lastYRef.current = y;
+        setHidden(false);
+      } else if (delta >= SCROLL_DELTA) {
+        lastYRef.current = y;
+        setHidden(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Never leave the bar hidden behind the mobile drawer or after navigating.
+  useEffect(() => {
+    if (open) setHidden(false);
+  }, [open]);
+
+  useEffect(() => {
+    setHidden(false);
+  }, [pathname]);
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${hidden ? styles.headerHidden : ""}`}>
       <div className={styles.inner}>
         <Link href={brand.href} className={styles.brand} aria-label={brand.name}>
           <span className={styles.logoWrap}>

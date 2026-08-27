@@ -2,18 +2,24 @@ import Link from "next/link";
 import { AboutData } from "@/data/pages/about/AboutData";
 import styles from "./about-hero.module.css";
 
-const CONNECTORS = [
-  { x2: 210, y2: 58 },
-  { x2: 338, y2: 98 },
-  { x2: 362, y2: 210 },
-  { x2: 338, y2: 322 },
-  { x2: 82, y2: 322 },
-  { x2: 58, y2: 210 },
-];
+const STAGE_SIZE = 420;
+const STAGE_CENTER = STAGE_SIZE / 2;
+const NODE_RADIUS = 40;
+const CONNECTOR_RADIUS = 150;
+
+/** Distributes nodes evenly around the circle, starting at the top. */
+function pointAt(index, total, radius) {
+  const angle = (-90 + (360 / total) * index) * (Math.PI / 180);
+  return {
+    x: Math.cos(angle) * radius,
+    y: Math.sin(angle) * radius,
+  };
+}
 
 export default function AboutHero() {
   const { hero } = AboutData;
   const { visualization } = hero;
+  const nodeCount = visualization.nodes.length;
 
   return (
     <section className={styles.hero} aria-labelledby="about-hero-heading">
@@ -54,17 +60,25 @@ export default function AboutHero() {
             <div className={`${styles.ring} ${styles.ringMid}`} />
             <div className={`${styles.ring} ${styles.ringOuter}`} />
 
-            <svg className={styles.connectors} viewBox="0 0 420 420" fill="none">
-              {CONNECTORS.map((point, index) => (
-                <line
-                  key={`${point.x2}-${point.y2}`}
-                  x1="210"
-                  y1="210"
-                  x2={point.x2}
-                  y2={point.y2}
-                  style={{ animationDelay: `${index * 0.12}s` }}
-                />
-              ))}
+            <svg
+              className={styles.connectors}
+              viewBox={`0 0 ${STAGE_SIZE} ${STAGE_SIZE}`}
+              fill="none"
+            >
+              {visualization.nodes.map((node, index) => {
+                const point = pointAt(index, nodeCount, CONNECTOR_RADIUS);
+
+                return (
+                  <line
+                    key={node.id}
+                    x1={STAGE_CENTER}
+                    y1={STAGE_CENTER}
+                    x2={STAGE_CENTER + point.x}
+                    y2={STAGE_CENTER + point.y}
+                    style={{ animationDelay: `${index * 0.12}s` }}
+                  />
+                );
+              })}
             </svg>
 
             <div className={`${styles.node} ${styles.center}`}>
@@ -73,16 +87,24 @@ export default function AboutHero() {
               <span className={styles.coreSub}>Connected systems</span>
             </div>
 
-            {visualization.nodes.map((node, index) => (
-              <div
-                key={node.id}
-                className={`${styles.node} ${styles[node.position]}`}
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <span className={styles.nodeDot} />
-                <span className={styles.nodeLabel}>{node.label}</span>
-              </div>
-            ))}
+            {visualization.nodes.map((node, index) => {
+              const point = pointAt(index, nodeCount, NODE_RADIUS);
+
+              return (
+                <div
+                  key={node.id}
+                  className={styles.node}
+                  style={{
+                    top: `${50 + point.y}%`,
+                    left: `${50 + point.x}%`,
+                    animationDelay: `${index * 0.15}s`,
+                  }}
+                >
+                  <span className={styles.nodeDot} />
+                  <span className={styles.nodeLabel}>{node.label}</span>
+                </div>
+              );
+            })}
 
             <div className={styles.frameTL} />
             <div className={styles.frameBR} />
