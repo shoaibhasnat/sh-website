@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Alert,
   Button,
-  Checkbox,
   Col,
   Form,
   Input,
@@ -100,20 +99,11 @@ export default function ContactForm() {
         <Row gutter={[16, 0]}>
           <Col xs={24} md={12}>
             <Form.Item
-              label="First Name"
-              name="firstName"
-              rules={[{ required: true, message: "First name is required." }]}
+              label="Name"
+              name="name"
+              rules={[{ required: true, message: "Name is required." }]}
             >
-              <Input placeholder="Jane" size="large" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Last Name"
-              name="lastName"
-              rules={[{ required: true, message: "Last name is required." }]}
-            >
-              <Input placeholder="Doe" size="large" />
+              <Input placeholder="Jane Doe" size="large" />
             </Form.Item>
           </Col>
           <Col xs={24} md={12}>
@@ -184,29 +174,6 @@ export default function ContactForm() {
 
       <div className={styles.group}>
         <Form.Item
-          label="What Can We Help With?"
-          name="helpWith"
-          rules={[
-            {
-              required: true,
-              type: "array",
-              min: 1,
-              message: "Select at least one option.",
-            },
-          ]}
-        >
-          <Checkbox.Group className={styles.checkboxGroup}>
-            {formData.helpOptions.map((option) => (
-              <Checkbox key={option} value={option} className={styles.checkbox}>
-                {option}
-              </Checkbox>
-            ))}
-          </Checkbox.Group>
-        </Form.Item>
-      </div>
-
-      <div className={styles.group}>
-        <Form.Item
           label="Tell Us About the Problem"
           name="problem"
           rules={[
@@ -221,23 +188,9 @@ export default function ContactForm() {
           ]}
         >
           <Input.TextArea
-            rows={5}
+            rows={3}
             placeholder={formData.problemPlaceholder}
             size="large"
-          />
-        </Form.Item>
-      </div>
-
-      <div className={styles.group}>
-        <Form.Item label="Budget (optional)" name="budget">
-          <Select
-            allowClear
-            placeholder="Select a budget range"
-            size="large"
-            options={formData.budgets.map((value) => ({
-              value,
-              label: value,
-            }))}
           />
         </Form.Item>
       </div>

@@ -1,0 +1,115 @@
+.categories {
+  background: #ffffff;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 88px 64px;
+  box-sizing: border-box;
+}
+
+.header {
+  max-width: 700px;
+  margin-bottom: 42px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0 0 14px;
+  color: var(--color-dark);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  min-height: 170px;
+  padding: 24px;
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  border-radius: var(--radius);
+  background: #f7fbff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 14px 28px rgba(0, 24, 48, 0.06);
+  transform: translateY(-2px);
+}
+
+.number {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  margin: 0 0 8px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.cardDescription {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 72px 32px;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 56px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

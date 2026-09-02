@@ -8,31 +8,24 @@ function isNonEmptyString(value) {
 
 function normalizePayload(body) {
   return {
-    firstName: String(body?.firstName || "").trim(),
-    lastName: String(body?.lastName || "").trim(),
+    name: String(body?.name || "").trim(),
     email: String(body?.email || "").trim().toLowerCase(),
     phone: String(body?.phone || "").trim(),
     companyName: String(body?.companyName || "").trim(),
     companyWebsite: String(body?.companyWebsite || "").trim(),
     industry: String(body?.industry || "").trim(),
     companySize: String(body?.companySize || "").trim(),
-    helpWith: Array.isArray(body?.helpWith)
-      ? body.helpWith.map((item) => String(item).trim()).filter(Boolean)
-      : [],
     problem: String(body?.problem || "").trim(),
-    budget: String(body?.budget || "").trim(),
   };
 }
 
 function validatePayload(data) {
   const errors = [];
 
-  if (!isNonEmptyString(data.firstName)) errors.push("First name is required.");
-  if (!isNonEmptyString(data.lastName)) errors.push("Last name is required.");
+  if (!isNonEmptyString(data.name)) errors.push("Name is required.");
   if (!isNonEmptyString(data.email)) errors.push("Business email is required.");
   else if (!EMAIL_REGEX.test(data.email)) errors.push("Enter a valid business email.");
   if (!isNonEmptyString(data.companyName)) errors.push("Company name is required.");
-  if (!data.helpWith.length) errors.push("Select at least one area we can help with.");
   if (!isNonEmptyString(data.problem)) errors.push("Please describe the problem.");
 
   return errors;
@@ -40,15 +33,13 @@ function validatePayload(data) {
 
 function buildEmailHtml(data) {
   const rows = [
-    ["Name", `${data.firstName} ${data.lastName}`],
+    ["Name", data.name],
     ["Business Email", data.email],
     ["Phone", data.phone || "—"],
     ["Company", data.companyName],
     ["Website", data.companyWebsite || "—"],
     ["Industry", data.industry || "—"],
     ["Company Size", data.companySize || "—"],
-    ["Help With", data.helpWith.join(", ")],
-    ["Budget", data.budget || "—"],
     ["Problem", data.problem],
   ];
 
@@ -120,17 +111,15 @@ export async function POST(request) {
       from: `"${CONTACT_FROM_NAME}" <${SMTP_USER}>`,
       to: CONTACT_RECEIVER_EMAIL,
       replyTo: data.email,
-      subject: `New contact request from ${data.firstName} ${data.lastName} (${data.companyName})`,
+      subject: `New contact request from ${data.name} (${data.companyName})`,
       text: [
-        `Name: ${data.firstName} ${data.lastName}`,
+        `Name: ${data.name}`,
         `Email: ${data.email}`,
         `Phone: ${data.phone || "—"}`,
         `Company: ${data.companyName}`,
         `Website: ${data.companyWebsite || "—"}`,
         `Industry: ${data.industry || "—"}`,
         `Company Size: ${data.companySize || "—"}`,
-        `Help With: ${data.helpWith.join(", ")}`,
-        `Budget: ${data.budget || "—"}`,
         "",
         "Problem:",
         data.problem,

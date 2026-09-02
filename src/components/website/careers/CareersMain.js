@@ -11,9 +11,9 @@ export default function CareersMain() {
   return (
     <>
       <CareersHero />
-      <CareersBenefits />
+      {/* <CareersBenefits />
       <CareersCulture />
-      <CareersAreas />
+      <CareersAreas /> */}
       <CareersJobs />
       <CareersApplication />
       <CareersProcess />

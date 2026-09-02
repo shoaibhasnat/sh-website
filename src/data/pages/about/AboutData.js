@@ -211,13 +211,6 @@ export const AboutData = {
     note: "Don't see your industry? Our approach starts with understanding your workflow, not fitting your business into a predefined template.",
   },
 
-  mission: {
-    eyebrow: "OUR MISSION",
-    heading: "Replace Unnecessary Manual Work With Intelligent Systems.",
-    description:
-      "Our mission is to help businesses create more efficient, connected and scalable operations through AI, automation, integrations and software.",
-  },
-
   cta: {
     eyebrow: "WORK WITH US",
     heading: "Have a Process That Should Work Better?",
