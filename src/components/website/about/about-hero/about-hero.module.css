@@ -130,56 +130,6 @@
   margin-top: 30px;
 }
 
-.primaryCta,
-.secondaryCta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 24px;
-  border-radius: var(--radius);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-    transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.primaryCta {
-  background: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
-  box-shadow: 0 10px 24px rgba(0, 179, 255, 0.22);
-}
-
-.primaryCta:hover {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(0, 179, 255, 0.28);
-}
-
-.secondaryCta {
-  background: rgba(255, 255, 255, 0.65);
-  color: var(--color-text);
-  border-color: rgba(143, 158, 174, 0.45);
-  backdrop-filter: blur(6px);
-}
-
-.secondaryCta:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: rgba(218, 237, 255, 0.55);
-}
-
-.primaryCta:focus-visible,
-.secondaryCta:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-}
-
 .visual {
   display: flex;
   align-items: center;
@@ -399,9 +349,7 @@
     animation: none;
   }
 
-  .node,
-  .primaryCta,
-  .secondaryCta {
+  .node {
     transition: none;
   }
 }
@@ -459,8 +407,7 @@
     flex-direction: column;
   }
 
-  .primaryCta,
-  .secondaryCta {
+  .actions > * {
     width: 100%;
   }
 

@@ -147,38 +147,22 @@
 }
 
 .ctaDesktop {
-  display: inline-flex;
-  text-decoration: none;
+  padding-inline: 20px;
+  box-shadow: none;
 }
 
-.ctaButton {
-  height: 40px !important;
-  padding-inline: 20px !important;
-  border: none !important;
-  border-radius: var(--radius) !important;
-  background: var(--color-primary) !important;
-  color: #ffffff !important;
-  font-family: var(--font-family-primary) !important;
-  font-size: var(--font-size-sm) !important;
-  font-weight: var(--font-weight-bold) !important;
-  box-shadow: none !important;
-  transition: background-color 0.2s ease, transform 0.2s ease !important;
+.ctaDesktop:hover {
+  box-shadow: none;
 }
 
-.ctaButton:hover,
-.ctaButton:focus {
-  background: var(--color-primary-hover) !important;
-  color: #ffffff !important;
+.ctaMobile {
+  display: block;
+  margin-top: 8px;
+  box-shadow: none;
 }
 
-.ctaButton:active {
-  transform: translateY(1px);
-}
-
-.ctaDesktop:focus-visible .ctaButton,
-.ctaMobile:focus-visible .ctaButton {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
+.ctaMobile:hover {
+  box-shadow: none;
 }
 
 .menuButton {
@@ -260,12 +244,6 @@
 .mobileLink:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-.ctaMobile {
-  display: block;
-  margin-top: 8px;
-  text-decoration: none;
 }
 
 @media (max-width: 1100px) {

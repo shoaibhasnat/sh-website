@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   CareersData,
   getJobBySlug,
 } from "@/data/pages/careers/CareersData";
+import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import shared from "@/components/website/careers/careers-shared.module.css";
 import styles from "./job-detail.module.css";
 
@@ -127,15 +127,14 @@ export default async function CareerJobPage({ params }) {
         ) : null}
 
         <div className={styles.actions}>
-          <Link
+          <PrimaryButton
+            text="Apply for this role"
             href="/careers#general-application"
-            className={shared.primaryCta}
-          >
-            Apply for this role
-          </Link>
-          <Link href="/careers#open-positions" className={shared.secondaryCta}>
-            Back to open positions
-          </Link>
+          />
+          <OutlineButton
+            text="Back to open positions"
+            href="/careers#open-positions"
+          />
         </div>
       </div>
     </main>

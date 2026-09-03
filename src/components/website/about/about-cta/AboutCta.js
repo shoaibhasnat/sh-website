@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AboutData } from "@/data/pages/about/AboutData";
+import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import shared from "../about-shared.module.css";
 import styles from "./about-cta.module.css";
 
@@ -20,12 +20,11 @@ export default function AboutCta() {
           <p className={styles.description}>{cta.description}</p>
 
           <div className={styles.actions}>
-            <Link href={cta.primaryCta.href} className={shared.primaryCta}>
-              {cta.primaryCta.label}
-            </Link>
-            <Link href={cta.secondaryCta.href} className={shared.secondaryCta}>
-              {cta.secondaryCta.label}
-            </Link>
+            <PrimaryButton text={cta.primaryCta.label} href={cta.primaryCta.href} />
+            <OutlineButton
+              text={cta.secondaryCta.label}
+              href={cta.secondaryCta.href}
+            />
           </div>
         </div>
       </div>

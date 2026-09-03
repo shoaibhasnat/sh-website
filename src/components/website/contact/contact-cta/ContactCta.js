@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { ContactData } from "@/data/pages/contact/ContactData";
-import shared from "../contact-shared.module.css";
+import { GhostButton, PrimaryButton } from "@/utils/buttons";
 import styles from "./contact-cta.module.css";
 
 export default function ContactCta() {
@@ -26,16 +25,15 @@ export default function ContactCta() {
         </h2>
         <p className={styles.description}>{cta.description}</p>
         <div className={styles.actions}>
-          <a
+          <PrimaryButton
+            text={cta.primaryCta.label}
             href={cta.primaryCta.href}
-            className={shared.primaryCta}
             onClick={scrollToForm}
-          >
-            {cta.primaryCta.label}
-          </a>
-          <Link href={cta.secondaryCta.href} className={shared.secondaryCta}>
-            {cta.secondaryCta.label}
-          </Link>
+          />
+          <GhostButton
+            text={cta.secondaryCta.label}
+            href={cta.secondaryCta.href}
+          />
         </div>
       </div>
     </section>

@@ -1,0 +1,51 @@
+.section {
+  border-top: 1px solid rgba(0, 179, 255, 0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.card {
+  margin: 0;
+  padding: 28px 26px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+  box-shadow: 0 12px 28px rgba(0, 24, 48, 0.04);
+}
+
+.quote {
+  margin: 0 0 22px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.65;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.author {
+  font-style: normal;
+  color: var(--color-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.role {
+  color: var(--color-secondary-light);
+  font-size: var(--font-size-xs);
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

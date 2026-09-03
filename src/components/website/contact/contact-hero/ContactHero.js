@@ -1,6 +1,7 @@
 "use client";
 
 import { ContactData } from "@/data/pages/contact/ContactData";
+import { PrimaryButton } from "@/utils/buttons";
 import styles from "./contact-hero.module.css";
 
 export default function ContactHero() {
@@ -34,13 +35,12 @@ export default function ContactHero() {
         <p className={styles.supporting}>{hero.supporting}</p>
 
         <div className={styles.actions}>
-          <a
+          <PrimaryButton
+            text={hero.primaryCta.label}
             href={hero.primaryCta.href}
-            className={styles.primaryCta}
             onClick={scrollToForm}
-          >
-            {hero.primaryCta.label}
-          </a>
+            height={48}
+          />
         </div>
 
         <p className={styles.note}>

@@ -1,0 +1,120 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.button:disabled,
+.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.block {
+  width: 100%;
+}
+
+/* Primary — solid brand blue */
+.primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 179, 255, 0.2);
+}
+
+.primary:hover:not(:disabled):not(.disabled) {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0, 179, 255, 0.28);
+}
+
+/* Secondary — white filled */
+.secondary {
+  background: #ffffff;
+  border-color: rgba(0, 24, 48, 0.16);
+  color: var(--color-dark);
+}
+
+.secondary:hover:not(:disabled):not(.disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Outline — transparent on light backgrounds */
+.outline {
+  background: transparent;
+  border-color: rgba(143, 158, 174, 0.55);
+  color: var(--color-text);
+}
+
+.outline:hover:not(:disabled):not(.disabled) {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(218, 237, 255, 0.45);
+}
+
+/* Ghost — transparent on dark backgrounds */
+.ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.ghost:hover:not(:disabled):not(.disabled) {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
+}

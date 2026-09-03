@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   Alert,
-  Button,
   Col,
   Form,
   Input,
@@ -11,7 +10,7 @@ import {
   Select,
 } from "antd";
 import { ContactData } from "@/data/pages/contact/ContactData";
-import { colors } from "@/app/variables";
+import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import styles from "./contact-form.module.css";
 
 export default function ContactForm() {
@@ -62,16 +61,14 @@ export default function ContactForm() {
         <p className={styles.successDescription}>
           {formSection.success.description}
         </p>
-        <Button
-          type="default"
+        <OutlineButton
+          text="Send another request"
           className={styles.resetButton}
           onClick={() => {
             setSuccess(false);
             setError("");
           }}
-        >
-          Send another request
-        </Button>
+        />
       </div>
     );
   }
@@ -195,17 +192,14 @@ export default function ContactForm() {
         </Form.Item>
       </div>
 
-      <Button
-        type="primary"
-        htmlType="submit"
-        size="large"
+      <PrimaryButton
+        text={formData.submitLabel}
+        type="submit"
+        height={48}
+        width="100%"
         loading={submitting}
         disabled={submitting}
-        className={styles.submit}
-        style={{ background: colors.primary, borderColor: colors.primary }}
-      >
-        {formData.submitLabel}
-      </Button>
+      />
     </Form>
   );
 }

@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import { NavbarData } from "@/data/components/navbar/NavbarData";
+import { PrimaryButton } from "@/utils/buttons";
 import { colors } from "@/app/variables";
 import styles from "./navbar.module.css";
 
@@ -113,11 +114,12 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.actions}>
-          <Link href={cta.href} className={styles.ctaDesktop}>
-            <Button type="primary" className={styles.ctaButton}>
-              {cta.label}
-            </Button>
-          </Link>
+          <PrimaryButton
+            text={cta.label}
+            href={cta.href}
+            className={styles.ctaDesktop}
+            height={40}
+          />
 
           <button
             type="button"
@@ -177,11 +179,14 @@ export default function Navbar() {
             })}
           </ul>
 
-          <Link href={cta.href} className={styles.ctaMobile} onClick={closeDrawer}>
-            <Button type="primary" block className={styles.ctaButton}>
-              {cta.label}
-            </Button>
-          </Link>
+          <PrimaryButton
+            text={cta.label}
+            href={cta.href}
+            onClick={closeDrawer}
+            className={styles.ctaMobile}
+            height={40}
+            block
+          />
         </nav>
       </Drawer>
     </header>

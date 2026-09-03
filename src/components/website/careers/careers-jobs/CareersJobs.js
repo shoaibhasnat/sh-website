@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import {
   CareersData,
   getActiveJobs,
 } from "@/data/pages/careers/CareersData";
+import { PrimaryButton } from "@/utils/buttons";
 import shared from "../careers-shared.module.css";
 import styles from "./careers-jobs.module.css";
 
@@ -81,13 +81,11 @@ export default function CareersJobs() {
             <p className={styles.emptyDescription}>
               {jobsSection.empty.description}
             </p>
-            <a
+            <PrimaryButton
+              text={jobsSection.empty.cta.label}
               href={jobsSection.empty.cta.href}
-              className={shared.primaryCta}
               onClick={scrollToApplication}
-            >
-              {jobsSection.empty.cta.label}
-            </a>
+            />
           </div>
         ) : filteredJobs.length === 0 ? (
           <div className={styles.empty} role="status">
@@ -138,12 +136,10 @@ export default function CareersJobs() {
                     </ul>
                   ) : null}
 
-                  <Link
+                  <PrimaryButton
+                    text="View Position"
                     href={`/careers/${job.slug}`}
-                    className={shared.primaryCta}
-                  >
-                    View Position
-                  </Link>
+                  />
                 </li>
               );
             })}

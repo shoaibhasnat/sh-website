@@ -12,7 +12,7 @@ import {
   Upload,
 } from "antd";
 import { CareersData } from "@/data/pages/careers/CareersData";
-import { colors } from "@/app/variables";
+import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import styles from "./careers-application-form.module.css";
 
 const ACCEPTED_RESUME_TYPES = [
@@ -105,16 +105,14 @@ export default function CareersApplicationForm() {
         <p className={styles.successDescription}>
           {application.success.description}
         </p>
-        <Button
-          type="default"
+        <OutlineButton
+          text="Submit another profile"
           className={styles.resetButton}
           onClick={() => {
             setSuccess(false);
             setError("");
           }}
-        >
-          Submit another profile
-        </Button>
+        />
       </div>
     );
   }
@@ -244,17 +242,14 @@ export default function CareersApplicationForm() {
         </Col>
       </Row>
 
-      <Button
-        type="primary"
-        htmlType="submit"
-        size="large"
+      <PrimaryButton
+        text={application.submitLabel}
+        type="submit"
+        height={48}
+        width="100%"
         loading={submitting}
         disabled={submitting}
-        className={styles.submit}
-        style={{ background: colors.primary, borderColor: colors.primary }}
-      >
-        {application.submitLabel}
-      </Button>
+      />
     </Form>
   );
 }

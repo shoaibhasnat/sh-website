@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PrimaryButton, SecondaryButton } from "@/utils/buttons";
 import styles from "./case-studies-hero.module.css";
 
 const stages = [
@@ -50,12 +50,16 @@ export default function CaseStudiesHero() {
           </p>
 
           <div className={styles.actions}>
-            <a href="#case-study-categories" className={styles.primaryCta}>
-              Explore Case Studies
-            </a>
-            <Link href="/projects" className={styles.secondaryCta}>
-              View All Projects
-            </Link>
+            <PrimaryButton
+              text="Explore Case Studies"
+              href="#case-study-categories"
+              height={46}
+            />
+            <SecondaryButton
+              text="View All Projects"
+              href="/projects"
+              height={46}
+            />
           </div>
         </div>
 

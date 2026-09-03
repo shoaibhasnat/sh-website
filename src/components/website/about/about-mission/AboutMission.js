@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AboutData } from "@/data/pages/about/AboutData";
+import { GhostButton, PrimaryButton } from "@/utils/buttons";
 import styles from "./about-mission.module.css";
 
 export default function AboutMission() {
@@ -15,12 +15,11 @@ export default function AboutMission() {
         </h2>
         <p className={styles.description}>{cta.description}</p>
         <div className={styles.actions}>
-          <Link href={cta.primaryCta.href} className={styles.primaryCta}>
-            {cta.primaryCta.label}
-          </Link>
-          <Link href={cta.secondaryCta.href} className={styles.secondaryCta}>
-            {cta.secondaryCta.label}
-          </Link>
+          <PrimaryButton text={cta.primaryCta.label} href={cta.primaryCta.href} />
+          <GhostButton
+            text={cta.secondaryCta.label}
+            href={cta.secondaryCta.href}
+          />
         </div>
       </div>
     </section>

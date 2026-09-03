@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AboutData } from "@/data/pages/about/AboutData";
+import { PrimaryButton, SecondaryButton } from "@/utils/buttons";
 import styles from "./about-hero.module.css";
 
 const STAGE_SIZE = 420;
@@ -45,12 +45,16 @@ export default function AboutHero() {
           <p className={styles.supporting}>{hero.supporting}</p>
 
           <div className={styles.actions}>
-            <Link href={hero.primaryCta.href} className={styles.primaryCta}>
-              {hero.primaryCta.label}
-            </Link>
-            <Link href={hero.secondaryCta.href} className={styles.secondaryCta}>
-              {hero.secondaryCta.label}
-            </Link>
+            <PrimaryButton
+              text={hero.primaryCta.label}
+              href={hero.primaryCta.href}
+              height={46}
+            />
+            <SecondaryButton
+              text={hero.secondaryCta.label}
+              href={hero.secondaryCta.href}
+              height={46}
+            />
           </div>
         </div>
 

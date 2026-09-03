@@ -5,6 +5,7 @@ import {
   CareersData,
   getActiveJobs,
 } from "@/data/pages/careers/CareersData";
+import { PrimaryButton, SecondaryButton } from "@/utils/buttons";
 import styles from "./careers-hero.module.css";
 
 const PREVIEW_LIMIT = 4;
@@ -50,16 +51,17 @@ export default function CareersHero() {
           <p className={styles.supporting}>{hero.supporting}</p>
 
           <div className={styles.actions}>
-            <a
+            <PrimaryButton
+              text={hero.primaryCta.label}
               href={hero.primaryCta.href}
-              className={styles.primaryCta}
               onClick={scrollTo(hero.primaryCta.href)}
-            >
-              {hero.primaryCta.label}
-            </a>
-            <Link href={hero.secondaryCta.href} className={styles.secondaryCta}>
-              {hero.secondaryCta.label}
-            </Link>
+              height={46}
+            />
+            <SecondaryButton
+              text={hero.secondaryCta.label}
+              href={hero.secondaryCta.href}
+              height={46}
+            />
           </div>
 
           <ul className={styles.disciplines}>

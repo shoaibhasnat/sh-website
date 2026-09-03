@@ -78,7 +78,7 @@
     flex-direction: column;
   }
 
-  .actions a {
+  .actions > * {
     width: 100%;
   }
 }

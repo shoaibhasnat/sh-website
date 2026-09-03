@@ -1,7 +1,7 @@
 "use client";
 
 import { CareersData } from "@/data/pages/careers/CareersData";
-import shared from "../careers-shared.module.css";
+import { GhostButton, PrimaryButton } from "@/utils/buttons";
 import styles from "./careers-cta.module.css";
 
 export default function CareersCta() {
@@ -26,20 +26,16 @@ export default function CareersCta() {
         </h2>
         <p className={styles.description}>{cta.description}</p>
         <div className={styles.actions}>
-          <a
+          <PrimaryButton
+            text={cta.primaryCta.label}
             href={cta.primaryCta.href}
-            className={shared.primaryCta}
             onClick={scrollTo(cta.primaryCta.href)}
-          >
-            {cta.primaryCta.label}
-          </a>
-          <a
+          />
+          <GhostButton
+            text={cta.secondaryCta.label}
             href={cta.secondaryCta.href}
-            className={`${shared.secondaryCta} ${shared.secondaryCtaOnDark}`}
             onClick={scrollTo(cta.secondaryCta.href)}
-          >
-            {cta.secondaryCta.label}
-          </a>
+          />
         </div>
       </div>
     </section>

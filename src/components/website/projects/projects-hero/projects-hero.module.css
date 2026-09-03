@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f7fbff;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  border-bottom: 1px solid rgba(0, 179, 255, 0.12);
+}
+
+.bgGrid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.4;
+  background-image:
+    linear-gradient(to right, rgba(0, 179, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 179, 255, 0.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+}
+
+.bgGlow {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: -70%;
+  width: min(70vw, 680px);
+  height: min(70vw, 680px);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(218, 237, 255, 0.9) 0%,
+    transparent 68%
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 64px 56px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 179, 255, 0.7));
+}
+
+.eyebrow::after {
+  background: linear-gradient(90deg, rgba(0, 179, 255, 0.7), transparent);
+}
+
+.heading {
+  margin: 0 auto 16px;
+  max-width: 16ch;
+  color: var(--color-dark);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+.description {
+  margin: 0 auto 12px;
+  max-width: 62ch;
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.supporting {
+  margin: 0 auto;
+  max-width: 48ch;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 56px 24px 44px;
+  }
+
+  .heading {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 44px 16px 36px;
+  }
+
+  .heading {
+    max-width: none;
+  }
+}
