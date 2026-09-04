@@ -86,7 +86,9 @@ export default function ProjectDetailSolution({ project }) {
                           {String(tech.name || "?").charAt(0)}
                         </span>
                       )}
-                      <span className={styles.srOnly}>{tech.name}</span>
+                      <span className={styles.tooltip} role="tooltip">
+                        {tech.name}
+                      </span>
                     </>
                   );
 
@@ -98,12 +100,16 @@ export default function ProjectDetailSolution({ project }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={styles.techLink}
-                          title={tech.name}
+                          aria-label={tech.name}
                         >
                           {content}
                         </a>
                       ) : (
-                        <div className={styles.techLink} title={tech.name}>
+                        <div
+                          className={styles.techLink}
+                          tabIndex={0}
+                          aria-label={tech.name}
+                        >
                           {content}
                         </div>
                       )}

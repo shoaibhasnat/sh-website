@@ -1,0 +1,127 @@
+.section {
+  background: #f7fbff;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  border-top: 1px solid rgba(0, 179, 255, 0.08);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 88px 64px;
+  box-sizing: border-box;
+}
+
+.header {
+  max-width: 700px;
+  margin-bottom: 42px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0 0 14px;
+  color: var(--color-dark);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--color-secondary);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: 24px 22px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 14px 28px rgba(0, 24, 48, 0.05);
+  transform: translateY(-2px);
+}
+
+.index {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  margin: 0 0 10px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.35;
+}
+
+.cardCopy {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 72px 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 56px 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

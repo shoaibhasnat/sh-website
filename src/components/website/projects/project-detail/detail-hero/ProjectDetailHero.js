@@ -3,6 +3,16 @@ import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import shared from "../project-detail-shared.module.css";
 import styles from "./detail-hero.module.css";
 
+function resolveVideoDemoUrl(banner = {}) {
+  const remote = String(banner.videoUrl || "").trim();
+  if (remote) return remote;
+
+  const local = String(
+    banner.localVideo?.url || banner.localVideoUrl || "",
+  ).trim();
+  return local || "";
+}
+
 export default function ProjectDetailHero({ project }) {
   const raw = project.raw || {};
   const banner = raw.banner || {};
@@ -16,8 +26,31 @@ export default function ProjectDetailHero({ project }) {
     project.image ||
     raw.proposedSolution?.leftSectionImage ||
     "";
-  const liveUrl = banner.url || "";
+  const liveUrl = String(banner.url || "").trim();
+  const videoDemoUrl = resolveVideoDemoUrl(banner);
   const categories = Array.isArray(raw.category) ? raw.category : [];
+  const isExternalVideo = /^https?:\/\//i.test(videoDemoUrl);
+
+  const primaryAction = liveUrl
+    ? {
+        label: "Visit Live Project",
+        href: liveUrl,
+        external: /^https?:\/\//i.test(liveUrl),
+      }
+    : videoDemoUrl
+      ? {
+          label: "Watch Demo",
+          href: videoDemoUrl,
+          external: isExternalVideo,
+        }
+      : {
+          label: "Start a Similar Project",
+          href: "/contact",
+          external: false,
+        };
+
+  const showVideoAsSecondary = Boolean(videoDemoUrl && liveUrl);
+  const showContactLink = Boolean(liveUrl || videoDemoUrl);
 
   return (
     <header className={styles.hero}>
@@ -46,14 +79,36 @@ export default function ProjectDetailHero({ project }) {
           ) : null}
 
           <div className={styles.actions}>
-            {liveUrl ? (
+            <div className={styles.actionRow}>
               <PrimaryButton
-                text="Visit Live Project"
-                href={liveUrl}
+                text={primaryAction.label}
+                href={primaryAction.href}
                 height={44}
+                target={primaryAction.external ? "_blank" : undefined}
+                rel={
+                  primaryAction.external ? "noopener noreferrer" : undefined
+                }
               />
+              {showContactLink ? (
+                <OutlineButton
+                  text="Start a Similar Project"
+                  href="/contact"
+                  height={44}
+                />
+              ) : null}
+            </div>
+
+            {showVideoAsSecondary ? (
+              <a
+                href={videoDemoUrl}
+                className={styles.secondaryLink}
+                target={isExternalVideo ? "_blank" : undefined}
+                rel={isExternalVideo ? "noopener noreferrer" : undefined}
+              >
+                Watch Demo
+                <span aria-hidden="true"> →</span>
+              </a>
             ) : null}
-            <OutlineButton text="Start a Similar Project" href="/contact" height={44} />
           </div>
         </div>
 

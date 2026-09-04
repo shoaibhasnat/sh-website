@@ -1,10 +1,11 @@
-import { PrimaryButton } from "@/utils/buttons";
+import Home from "@/components/pages/home/Home";
 
-export default function Home() {
-  return (
-    <>
-      <h1>Welcome to our website</h1>
-      <PrimaryButton text="Start Free" href="/contact" />
-    </>
-  );
+export const metadata = {
+  title: "System Heuristics",
+  description:
+    "We help businesses increase sales, automate marketing, deploy AI agents, connect systems and build custom software.",
+};
+
+export default function HomePage() {
+  return <Home />;
 }

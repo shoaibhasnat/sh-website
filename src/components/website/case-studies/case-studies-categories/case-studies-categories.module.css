@@ -1,4 +1,4 @@
-.categories {
+.section {
   background: #ffffff;
   color: var(--color-text);
   font-family: var(--font-family-primary);
@@ -53,12 +53,19 @@
 }
 
 .card {
-  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 200px;
   padding: 0;
   border: 1px solid rgba(0, 179, 255, 0.14);
   border-radius: var(--radius);
   background: #f7fbff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+  overflow: hidden;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -71,15 +78,18 @@
 .cardLink {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
   padding: 24px;
+  box-sizing: border-box;
   color: inherit;
   text-decoration: none;
 }
 
 .cardLink:focus-visible {
   outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
+  outline-offset: -2px;
 }
 
 .number {
@@ -110,7 +120,7 @@
   display: inline-flex;
   align-items: center;
   margin-top: auto;
-  padding-top: 18px;
+  padding-top: 20px;
   color: var(--color-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
@@ -135,5 +145,9 @@
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
+  }
+
+  .card:hover {
+    transform: none;
   }
 }

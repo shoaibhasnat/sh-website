@@ -98,6 +98,50 @@
   line-height: 1.65;
 }
 
+.contactList {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(143, 158, 174, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.contactLink:hover {
+  color: var(--color-primary);
+  border-color: rgba(0, 179, 255, 0.55);
+  background: rgba(0, 179, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.contactLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  color: var(--color-primary);
+}
+
+.contactIcon {
+  font-size: 16px;
+}
+
 .columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -246,5 +290,18 @@
 @media (max-width: 420px) {
   .inner {
     padding: 40px 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .contactLink,
+  .legalLink {
+    transition: none;
+  }
+
+  .link:hover,
+  .contactLink:hover {
+    transform: none;
   }
 }

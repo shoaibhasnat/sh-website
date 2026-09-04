@@ -49,27 +49,21 @@
 }
 
 .media {
-  overflow: hidden;
   margin-bottom: 22px;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 179, 255, 0.22);
-  background: #001830;
-  box-shadow: 0 22px 48px rgba(0, 24, 48, 0.12);
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  background: #f4f8fc;
 }
 
 .image {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
+  max-width: 100%;
   object-fit: contain;
-  object-position: center center;
-  background: #001830;
-  transition: transform 0.65s ease;
-}
-
-.media:hover .image {
-  transform: scale(1.03);
+  object-position: center;
 }
 
 .description {
@@ -130,10 +124,12 @@
 }
 
 .techItem {
+  position: relative;
   list-style: none;
 }
 
 .techLink {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -143,6 +139,8 @@
   border: 1px solid rgba(0, 179, 255, 0.14);
   background: #ffffff;
   text-decoration: none;
+  color: inherit;
+  cursor: pointer;
   box-shadow: 0 6px 16px rgba(0, 24, 48, 0.04);
   transition:
     transform 0.2s ease,
@@ -150,10 +148,57 @@
     box-shadow 0.2s ease;
 }
 
-a.techLink:hover {
+.techLink:hover,
+.techLink:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(0, 179, 255, 0.4);
   box-shadow: 0 10px 22px rgba(0, 24, 48, 0.08);
+}
+
+.techLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tooltip {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--color-dark);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(4px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s ease;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border: 5px solid transparent;
+  border-top-color: var(--color-dark);
+}
+
+.techLink:hover .tooltip,
+.techLink:focus-visible .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .techIcon {
@@ -168,26 +213,14 @@ a.techLink:hover {
   font-weight: var(--font-weight-bold);
 }
 
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .image,
-  .techLink {
+  .techLink,
+  .tooltip {
     transition: none;
   }
 
-  .media:hover .image,
-  a.techLink:hover {
+  .techLink:hover,
+  .techLink:focus-visible {
     transform: none;
   }
 }
@@ -232,10 +265,6 @@ a.techLink:hover {
   .heading {
     max-width: none;
     text-align: left;
-  }
-
-  .image {
-    aspect-ratio: 16 / 11;
   }
 
   .techLink {

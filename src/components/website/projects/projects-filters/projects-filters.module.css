@@ -1,11 +1,9 @@
 .wrap {
-  position: sticky;
-  top: 72px;
-  z-index: 900;
+  position: relative;
+  z-index: 1;
   width: 100%;
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 179, 255, 0.14);
-  box-shadow: 0 8px 24px rgba(0, 24, 48, 0.04);
 }
 
 .bar {
@@ -81,10 +79,6 @@
 }
 
 @media (max-width: 560px) {
-  .wrap {
-    top: 64px;
-  }
-
   .bar {
     padding: 12px 16px;
   }

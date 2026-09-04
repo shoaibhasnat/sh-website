@@ -1,0 +1,62 @@
+.form {
+  width: 100%;
+}
+
+.group {
+  margin-bottom: 8px;
+}
+
+.groupTitle {
+  margin: 0 0 12px;
+  color: var(--color-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alert {
+  margin-bottom: 16px;
+}
+
+.success {
+  padding: 28px 8px;
+  text-align: center;
+}
+
+.successEyebrow {
+  margin: 0 0 10px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.successHeading {
+  margin: 0 0 12px;
+  color: var(--color-dark);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.25;
+}
+
+.successDescription {
+  margin: 0 auto 20px;
+  max-width: 420px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+.form :global(.ant-form-item-label > label) {
+  color: var(--color-text) !important;
+  font-weight: 600 !important;
+}
+
+.form :global(.ant-input),
+.form :global(.ant-input-affix-wrapper),
+.form :global(.ant-select-selector),
+.form :global(.ant-input-textarea textarea) {
+  border-radius: var(--radius) !important;
+}

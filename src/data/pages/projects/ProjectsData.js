@@ -33,8 +33,8 @@ export const ProjectsPageData = {
     description:
       "We're continuing to build systems across this industry. Check back soon or tell us about the problem you're trying to solve.",
     primaryCta: {
-      label: "Start Free",
-      href: "/contact",
+      label: "Book Free Consultation",
+      href: "/discovery-call",
     },
     secondaryCta: {
       label: "View All Projects",
@@ -47,8 +47,8 @@ export const ProjectsPageData = {
     description:
       "Tell us what is slowing your team down, creating manual work or limiting growth. We'll help you find the right solution.",
     primaryCta: {
-      label: "Start Free",
-      href: "/contact",
+      label: "Book Free Consultation",
+      href: "/discovery-call",
     },
     secondaryCta: {
       label: "Learn About The Audit",
@@ -148,11 +148,9 @@ function getSourceProjects() {
     : [];
 }
 
-/** Public listing projects (excludes private entries). */
+/** All portfolio projects for public listing pages. */
 export function getProjects() {
-  return getSourceProjects()
-    .filter((project) => project && project.private !== true)
-    .map(mapProject);
+  return getSourceProjects().filter(Boolean).map(mapProject);
 }
 
 export function getAllProjectsIncludingPrivate() {

@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow-x: clip;
   background: #f7fbff;
   color: var(--color-text);
   font-family: var(--font-family-primary);
@@ -117,8 +117,37 @@
 
 .actions {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.actionRow {
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
+}
+
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  color: var(--color-primary);
+}
+
+.secondaryLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .mediaCol {
@@ -127,32 +156,28 @@
 }
 
 .media {
-  overflow: hidden;
+  display: block;
+  width: 100%;
+  padding: 18px;
+  box-sizing: border-box;
   border-radius: var(--radius);
-  border: 1px solid rgba(0, 179, 255, 0.16);
-  box-shadow:
-    0 24px 48px rgba(0, 24, 48, 0.1),
-    0 2px 0 rgba(0, 179, 255, 0.08);
-  background: #e8f4ff;
+  border: 1px solid rgba(0, 179, 255, 0.14);
+  background: #f4f8fc;
 }
 
 .image {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
-
-.media:hover .image {
-  transform: scale(1.03);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .mediaPlaceholder {
+  width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: var(--radius);
-  border: 1px solid rgba(0, 179, 255, 0.14);
+  border-radius: 6px;
   background:
     linear-gradient(135deg, #e8f4ff 0%, #f7fbff 55%, #dff0ff 100%);
 }
@@ -174,15 +199,8 @@
     animation: none;
   }
 
-  .image {
-    transition: none;
-  }
-
-  .media:hover .image {
-    transform: none;
-  }
-
-  .back {
+  .back,
+  .secondaryLink {
     transition: none;
   }
 }
@@ -206,11 +224,13 @@
     padding-bottom: 40px;
   }
 
-  .actions {
+  .actionRow {
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 
-  .actions > * {
+  .actionRow > * {
     width: 100%;
   }
 }

@@ -1,0 +1,147 @@
+.page {
+  background: #ffffff;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
+.hero {
+  background: #f7fbff;
+  border-bottom: 1px solid rgba(0, 179, 255, 0.12);
+}
+
+.inner {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 64px;
+  box-sizing: border-box;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 12px;
+  color: var(--color-dark);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.meta {
+  margin: 0 0 18px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.intro {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+}
+
+.body .inner {
+  padding-top: 56px;
+  padding-bottom: 88px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+  color: var(--color-dark);
+  font-size: var(--font-size-md-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+
+.copy {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.75;
+}
+
+.list {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+.list li + li {
+  margin-top: 8px;
+}
+
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0, 179, 255, 0.12);
+}
+
+.navLink {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.dot {
+  color: var(--color-secondary);
+}
+
+@media (max-width: 900px) {
+  .inner,
+  .body .inner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .inner {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .body .inner {
+    padding-top: 44px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner,
+  .body .inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .inner {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .body .inner {
+    padding-top: 36px;
+    padding-bottom: 56px;
+  }
+}

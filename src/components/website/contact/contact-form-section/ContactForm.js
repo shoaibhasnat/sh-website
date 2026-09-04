@@ -10,15 +10,16 @@ import {
   Select,
 } from "antd";
 import { ContactData } from "@/data/pages/contact/ContactData";
-import { OutlineButton, PrimaryButton } from "@/utils/buttons";
+import { PrimaryButton } from "@/utils/buttons";
 import styles from "./contact-form.module.css";
+
+const DISCOVERY_CALL_PATH = "/discovery-call";
 
 export default function ContactForm() {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const { form: formData, formSection } = ContactData;
+  const { form: formData } = ContactData;
 
   const onFinish = async (values) => {
     if (submitting) return;
@@ -33,7 +34,12 @@ export default function ContactForm() {
         body: JSON.stringify(values),
       });
 
-      const result = await response.json();
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
 
       if (!response.ok || !result.ok) {
         setError(
@@ -41,37 +47,17 @@ export default function ContactForm() {
             result.errors?.[0] ||
             "Something went wrong. Please try again.",
         );
+        setSubmitting(false);
         return;
       }
 
-      setSuccess(true);
-      form.resetFields();
+      // Only redirect after the email API has fully succeeded.
+      window.location.assign(DISCOVERY_CALL_PATH);
     } catch {
       setError("Something went wrong. Please try again.");
-    } finally {
       setSubmitting(false);
     }
   };
-
-  if (success) {
-    return (
-      <div className={styles.success} role="status" aria-live="polite">
-        <p className={styles.successEyebrow}>REQUEST RECEIVED</p>
-        <h3 className={styles.successHeading}>{formSection.success.heading}</h3>
-        <p className={styles.successDescription}>
-          {formSection.success.description}
-        </p>
-        <OutlineButton
-          text="Send another request"
-          className={styles.resetButton}
-          onClick={() => {
-            setSuccess(false);
-            setError("");
-          }}
-        />
-      </div>
-    );
-  }
 
   return (
     <Form

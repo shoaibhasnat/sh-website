@@ -17,7 +17,7 @@ export default function ProjectDetailCta({ projectName }) {
           improve. We’ll help you map the right solution.
         </p>
         <div className={styles.actions}>
-          <PrimaryButton text="Start Free" href="/contact" />
+          <PrimaryButton text="Book Free Consultation" href="/discovery-call" />
           <GhostButton text="View All Projects" href="/projects" />
         </div>
       </div>

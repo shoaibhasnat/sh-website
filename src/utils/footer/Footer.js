@@ -1,10 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import {
+  LinkedinOutlined,
+  MailOutlined,
+  PhoneOutlined,
+} from "@ant-design/icons";
 import { FooterData } from "@/data/components/footer/FooterData";
 import styles from "./footer.module.css";
 
+const CONTACT_ICONS = {
+  linkedin: LinkedinOutlined,
+  email: MailOutlined,
+  call: PhoneOutlined,
+};
+
 export default function Footer() {
-  const { brand, columns, legal } = FooterData;
+  const { brand, columns, legal, contactLinks = [] } = FooterData;
   const year = new Date().getFullYear();
 
   return (
@@ -33,6 +46,35 @@ export default function Footer() {
 
             <p className={styles.tagline}>{brand.tagline}</p>
             <p className={styles.description}>{brand.description}</p>
+
+            {contactLinks.length ? (
+              <ul className={styles.contactList} aria-label="Contact links">
+                {contactLinks.map((item) => {
+                  const Icon = CONTACT_ICONS[item.key];
+                  if (!Icon) return null;
+
+                  const linkProps = item.external
+                    ? {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      }
+                    : {};
+
+                  return (
+                    <li key={item.key}>
+                      <a
+                        href={item.href}
+                        className={styles.contactLink}
+                        aria-label={item.label}
+                        {...linkProps}
+                      >
+                        <Icon className={styles.contactIcon} aria-hidden />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
           </div>
 
           <div className={styles.columns}>

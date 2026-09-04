@@ -1,14 +1,30 @@
 import nodemailer from "nodemailer";
+import { buildContactAutoReply } from "@/utils/email-templates/contactAutoReply";
+import { buildContactNotification } from "@/utils/email-templates/contactNotification";
+import { getEmailLogoAttachment } from "@/utils/email-templates/emailAssets";
+import {
+  sendMailWithRetry,
+  sleep,
+} from "@/utils/email/sendMailWithRetry";
+
+export const runtime = "nodejs";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const FALLBACK_BOOKING_LINK =
+  "https://calendar.app.google/ZnSSS2B9R7mkmfBc6";
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
 function normalizePayload(body) {
+  const firstName = String(body?.firstName || "").trim();
+  const lastName = String(body?.lastName || "").trim();
+  const combinedName = `${firstName} ${lastName}`.trim();
+  const name = String(body?.name || "").trim() || combinedName;
+
   return {
-    name: String(body?.name || "").trim(),
+    name,
     email: String(body?.email || "").trim().toLowerCase(),
     phone: String(body?.phone || "").trim(),
     companyName: String(body?.companyName || "").trim(),
@@ -16,6 +32,9 @@ function normalizePayload(body) {
     industry: String(body?.industry || "").trim(),
     companySize: String(body?.companySize || "").trim(),
     problem: String(body?.problem || "").trim(),
+    service: String(body?.service || body?.helpWith || "").trim(),
+    budget: String(body?.budget || "").trim(),
+    source: String(body?.source || "").trim(),
   };
 }
 
@@ -31,41 +50,6 @@ function validatePayload(data) {
   return errors;
 }
 
-function buildEmailHtml(data) {
-  const rows = [
-    ["Name", data.name],
-    ["Business Email", data.email],
-    ["Phone", data.phone || "—"],
-    ["Company", data.companyName],
-    ["Website", data.companyWebsite || "—"],
-    ["Industry", data.industry || "—"],
-    ["Company Size", data.companySize || "—"],
-    ["Problem", data.problem],
-  ];
-
-  const content = rows
-    .map(
-      ([label, value]) =>
-        `<tr>
-          <td style="padding:8px 12px;border-bottom:1px solid #e8eef5;color:#737e8a;font-size:13px;width:160px;vertical-align:top;">${label}</td>
-          <td style="padding:8px 12px;border-bottom:1px solid #e8eef5;color:#00213a;font-size:14px;white-space:pre-wrap;">${String(value).replace(/</g, "&lt;")}</td>
-        </tr>`,
-    )
-    .join("");
-
-  return `
-    <div style="font-family:Quicksand,Arial,sans-serif;background:#f7fbff;padding:24px;">
-      <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #daedff;border-radius:8px;overflow:hidden;">
-        <div style="background:#001830;color:#ffffff;padding:20px 24px;">
-          <p style="margin:0;font-size:12px;letter-spacing:0.08em;color:#00b3ff;">NEW CONTACT REQUEST</p>
-          <h1 style="margin:8px 0 0;font-size:22px;">System Heuristics Website</h1>
-        </div>
-        <table style="width:100%;border-collapse:collapse;">${content}</table>
-      </div>
-    </div>
-  `;
-}
-
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -77,21 +61,30 @@ export async function POST(request) {
     }
 
     const {
-      SMTP_HOST = "smtp.gmail.com",
-      SMTP_PORT = "465",
-      SMTP_SECURE = "true",
+      SMTP_HOST,
+      SMTP_PORT,
+      SMTP_SECURE,
       SMTP_USER,
       SMTP_APP_PASSWORD,
       CONTACT_RECEIVER_EMAIL,
-      CONTACT_FROM_NAME = "System Heuristics Website",
+      CONTACT_FROM_NAME,
+      BOOKING_CALENDAR_LINK,
     } = process.env;
 
-    if (!SMTP_USER || !SMTP_APP_PASSWORD || !CONTACT_RECEIVER_EMAIL) {
+    if (
+      !SMTP_HOST ||
+      !SMTP_PORT ||
+      !SMTP_SECURE ||
+      !SMTP_USER ||
+      !SMTP_APP_PASSWORD ||
+      !CONTACT_RECEIVER_EMAIL ||
+      !CONTACT_FROM_NAME
+    ) {
       return Response.json(
         {
           ok: false,
           error:
-            "Email is not configured yet. Add SMTP_USER, SMTP_APP_PASSWORD, and CONTACT_RECEIVER_EMAIL to .env.local.",
+            "Email is not configured yet. Add SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_APP_PASSWORD, CONTACT_RECEIVER_EMAIL, and CONTACT_FROM_NAME to .env.local.",
         },
         { status: 503 },
       );
@@ -105,27 +98,51 @@ export async function POST(request) {
         user: SMTP_USER,
         pass: SMTP_APP_PASSWORD,
       },
+      pool: false,
     });
 
-    await transporter.sendMail({
-      from: `"${CONTACT_FROM_NAME}" <${SMTP_USER}>`,
+    const fromAddress = `"${CONTACT_FROM_NAME}" <${SMTP_USER}>`;
+    const notification = buildContactNotification(data);
+    const logoAttachment = getEmailLogoAttachment();
+
+    // Internal notification must succeed before auto-reply / redirect.
+    await sendMailWithRetry(transporter, {
+      from: fromAddress,
       to: CONTACT_RECEIVER_EMAIL,
       replyTo: data.email,
-      subject: `New contact request from ${data.name} (${data.companyName})`,
-      text: [
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        `Phone: ${data.phone || "—"}`,
-        `Company: ${data.companyName}`,
-        `Website: ${data.companyWebsite || "—"}`,
-        `Industry: ${data.industry || "—"}`,
-        `Company Size: ${data.companySize || "—"}`,
-        "",
-        "Problem:",
-        data.problem,
-      ].join("\n"),
-      html: buildEmailHtml(data),
+      subject: notification.subject,
+      text: notification.text,
+      html: notification.html,
+      attachments: [logoAttachment],
     });
+
+    const autoReply = buildContactAutoReply({
+      name: data.name,
+      companyName: data.companyName,
+      bookingUrl: BOOKING_CALENDAR_LINK?.trim() || FALLBACK_BOOKING_LINK,
+    });
+
+    // Gmail often returns 421 if a second message is sent immediately.
+    await sleep(1500);
+
+    try {
+      await sendMailWithRetry(
+        transporter,
+        {
+          from: fromAddress,
+          to: data.email,
+          replyTo: CONTACT_RECEIVER_EMAIL,
+          subject: autoReply.subject,
+          text: autoReply.text,
+          html: autoReply.html,
+          attachments: [logoAttachment],
+        },
+        { retries: 5, baseDelayMs: 1800 },
+      );
+    } catch (autoReplyError) {
+      // Do not fail the API if the lead email already succeeded.
+      console.error("[contact] auto-reply failed", autoReplyError);
+    }
 
     return Response.json({ ok: true });
   } catch (error) {

@@ -1,4 +1,11 @@
 import nodemailer from "nodemailer";
+import { buildCareersAutoReply } from "@/utils/email-templates/careersAutoReply";
+import { buildCareersNotification } from "@/utils/email-templates/careersNotification";
+import { getEmailLogoAttachment } from "@/utils/email-templates/emailAssets";
+import {
+  sendMailWithRetry,
+  sleep,
+} from "@/utils/email/sendMailWithRetry";
 
 export const runtime = "nodejs";
 
@@ -10,6 +17,7 @@ const ACCEPTED_MIME_TYPES = [
   "application/msword",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ];
+const CAREERS_PAGE_URL = "https://systemheuristics.com/careers";
 
 const EXPERTISE_OPTIONS = [
   "AI / Machine Learning",
@@ -27,10 +35,6 @@ const EXPERTISE_OPTIONS = [
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
-}
-
-function escapeHtml(value) {
-  return String(value).replace(/</g, "&lt;");
 }
 
 function getExtension(filename = "") {
@@ -89,41 +93,6 @@ function validatePayload(data) {
   return errors;
 }
 
-function buildEmailHtml(data) {
-  const rows = [
-    ["Full Name", data.fullName],
-    ["Email", data.email],
-    ["Phone", data.phone || "—"],
-    ["Area of Expertise", data.expertise],
-    ["LinkedIn", data.linkedin || "—"],
-    ["Portfolio / GitHub", data.portfolio || "—"],
-    ["Introduction", data.introduction],
-    ["Resume", data.resume?.name || "—"],
-  ];
-
-  const content = rows
-    .map(
-      ([label, value]) =>
-        `<tr>
-          <td style="padding:8px 12px;border-bottom:1px solid #e8eef5;color:#737e8a;font-size:13px;width:160px;vertical-align:top;">${label}</td>
-          <td style="padding:8px 12px;border-bottom:1px solid #e8eef5;color:#00213a;font-size:14px;white-space:pre-wrap;">${escapeHtml(value)}</td>
-        </tr>`,
-    )
-    .join("");
-
-  return `
-    <div style="font-family:Quicksand,Arial,sans-serif;background:#f7fbff;padding:24px;">
-      <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #daedff;border-radius:8px;overflow:hidden;">
-        <div style="background:#001830;color:#ffffff;padding:20px 24px;">
-          <p style="margin:0;font-size:12px;letter-spacing:0.08em;color:#00b3ff;">GENERAL CAREERS APPLICATION</p>
-          <h1 style="margin:8px 0 0;font-size:22px;">System Heuristics Careers</h1>
-        </div>
-        <table style="width:100%;border-collapse:collapse;">${content}</table>
-      </div>
-    </div>
-  `;
-}
-
 export async function POST(request) {
   try {
     const data = await parseFormData(request);
@@ -134,21 +103,29 @@ export async function POST(request) {
     }
 
     const {
-      SMTP_HOST = "smtp.gmail.com",
-      SMTP_PORT = "465",
-      SMTP_SECURE = "true",
+      SMTP_HOST,
+      SMTP_PORT,
+      SMTP_SECURE,
       SMTP_USER,
       SMTP_APP_PASSWORD,
       CAREERS_RECEIVER_EMAIL,
-      CAREERS_FROM_NAME = "System Heuristics Careers",
+      CAREERS_FROM_NAME,
     } = process.env;
 
-    if (!SMTP_USER || !SMTP_APP_PASSWORD || !CAREERS_RECEIVER_EMAIL) {
+    if (
+      !SMTP_HOST ||
+      !SMTP_PORT ||
+      !SMTP_SECURE ||
+      !SMTP_USER ||
+      !SMTP_APP_PASSWORD ||
+      !CAREERS_RECEIVER_EMAIL ||
+      !CAREERS_FROM_NAME
+    ) {
       return Response.json(
         {
           ok: false,
           error:
-            "Careers email is not configured yet. Add SMTP_USER, SMTP_APP_PASSWORD, and CAREERS_RECEIVER_EMAIL to .env.local.",
+            "Careers email is not configured yet. Add SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_APP_PASSWORD, CAREERS_RECEIVER_EMAIL, and CAREERS_FROM_NAME to .env.local.",
         },
         { status: 503 },
       );
@@ -164,28 +141,23 @@ export async function POST(request) {
         user: SMTP_USER,
         pass: SMTP_APP_PASSWORD,
       },
+      pool: false,
     });
 
-    await transporter.sendMail({
-      from: `"${CAREERS_FROM_NAME}" <${SMTP_USER}>`,
+    const fromAddress = `"${CAREERS_FROM_NAME}" <${SMTP_USER}>`;
+    const notification = buildCareersNotification(data);
+    const logoAttachment = getEmailLogoAttachment();
+
+    // Internal notification must succeed first.
+    await sendMailWithRetry(transporter, {
+      from: fromAddress,
       to: CAREERS_RECEIVER_EMAIL,
       replyTo: data.email,
-      subject: `Careers application — ${data.fullName} (${data.expertise})`,
-      text: [
-        `Full Name: ${data.fullName}`,
-        `Email: ${data.email}`,
-        `Phone: ${data.phone || "—"}`,
-        `Area of Expertise: ${data.expertise}`,
-        `LinkedIn: ${data.linkedin || "—"}`,
-        `Portfolio / GitHub: ${data.portfolio || "—"}`,
-        "",
-        "Introduction:",
-        data.introduction,
-        "",
-        `Resume: ${data.resume.name}`,
-      ].join("\n"),
-      html: buildEmailHtml(data),
+      subject: notification.subject,
+      text: notification.text,
+      html: notification.html,
       attachments: [
+        logoAttachment,
         {
           filename: data.resume.name,
           content: resumeBuffer,
@@ -193,6 +165,32 @@ export async function POST(request) {
         },
       ],
     });
+
+    const autoReply = buildCareersAutoReply({
+      fullName: data.fullName,
+      expertise: data.expertise,
+      careersUrl: CAREERS_PAGE_URL,
+    });
+
+    await sleep(1500);
+
+    try {
+      await sendMailWithRetry(
+        transporter,
+        {
+          from: fromAddress,
+          to: data.email,
+          replyTo: CAREERS_RECEIVER_EMAIL,
+          subject: autoReply.subject,
+          text: autoReply.text,
+          html: autoReply.html,
+          attachments: [logoAttachment],
+        },
+        { retries: 5, baseDelayMs: 1800 },
+      );
+    } catch (autoReplyError) {
+      console.error("[careers/apply] auto-reply failed", autoReplyError);
+    }
 
     return Response.json({ ok: true });
   } catch (error) {

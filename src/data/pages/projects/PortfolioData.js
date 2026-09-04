@@ -18,6 +18,7 @@ export const PortfolioData = {
     {
       id: 1,
       private: false,
+      featured: true,
       projectName: "ATARA",
       projectImage: "/images/pages/portfolio/gallery/atara_fobi.avif",
       category: ["Healthcare Software", "AI Platform", "SaaS"],
@@ -457,6 +458,7 @@ export const PortfolioData = {
     {
       id: 3,
       private: false,
+      featured: true,
       projectName: "AIDN",
       projectImage: "/images/pages/portfolio/gallery/aidn.avif",
       category: ["Healthcare Software", "Patient Management Platform", "SaaS"],
@@ -676,6 +678,7 @@ export const PortfolioData = {
     {
       id: 4,
       private: false,
+      featured: true,
       projectName: "One5 Health",
       projectImage: "/images/pages/portfolio/gallery/one_5_health.avif",
       category: [
@@ -915,6 +918,7 @@ export const PortfolioData = {
     {
       id: 5,
       private: false,
+      featured: true,
       projectName: "Drexel Construction Management",
       projectImage: "/images/pages/portfolio/gallery/drexel.avif",
       category: ["Construction Software", "Document Management", "SaaS"],

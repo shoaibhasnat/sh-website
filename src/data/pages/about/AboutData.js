@@ -11,8 +11,8 @@ export const AboutData = {
     supporting:
       "We start by understanding how your business works, identify where time and opportunities are being lost, and build the technology needed to improve it.",
     primaryCta: {
-      label: "Explore Our Work",
-      href: "/projects",
+      label: "Explore Opportunities",
+      href: "/discovery-call",
     },
     secondaryCta: {
       label: "Talk to Us",
@@ -217,12 +217,12 @@ export const AboutData = {
     description:
       "Tell us where your team is losing time, where opportunities are being missed, or where your current systems aren't keeping up.",
     primaryCta: {
-      label: "Start Free",
-      href: "/contact",
+      label: "Book Free Consultation",
+      href: "/discovery-call",
     },
     secondaryCta: {
-      label: "Explore Our Work",
-      href: "/projects",
+      label: "Explore Opportunities",
+      href: "/discovery-call",
     },
   },
 };
