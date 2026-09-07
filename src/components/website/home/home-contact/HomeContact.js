@@ -1,6 +1,6 @@
+import ContactForm from "@/components/website/contact/contact-form-section/ContactForm";
 import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
-import HomeContactForm from "./HomeContactForm";
 import styles from "./home-contact.module.css";
 
 export default function HomeContact() {
@@ -34,7 +34,7 @@ export default function HomeContact() {
           </div>
 
           <div className={styles.formPanel}>
-            <HomeContactForm />
+            <ContactForm />
           </div>
         </div>
       </div>

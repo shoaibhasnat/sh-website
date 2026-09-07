@@ -389,47 +389,6 @@ export const HomeData = {
       },
     ],
     note: "Start with the problem. We'll help you determine the next step.",
-    success: {
-      heading: "Thanks — we've received your request.",
-      description:
-        "Our team will review the information and reach out with the most relevant next step.",
-    },
-    form: {
-      industries: [
-        "Healthcare",
-        "Construction",
-        "Logistics",
-        "Professional Services",
-        "Technology",
-        "Retail",
-        "Real Estate",
-        "Manufacturing",
-        "Other",
-      ],
-      companySizes: ["1–10", "11–50", "51–200", "201–500", "500+"],
-      services: [
-        "Sales Automation",
-        "Marketing Automation",
-        "AI Agents",
-        "Business Automation",
-        "System Integrations",
-        "Custom Software",
-        "CRM",
-        "Reporting & Dashboards",
-        "Other",
-      ],
-      budgets: [
-        "Exploring",
-        "Under $5,000",
-        "$5,000–$15,000",
-        "$15,000–$50,000",
-        "$50,000+",
-        "Not Sure",
-      ],
-      problemPlaceholder:
-        "What's happening today, what is currently manual or inefficient, and what would you like to improve?",
-      submitLabel: "Send My Request",
-    },
   },
 
   cta: {

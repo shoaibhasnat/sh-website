@@ -118,7 +118,7 @@ export default function Navbar() {
             text={cta.label}
             href={cta.href}
             className={styles.ctaDesktop}
-            height={40}
+            height={44}
           />
 
           <button
@@ -184,7 +184,6 @@ export default function Navbar() {
             href={cta.href}
             onClick={closeDrawer}
             className={styles.ctaMobile}
-            height={40}
             block
           />
         </nav>

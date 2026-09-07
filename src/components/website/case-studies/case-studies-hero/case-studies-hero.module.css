@@ -168,15 +168,15 @@
 .flow {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 0;
   align-items: stretch;
   padding: 28px 0 24px;
 }
 
 .flowItem {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 24px;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  gap: 0;
   align-items: center;
   min-width: 0;
 }
@@ -261,35 +261,66 @@
 }
 
 .connector {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 3px;
-  min-width: 0;
+  justify-content: center;
+  width: 44px;
+  height: 100%;
+  min-height: 44px;
 }
 
-.connectorLine {
-  position: relative;
-  flex: 1;
-  height: 1px;
+.connectorTrack {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
   overflow: hidden;
-  background: rgba(0, 179, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(0, 179, 255, 0.18);
 }
 
-.connectorLine::after {
-  content: "";
+.connectorPulse {
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 60%;
+  left: -40%;
+  width: 40%;
   height: 100%;
-  background: var(--color-primary);
-  animation: travel 3.6s ease-in-out infinite;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 179, 255, 0.95),
+    transparent
+  );
+  animation: flowHorizontal 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.connectorArrow {
+.connectorNode {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 179, 255, 0.45);
+  background: #ffffff;
   color: var(--color-primary);
-  font-size: var(--font-size-md);
-  line-height: 1;
+  box-shadow:
+    0 0 0 4px rgba(0, 179, 255, 0.1),
+    0 8px 18px rgba(0, 24, 48, 0.08);
+  animation: nodePulse 2.4s ease-in-out infinite;
+}
+
+.connectorIcon {
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 .visualFooter {
@@ -345,20 +376,43 @@
   }
 }
 
-@keyframes travel {
+@keyframes flowHorizontal {
   0% {
     transform: translateX(0);
   }
-  55%,
   100% {
-    transform: translateX(260%);
+    transform: translateX(320%);
+  }
+}
+
+@keyframes flowVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(320%);
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(0, 179, 255, 0.1),
+      0 8px 18px rgba(0, 24, 48, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 0 7px rgba(0, 179, 255, 0.16),
+      0 10px 22px rgba(0, 179, 255, 0.14);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .content,
   .visual,
-  .connectorLine::after {
+  .connectorPulse,
+  .connectorNode {
     animation: none;
   }
 
@@ -385,6 +439,19 @@
   .stage {
     min-height: 180px;
     padding: 16px 13px;
+  }
+
+  .flowItem {
+    grid-template-columns: minmax(0, 1fr) 36px;
+  }
+
+  .connector {
+    width: 36px;
+  }
+
+  .connectorNode {
+    width: 26px;
+    height: 26px;
   }
 
   .industries {
@@ -444,7 +511,7 @@
   .flow {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 22px 0;
+    padding: 18px 0;
   }
 
   .flowItem,
@@ -459,40 +526,40 @@
   }
 
   .connector {
-    justify-content: center;
     width: 100%;
-    height: 30px;
+    height: 40px;
+    min-height: 40px;
   }
 
-  .connectorLine {
-    flex: 0 0 22px;
-    width: 22px;
-    height: 100%;
+  .connectorTrack {
+    left: 50%;
+    right: auto;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    height: auto;
+    transform: translateX(-50%);
   }
 
-  .connectorLine::after {
+  .connectorPulse {
     left: 0;
-    top: -100%;
+    top: -40%;
     width: 100%;
-    height: 60%;
-    animation-name: travelVertical;
+    height: 40%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(0, 179, 255, 0.95),
+      transparent
+    );
+    animation-name: flowVertical;
   }
 
-  .connectorArrow {
+  .connectorNode {
     transform: rotate(90deg);
   }
 
   .industries {
     gap: 10px 18px;
-  }
-}
-
-@keyframes travelVertical {
-  0% {
-    transform: translateY(0);
-  }
-  55%,
-  100% {
-    transform: translateY(260%);
   }
 }

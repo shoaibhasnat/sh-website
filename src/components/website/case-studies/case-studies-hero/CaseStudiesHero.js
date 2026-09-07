@@ -87,8 +87,25 @@ export default function CaseStudiesHero() {
                 </div>
                 {index < stages.length - 1 ? (
                   <span className={styles.connector} aria-hidden="true">
-                    <span className={styles.connectorLine} />
-                    <span className={styles.connectorArrow}>›</span>
+                    <span className={styles.connectorTrack}>
+                      <span className={styles.connectorPulse} />
+                    </span>
+                    <span className={styles.connectorNode}>
+                      <svg
+                        className={styles.connectorIcon}
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.5 8h8M8.5 4.5 12 8l-3.5 3.5"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                   </span>
                 ) : null}
               </div>

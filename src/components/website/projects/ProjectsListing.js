@@ -7,7 +7,6 @@ import {
   getIndustryHeading,
   getProjectsByIndustry,
   normalizeIndustryParam,
-  ProjectsPageData,
 } from "@/data/pages/projects/ProjectsData";
 import styles from "./projects-listing.module.css";
 
@@ -27,29 +26,15 @@ export default function ProjectsListing({ industryParam }) {
     <div className={styles.scope}>
       <ProjectsFilters activeIndustry={industry} />
 
-      <section
-        className={styles.section}
-        aria-labelledby="projects-listing-heading"
-      >
+      <section className={styles.section} aria-label={heading}>
         <div className={styles.inner}>
           {showFeatured ? <FeaturedProjects projects={featured} /> : null}
 
-          <div className={styles.header}>
-            <p className={styles.eyebrow}>
-              {showFeatured
-                ? ProjectsPageData.allProjects.eyebrow
-                : "PROJECTS"}
-            </p>
-            <h2 id="projects-listing-heading" className={styles.heading}>
-              {heading}
-            </h2>
-          </div>
-
           {projects.length === 0 ? (
             <ProjectsEmptyState />
-          ) : (
+          ) : gridProjects.length > 0 ? (
             <ProjectsGrid projects={gridProjects} />
-          )}
+          ) : null}
         </div>
       </section>
     </div>

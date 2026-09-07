@@ -2,131 +2,125 @@ import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
 import styles from "./home-automation.module.css";
 
-const PHASES = [
-  {
-    id: "intake",
-    label: "Capture",
-    title: "Intake",
-    range: [0, 2],
-  },
-  {
-    id: "revenue",
-    label: "Convert",
-    title: "Revenue",
-    range: [3, 5],
-  },
-  {
-    id: "ops",
-    label: "Deliver",
-    title: "Operations",
-    range: [6, 8],
-  },
-];
-
 export default function HomeAutomation() {
   const { automation } = HomeData;
+  const steps = automation.steps;
+
+  // Serpentine visual order: row1 L→R, row2 R→L, row3 L→R
+  const rows = [
+    { items: [0, 1, 2], direction: "forward" },
+    { items: [5, 4, 3], direction: "reverse" },
+    { items: [6, 7, 8], direction: "forward" },
+  ];
 
   return (
     <section
-      className={`${shared.section} ${shared.sectionAlt} ${styles.section}`}
+      className={`${shared.section} ${shared.sectionLight} ${styles.section}`}
       aria-labelledby="home-automation-heading"
     >
       <div className={styles.bgGlow} aria-hidden="true" />
-      <div className={styles.bgGrid} aria-hidden="true" />
 
       <div className={`${shared.inner} ${styles.inner}`}>
-        <div className={styles.layout}>
-          <div className={styles.copy}>
-            <p className={shared.eyebrow}>{automation.eyebrow}</p>
-            <h2 id="home-automation-heading" className={shared.heading}>
-              {automation.heading}
-            </h2>
-            <p className={shared.description}>{automation.description}</p>
+        <div className={`${shared.header} ${shared.headerCenter} ${styles.header}`}>
+          <p className={shared.eyebrow}>{automation.eyebrow}</p>
+          <h2 id="home-automation-heading" className={shared.heading}>
+            {automation.heading}
+          </h2>
+          <p className={shared.description}>{automation.description}</p>
+        </div>
 
-            <ul className={styles.outcomes}>
-              <li>
-                <span className={styles.outcomeMark} aria-hidden="true" />
-                Fewer handoffs between people and tools
-              </li>
-              <li>
-                <span className={styles.outcomeMark} aria-hidden="true" />
-                Cleaner data moving through every stage
-              </li>
-              <li>
-                <span className={styles.outcomeMark} aria-hidden="true" />
-                Faster follow-through from lead to delivery
-              </li>
-            </ul>
+        <div className={styles.canvas} aria-label="Connected automation workflow">
+          <div className={styles.canvasTop}>
+            <div className={styles.brandChip}>
+              <span className={styles.brandDot} aria-hidden="true" />
+              System Heuristics Pipeline
+            </div>
+            <p className={styles.canvasHint}>
+              Business systems connected end to end
+            </p>
           </div>
 
-          <div className={styles.board} aria-label="Connected automation workflow">
-            <div className={styles.boardHeader}>
-              <span className={styles.boardEyebrow}>Live workflow</span>
-              <span className={styles.boardStatus}>
-                <span className={styles.statusDot} aria-hidden="true" />
-                Automated
-              </span>
-            </div>
+          <div className={styles.pipeline}>
+            {rows.map((row, rowIndex) => (
+              <div key={`row-${rowIndex}`} className={styles.rowBlock}>
+                <ol
+                  className={`${styles.row} ${
+                    row.direction === "reverse" ? styles.rowReverse : ""
+                  }`}
+                >
+                  {row.items.map((stepIndex, i) => {
+                    const step = steps[stepIndex];
+                    const isLastInRow = i === row.items.length - 1;
 
-            <div className={styles.phases}>
-              {PHASES.map((phase, phaseIndex) => {
-                const steps = automation.steps.slice(
-                  phase.range[0],
-                  phase.range[1] + 1,
-                );
+                    return (
+                      <li
+                        key={step}
+                        className={styles.step}
+                        style={{ animationDelay: `${stepIndex * 0.06}s` }}
+                      >
+                        <div className={styles.stepInner}>
+                          <span className={styles.stepIndex} aria-hidden="true">
+                            {String(stepIndex + 1).padStart(2, "0")}
+                          </span>
+                          <span className={styles.stepLabel}>{step}</span>
+                        </div>
 
-                return (
-                  <div key={phase.id} className={styles.phase}>
-                    <div className={styles.phaseHeader}>
-                      <span className={styles.phaseLabel}>{phase.label}</span>
-                      <h3 className={styles.phaseTitle}>{phase.title}</h3>
-                    </div>
-
-                    <ol className={styles.stepList}>
-                      {steps.map((step, stepIndex) => {
-                        const absoluteIndex = phase.range[0] + stepIndex;
-                        const isLast =
-                          phaseIndex === PHASES.length - 1 &&
-                          stepIndex === steps.length - 1;
-
-                        return (
-                          <li
-                            key={step}
-                            className={styles.step}
-                            style={{
-                              animationDelay: `${absoluteIndex * 0.07}s`,
-                            }}
+                        {!isLastInRow ? (
+                          <span
+                            className={`${styles.hLink} ${
+                              row.direction === "reverse" ? styles.hLinkReverse : ""
+                            }`}
+                            aria-hidden="true"
                           >
-                            <span className={styles.node} aria-hidden="true">
-                              <span className={styles.nodeCore} />
-                            </span>
-                            <div className={styles.stepCard}>
-                              <span className={styles.stepIndex}>
-                                {String(absoluteIndex + 1).padStart(2, "0")}
-                              </span>
-                              <span className={styles.stepLabel}>{step}</span>
-                            </div>
-                            {!isLast ? (
-                              <span className={styles.connector} aria-hidden="true" />
-                            ) : null}
-                          </li>
-                        );
-                      })}
-                    </ol>
+                            <span className={styles.hLine} />
+                            <span className={styles.hArrow} />
+                          </span>
+                        ) : null}
+                      </li>
+                    );
+                  })}
+                </ol>
 
-                    {phaseIndex < PHASES.length - 1 ? (
-                      <div className={styles.phaseBridge} aria-hidden="true">
-                        <span className={styles.bridgeLine} />
-                        <span className={styles.bridgeLabel}>sync</span>
-                        <span className={styles.bridgeLine} />
-                      </div>
-                    ) : null}
+                {rowIndex < rows.length - 1 ? (
+                  <div
+                    className={`${styles.vLink} ${
+                      row.direction === "forward"
+                        ? styles.vLinkEnd
+                        : styles.vLinkStart
+                    }`}
+                    aria-hidden="true"
+                  >
+                    <span className={styles.vLine} />
+                    <span className={styles.vArrow} />
                   </div>
-                );
-              })}
-            </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.canvasFooter}>
+            <span>Lead in</span>
+            <span className={styles.footerSep} aria-hidden="true" />
+            <span>Systems connected</span>
+            <span className={styles.footerSep} aria-hidden="true" />
+            <span>Growth out</span>
           </div>
         </div>
+
+        <ul className={styles.outcomes}>
+          <li>
+            <strong>Fewer handoffs</strong>
+            <span>People stop acting as the glue between tools</span>
+          </li>
+          <li>
+            <strong>Cleaner data</strong>
+            <span>Information stays consistent across every stage</span>
+          </li>
+          <li>
+            <strong>Faster follow-through</strong>
+            <span>Work moves from lead to delivery without stalls</span>
+          </li>
+        </ul>
       </div>
     </section>
   );
