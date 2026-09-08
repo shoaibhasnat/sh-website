@@ -3,7 +3,6 @@ import HomeProblems from "./home-problems/HomeProblems";
 import HomeCapabilities from "./home-capabilities/HomeCapabilities";
 import HomePlans from "./home-plans/HomePlans";
 import HomeAiAgents from "./home-ai-agents/HomeAiAgents";
-import HomeAutomation from "./home-automation/HomeAutomation";
 import HomeIndustries from "./home-industries/HomeIndustries";
 import HomeProjects from "./home-projects/HomeProjects";
 import HomeWhyUs from "./home-why-us/HomeWhyUs";
@@ -19,7 +18,6 @@ export default function HomeMain() {
       <HomeCapabilities />
       <HomePlans />
       <HomeAiAgents />
-      <HomeAutomation />
       <HomeIndustries />
       <HomeProjects />
       <HomeWhyUs />
