@@ -1,5 +1,6 @@
 import Navbar from "@/utils/navbar/Navbar";
 import Footer from "@/utils/footer/Footer";
+import FloatingCta from "@/utils/floating-cta/FloatingCta";
 
 export const metadata = {
   title: {
@@ -16,6 +17,7 @@ export default function WebsiteLayout({ children }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <FloatingCta />
     </>
   );
 }

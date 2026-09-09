@@ -50,7 +50,6 @@ export const FooterData = {
       links: [
         { label: "Healthcare", href: "/projects?industry=healthcare" },
         { label: "Construction", href: "/projects?industry=construction" },
-        { label: "Logistics", href: "/projects?industry=logistics" },
       ],
     },
     {

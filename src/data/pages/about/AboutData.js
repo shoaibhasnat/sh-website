@@ -198,15 +198,6 @@ export const AboutData = {
           href: "/projects?industry=construction",
         },
       },
-      {
-        title: "Logistics",
-        description:
-          "Operational workflows, tracking, communication, reporting and automation.",
-        cta: {
-          label: "View Logistics Projects",
-          href: "/projects?industry=logistics",
-        },
-      },
     ],
     note: "Don't see your industry? Our approach starts with understanding your workflow, not fitting your business into a predefined template.",
   },

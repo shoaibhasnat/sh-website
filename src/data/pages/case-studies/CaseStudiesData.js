@@ -17,12 +17,6 @@ export const CaseStudiesData = {
           "Practical systems for sales, project operations, scheduling and reporting.",
         href: "/projects?industry=construction",
       },
-      {
-        name: "Logistics",
-        description:
-          "Clearer tracking, communication and visibility across moving operations.",
-        href: "/projects?industry=logistics",
-      },
     ],
   },
   approach: {

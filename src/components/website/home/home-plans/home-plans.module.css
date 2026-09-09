@@ -79,6 +79,18 @@
   line-height: 1.65;
 }
 
+.guarantee {
+  margin: -8px 0 20px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 179, 255, 0.28);
+  background: rgba(0, 179, 255, 0.08);
+  color: var(--color-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.5;
+}
+
 .includesLabel {
   margin: 0 0 10px;
   color: var(--color-secondary);

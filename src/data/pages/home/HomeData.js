@@ -6,12 +6,12 @@ export const HomeData = {
       "We help businesses increase sales, automate marketing, deploy AI agents, connect their systems and build custom software that makes work simpler and growth easier.",
     supporting: "Start with the problem. We'll help you find the right solution.",
     primaryCta: {
-      label: "Start Free",
-      href: "/contact",
+      label: "See our Agents",
+      href: "#ai-agents",
     },
     secondaryCta: {
-      label: "Explore Our Work",
-      href: "/projects",
+      label: "Talk To Human",
+      href: "/discovery-call",
     },
     visualization: {
       center: "SYSTEM HEURISTICS",
@@ -150,15 +150,18 @@ export const HomeData = {
         title: "The Audit",
         price: "$2,000",
         description:
-          "Understand exactly what should be automated, integrated or built before investing in implementation.",
+          "We audit all types of systems, then suggest the best automation for your business. If our suggested improvement is not the actual improvement, the audit is free of cost — we will not charge for that audit.",
+        guarantee:
+          "Guarantee: if the recommended improvement is not the right one, you pay nothing for the audit.",
         includes: [
+          "Audit of any system type",
           "Process discovery",
           "Workflow mapping",
-          "System analysis",
-          "Automation opportunities",
+          "Best automation recommendation",
           "AI opportunities",
           "Solution architecture",
           "Implementation roadmap",
+          "Free if recommendation misses",
         ],
         cta: { label: "Start The Audit", href: "/contact" },
         recommended: true,
@@ -191,30 +194,37 @@ export const HomeData = {
       "We build AI agents that can understand requests, retrieve information, interact with business systems and complete defined workflows.",
     items: [
       {
-        title: "AI Sales Agent",
-        description: "Qualifies leads and assists sales workflows.",
-      },
-      {
-        title: "AI Support Agent",
-        description: "Answers customer questions and escalates complex cases.",
-      },
-      {
-        title: "AI Operations Agent",
-        description: "Processes information and triggers business workflows.",
-      },
-      {
-        title: "AI Knowledge Agent",
+        title: "Sales & Marketing",
+        boldLine:
+          "We automate the sales and marketing of the business, automated outreach and follow-up, CRM management, and automations inside your CRM.",
         description:
-          "Allows teams to interact with internal company knowledge.",
+          "Qualify leads, nurture prospects, keep pipelines current, and keep campaigns moving without manual busywork.",
+        image: {
+          src: "/images/pages/home/agents/sales-marketing.jpg",
+          alt: "Sales and marketing team collaborating in a modern office",
+        },
       },
       {
-        title: "AI Document Agent",
-        description: "Extracts and processes information from documents.",
-      },
-      {
-        title: "AI Assistant",
+        title: "Support",
+        boldLine:
+          "We automate customer support so common questions, ticket routing, and follow-ups are handled reliably around the clock.",
         description:
-          "Supports teams with repetitive research and operational tasks.",
+          "Answer customer questions, escalate complex cases, and keep support teams focused on work that needs a human.",
+        image: {
+          src: "/images/pages/home/agents/support.jpg",
+          alt: "Customer support specialist assisting a client",
+        },
+      },
+      {
+        title: "Assistant",
+        boldLine:
+          "We automate day-to-day assistant work, research, scheduling, summaries, and repetitive operational tasks for your team.",
+        description:
+          "Support internal teams with research, documentation, coordination, and the recurring work that slows everyone down.",
+        image: {
+          src: "/images/pages/home/agents/assistant.jpg",
+          alt: "Professional team collaborating on daily operations",
+        },
       },
     ],
     cta: { label: "Build an AI Agent", href: "/contact" },
@@ -238,84 +248,164 @@ export const HomeData = {
     ],
   },
 
-  industries: {
-    eyebrow: "INDUSTRY EXPERIENCE",
-    heading: "Different Industries. Similar Operational Challenges.",
+  reviews: {
+    eyebrow: "CLIENT REVIEWS",
+    heading: "Trusted by Teams Who Ship Real Work.",
     description:
-      "Our approach is industry-neutral, but we've developed deeper experience in businesses where complex workflows and operational efficiency matter.",
+      "Feedback from operators, clinicians, builders, and founders who use systems we designed with them.",
     items: [
       {
-        title: "Healthcare",
-        description:
-          "AI, automation, operational workflows and healthcare software.",
-        cta: {
-          label: "View Healthcare Projects",
-          href: "/projects?industry=healthcare",
-        },
+        quote:
+          "ATARA reduced our patient intake time by 50% and significantly decreased documentation errors. The AI assistant handles preliminary assessments consistently, allowing our staff to focus on critical cases.",
+        author: "Hospital Administrator",
+        role: "Director of Emergency Services",
+        avatar: "/images/pages/home/testimonials/natalie.png",
       },
       {
-        title: "Construction",
-        description:
-          "Sales, project operations, documentation, billing and workflow automation.",
-        cta: {
-          label: "View Construction Projects",
-          href: "/projects?industry=construction",
-        },
+        quote:
+          "The workflow customization feature lets us tailor assessments to specific medical conditions. The automated summaries save me valuable time during patient reviews.",
+        author: "Dr. Sarah Chen",
+        role: "Emergency Medicine Physician",
+        avatar: "/images/pages/home/testimonials/andrew_andrawes.png",
       },
       {
-        title: "Logistics",
-        description:
-          "Operational workflows, tracking, communication and automation.",
-        cta: {
-          label: "View Logistics Projects",
-          href: "/projects?industry=logistics",
-        },
+        quote:
+          "The Magento store allowed us to manage a massive inventory efficiently while providing our customers with a smooth shopping experience.",
+        author: "Ichiban Parts Team",
+        role: "Operations Manager",
+        avatar: "/images/pages/home/testimonials/mike.png",
+      },
+      {
+        quote:
+          "AIDN has revolutionized how I manage my patients. The blood report analysis feature saves me hours of manual review, and the personalized recommendations help me provide better care.",
+        author: "Dr. Sarah Johnson",
+        role: "Private Practice Physician",
+        avatar: "/images/pages/home/testimonials/jacob.png",
+      },
+      {
+        quote:
+          "The comprehensive patient profiles give me a complete picture of my patients' health journey. Tracking onboarding data, health goals, and ongoing check-ins in one place improved practice efficiency.",
+        author: "Dr. Michael Chen",
+        role: "Family Medicine Specialist",
+        avatar: "/images/pages/home/testimonials/evan.png",
+      },
+      {
+        quote:
+          "One5 Health has revolutionized how we manage patient intake. The AI-generated summaries save us hours of documentation time, and comprehensive health profiles give us immediate insights.",
+        author: "Dr. Sarah Mitchell",
+        role: "Private Practice Physician",
+        avatar: "/images/pages/home/testimonials/aloysius.png",
+      },
+      {
+        quote:
+          "As a patient, I love being able to track my health goals and see my progress over time. The platform makes it easy to communicate with my doctor and keep all my health information in one place.",
+        author: "Patient User",
+        role: "One5 Health Patient",
+        avatar: "/images/pages/home/testimonials/willy.png",
+      },
+      {
+        quote:
+          "Drexel Construction Management reduced our document creation time by 70% and eliminated formatting inconsistencies. The wizard interface makes it easy to generate professional documents.",
+        author: "Project Manager",
+        role: "Senior Construction Project Manager",
+        avatar: "/images/pages/home/testimonials/abdullah.png",
+      },
+      {
+        quote:
+          "The template system allows us to maintain consistency across all our construction projects. Automated PDF and DOCX conversion saves hours of manual work.",
+        author: "Documentation Specialist",
+        role: "Construction Documentation Lead",
+        avatar: "/images/pages/home/testimonials/veltio.png",
+      },
+      {
+        quote:
+          "MCSGPT helped me work through workbook activities systematically. The mentor kept me accountable and provided insights I hadn't considered.",
+        author: "Sarah Johnson",
+        role: "Career Transition Professional",
+        avatar: "/images/pages/home/testimonials/natalie.png",
+      },
+      {
+        quote:
+          "The WhatsApp booking system with Lesta has revolutionized our customer service. We handle bookings 24/7 without additional staff, and booking efficiency increased by 70%.",
+        author: "Resort Manager",
+        role: "Operations Director",
+        avatar: "/images/pages/home/testimonials/mike.png",
+      },
+      {
+        quote:
+          "The QuickBooks integration saves us hours of manual data entry. All bookings are automatically synced, and invoice generation is seamless.",
+        author: "Finance Manager",
+        role: "Accounting Department",
+        avatar: "/images/pages/home/testimonials/evan.png",
+      },
+      {
+        quote:
+          "This automation eliminated manual order handling completely. Everything updates instantly and our team stays informed at all times.",
+        author: "Operations Manager",
+        role: "E-commerce Business",
+        avatar: "/images/pages/home/testimonials/jacob.png",
+      },
+      {
+        quote:
+          "This chatbot saved us countless hours by automatically answering common client questions with accurate and natural responses.",
+        author: "Business Owner",
+        role: "Creative Services",
+        avatar: "/images/pages/home/testimonials/andrew_andrawes.png",
+      },
+      {
+        quote:
+          "This automation replaced hours of manual hashtag research. Now we get structured influencer profile data in minutes—ready for outreach and analysis.",
+        author: "Marketing Team",
+        role: "Growth & Influencer Research",
+        avatar: "/images/pages/home/testimonials/aloysius.png",
+      },
+      {
+        quote:
+          "This scraping solution enabled us to collect large volumes of product data reliably without being blocked. The automation significantly reduced manual effort.",
+        author: "Data Engineer",
+        role: "E-commerce Analytics Team",
+        avatar: "/images/pages/home/testimonials/abdullah.png",
       },
     ],
-    noteTitle: "Don't see your industry? That's okay.",
-    noteDescription:
-      "We start with your workflow, not a predefined industry template.",
-    noteCta: {
-      label: "Tell Us About Your Business",
-      href: "/contact",
-    },
   },
 
-  projects: {
-    eyebrow: "SELECTED WORK",
-    heading: "Real Systems Solving Real Problems.",
-    cta: { label: "View All Projects", href: "/projects" },
-  },
-
-  whyUs: {
-    eyebrow: "WHY US",
-    heading: "We Don't Automate for the Sake of Automation.",
+  clients: {
+    eyebrow: "CLIENTS",
+    heading: "Organizations That Trust System Heuristics.",
     description:
-      "Technology only matters when it improves how the business performs.",
+      "From healthcare platforms to construction operators and growth-focused brands, real teams, real systems.",
     items: [
       {
-        title: "Business First",
-        description: "Understand the process before choosing the technology.",
+        name: "AIDN",
+        logo: "/images/pages/home/clients/aidn.avif",
       },
       {
-        title: "Practical AI",
-        description: "Use AI where intelligence creates value.",
+        name: "One5 Health",
+        logo: "/images/pages/home/clients/one5.avif",
       },
       {
-        title: "Connected Systems",
-        description: "Make existing tools work together.",
+        name: "US Medical",
+        logo: "/images/pages/home/clients/usmedical.avif",
       },
       {
-        title: "Human-Friendly",
-        description: "Build systems teams can understand and trust.",
+        name: "AZ Net Marketing",
+        logo: "/images/pages/home/clients/clients-AZNetMarketing.avif",
       },
       {
-        title: "Production Ready",
-        description: "Build solutions designed for real business use.",
+        name: "Bayu Lestari",
+        logo: "/images/pages/home/clients/clients-BayuLestari.avif",
       },
       {
-        title: "Built to Scale",
-        description: "Design systems that can grow with the business.",
+        name: "Carmichael",
+        logo: "/images/pages/home/clients/clients-Carmichael.avif",
+      },
+      {
+        name: "Ichiban Parts",
+        logo: "/images/pages/home/clients/clients-Ichiban-Parts.avif",
+      },
+      {
+        name: "Visual Artistry",
+        logo: "/images/pages/home/clients/clients-Visual-Artistry.avif",
       },
     ],
   },
@@ -330,15 +420,14 @@ export const HomeData = {
           "We help businesses improve sales, marketing and operations through AI agents, automation, system integrations and custom software.",
       },
       {
-        question:
-          "Do you only work with Healthcare, Construction and Logistics?",
+        question: "Do you only work with Healthcare and Construction?",
         answer:
           "No. These are industries where we have deeper experience, but our approach is designed for businesses across industries. We start by understanding your workflow and business problem.",
       },
       {
         question: "What is The Audit?",
         answer:
-          "The Audit is a $2,000 discovery and planning engagement where we analyze your processes, systems and opportunities and provide a prioritized implementation roadmap.",
+          "The Audit is a $2,000 discovery and planning engagement where we analyze your processes, systems and opportunities and provide a prioritized implementation roadmap. We audit all types of systems and recommend the best automation. If our suggested improvement is not the actual improvement, the audit is free of cost.",
       },
       {
         question: "Do I need to know what technology I need?",

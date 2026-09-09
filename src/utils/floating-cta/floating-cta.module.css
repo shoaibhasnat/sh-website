@@ -1,0 +1,112 @@
+.fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--font-family-primary);
+  filter: drop-shadow(0 12px 28px rgba(0, 24, 48, 0.22));
+  transition: transform 0.2s ease;
+}
+
+.fab:hover,
+.fab:focus-visible {
+  transform: translateY(-2px);
+}
+
+.fab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  max-width: 0;
+  height: 48px;
+  margin-right: -24px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffffff;
+  background: #001830;
+  border-radius: 999px 0 0 999px;
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.01em;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    max-width 0.28s ease,
+    padding 0.28s ease,
+    opacity 0.2s ease,
+    margin 0.28s ease;
+}
+
+.fab:hover .label,
+.fab:focus-visible .label {
+  max-width: 220px;
+  margin-right: -24px;
+  padding: 0 28px 0 22px;
+  opacity: 1;
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #00b3ff;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 179, 255, 0.35);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab:hover .icon,
+.fab:focus-visible .icon {
+  background: #00a3e8;
+  box-shadow: 0 10px 24px rgba(0, 179, 255, 0.45);
+}
+
+.calendar {
+  font-size: 26px;
+  line-height: 1;
+}
+
+@media (max-width: 560px) {
+  .fab {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .calendar {
+    font-size: 22px;
+  }
+
+  .fab:hover .label,
+  .fab:focus-visible .label {
+    max-width: 190px;
+    padding: 0 24px 0 18px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab,
+  .label,
+  .icon {
+    transition: none;
+  }
+}

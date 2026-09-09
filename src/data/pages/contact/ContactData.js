@@ -46,7 +46,6 @@ export const ContactData = {
     industries: [
       "Healthcare",
       "Construction",
-      "Logistics",
       "Professional Services",
       "Technology",
       "Retail",

@@ -32,6 +32,9 @@ export default function HomePlans() {
               <h3 className={styles.title}>{plan.title}</h3>
               <p className={styles.price}>{plan.price}</p>
               <p className={styles.description}>{plan.description}</p>
+              {plan.guarantee ? (
+                <p className={styles.guarantee}>{plan.guarantee}</p>
+              ) : null}
               {plan.examplesLabel ? (
                 <p className={styles.includesLabel}>{plan.examplesLabel}</p>
               ) : (

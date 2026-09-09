@@ -18,7 +18,7 @@ export const NavbarData = {
     { label: "Contact", href: "/contact" },
   ],
   cta: {
-    label: "Book Free Consultation",
+    label: "Talk To Human",
     href: "/discovery-call",
   },
 };

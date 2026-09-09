@@ -1,11 +1,9 @@
 import HomeHero from "./home-hero/HomeHero";
 import HomeProblems from "./home-problems/HomeProblems";
-import HomeCapabilities from "./home-capabilities/HomeCapabilities";
 import HomePlans from "./home-plans/HomePlans";
 import HomeAiAgents from "./home-ai-agents/HomeAiAgents";
-import HomeIndustries from "./home-industries/HomeIndustries";
-import HomeProjects from "./home-projects/HomeProjects";
-import HomeWhyUs from "./home-why-us/HomeWhyUs";
+import HomeReviews from "./home-reviews/HomeReviews";
+import HomeClients from "./home-clients/HomeClients";
 import HomeFaq from "./home-faq/HomeFaq";
 import HomeContact from "./home-contact/HomeContact";
 import HomeCta from "./home-cta/HomeCta";
@@ -15,12 +13,10 @@ export default function HomeMain() {
     <>
       <HomeHero />
       <HomeProblems />
-      <HomeCapabilities />
       <HomePlans />
       <HomeAiAgents />
-      <HomeIndustries />
-      <HomeProjects />
-      <HomeWhyUs />
+      <HomeReviews />
+      <HomeClients />
       <HomeFaq />
       <HomeContact />
       <HomeCta />

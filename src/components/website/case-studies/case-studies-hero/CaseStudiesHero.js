@@ -22,7 +22,7 @@ const stages = [
   },
 ];
 
-const industries = ["Healthcare", "Construction", "Logistics"];
+const industries = ["Healthcare", "Construction"];
 
 export default function CaseStudiesHero() {
   return (
@@ -44,9 +44,8 @@ export default function CaseStudiesHero() {
             integrations and custom software.
           </p>
           <p className={styles.supporting}>
-            Browse our work across Healthcare, Construction and Logistics to
-            see how complex workflows are turned into connected, scalable
-            systems.
+            Browse our work across Healthcare and Construction to see how
+            complex workflows are turned into connected, scalable systems.
           </p>
 
           <div className={styles.actions}>

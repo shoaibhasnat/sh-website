@@ -4,7 +4,6 @@ export const PROJECT_INDUSTRIES = [
   { key: "all", label: "All", query: null },
   { key: "healthcare", label: "Healthcare", query: "healthcare" },
   { key: "construction", label: "Construction", query: "construction" },
-  { key: "logistics", label: "Logistics", query: "logistics" },
 ];
 
 export const ProjectsPageData = {
@@ -25,7 +24,6 @@ export const ProjectsPageData = {
       all: "All Projects",
       healthcare: "Healthcare Projects",
       construction: "Construction Projects",
-      logistics: "Logistics Projects",
     },
   },
   empty: {
@@ -85,15 +83,6 @@ function resolveIndustry(project) {
 
   if (haystack.includes("construction") || haystack.includes("real estate")) {
     return "construction";
-  }
-
-  if (
-    haystack.includes("logistics") ||
-    haystack.includes("supply chain") ||
-    haystack.includes("shipping") ||
-    haystack.includes("freight")
-  ) {
-    return "logistics";
   }
 
   return null;

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HomeData } from "@/data/pages/home/HomeData";
 import { PrimaryButton } from "@/utils/buttons";
 import shared from "../home-shared.module.css";
@@ -8,6 +9,7 @@ export default function HomeAiAgents() {
 
   return (
     <section
+      id="ai-agents"
       className={`${shared.section} ${shared.sectionAlt} ${styles.section}`}
       aria-labelledby="home-ai-agents-heading"
     >
@@ -23,11 +25,23 @@ export default function HomeAiAgents() {
         <ul className={styles.grid}>
           {aiAgents.items.map((item, index) => (
             <li key={item.title} className={styles.card}>
-              <span className={styles.index} aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className={styles.cardTitle}>{item.title}</h3>
-              <p className={styles.cardCopy}>{item.description}</p>
+              <div className={styles.media}>
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  fill
+                  sizes="(max-width: 980px) 100vw, 33vw"
+                  className={styles.image}
+                />
+              </div>
+              <div className={styles.body}>
+                <span className={styles.index} aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.boldLine}>{item.boldLine}</p>
+                <p className={styles.cardCopy}>{item.description}</p>
+              </div>
             </li>
           ))}
         </ul>
