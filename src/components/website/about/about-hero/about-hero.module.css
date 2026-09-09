@@ -130,6 +130,76 @@
   margin-top: 30px;
 }
 
+.peopleMosaic {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 14px;
+  min-height: 460px;
+  animation: riseIn 0.85s ease 0.1s both;
+}
+
+.mosaicCard {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(0, 179, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(0, 24, 48, 0.1);
+  background: #dceaf5;
+}
+
+.mosaicPrimary,
+.mosaicSecondary {
+  grid-row: 1 / span 2;
+}
+
+.mosaicImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.mosaicCard:hover .mosaicImage {
+  transform: scale(1.04);
+}
+
+.mosaicCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 56px 18px 18px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 24, 48, 0.55) 45%,
+    rgba(0, 24, 48, 0.88) 100%
+  );
+  color: #ffffff;
+}
+
+.mosaicEyebrow {
+  color: #00b3ff;
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+}
+
+.mosaicTitle {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.mosaicSub {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .visual {
   display: flex;
   align-items: center;

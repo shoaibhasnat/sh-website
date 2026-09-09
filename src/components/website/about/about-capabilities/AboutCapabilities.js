@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AboutData } from "@/data/pages/about/AboutData";
 import shared from "../about-shared.module.css";
 import styles from "./about-capabilities.module.css";
@@ -73,12 +74,24 @@ export default function AboutCapabilities() {
       aria-labelledby="about-capabilities-heading"
     >
       <div className={shared.inner}>
-        <div className={shared.header}>
-          <p className={shared.eyebrow}>{capabilities.eyebrow}</p>
-          <h2 id="about-capabilities-heading" className={shared.heading}>
-            {capabilities.heading}
-          </h2>
-          <p className={shared.description}>{capabilities.description}</p>
+        <div className={styles.top}>
+          <div className={styles.copy}>
+            <p className={shared.eyebrow}>{capabilities.eyebrow}</p>
+            <h2 id="about-capabilities-heading" className={shared.heading}>
+              {capabilities.heading}
+            </h2>
+            <p className={shared.description}>{capabilities.description}</p>
+          </div>
+
+          <div className={styles.photo}>
+            <Image
+              src={capabilities.image.src}
+              alt={capabilities.image.alt}
+              fill
+              sizes="(max-width: 900px) 100vw, 40vw"
+              className={styles.photoImage}
+            />
+          </div>
         </div>
 
         <ul className={styles.grid}>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AboutData } from "@/data/pages/about/AboutData";
 import shared from "../about-shared.module.css";
 import styles from "./about-principles.module.css";
@@ -23,6 +24,15 @@ export default function AboutPrinciples() {
             <h2 id="about-principles-heading" className={styles.heading}>
               {principles.heading}
             </h2>
+            <div className={styles.photo}>
+              <Image
+                src={principles.image.src}
+                alt={principles.image.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 360px"
+                className={styles.photoImage}
+              />
+            </div>
           </div>
 
           <ol className={styles.list}>

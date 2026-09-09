@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AboutData } from "@/data/pages/about/AboutData";
 import shared from "../about-shared.module.css";
 import styles from "./about-process.module.css";
@@ -36,6 +37,21 @@ export default function AboutProcess() {
           <h2 id="about-process-heading" className={shared.heading}>
             {process.heading}
           </h2>
+        </div>
+
+        <div className={styles.peopleBand} aria-hidden="true">
+          {process.images.map((image) => (
+            <div key={image.label} className={styles.peopleShot}>
+              <Image
+                src={image.src}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+                className={styles.peopleImage}
+              />
+              <span className={styles.peopleLabel}>{image.label}</span>
+            </div>
+          ))}
         </div>
 
         <ol className={styles.timeline}>

@@ -9,15 +9,33 @@ export const AboutData = {
     description:
       "System Heuristics helps businesses improve sales, marketing and operations through AI agents, automation, system integrations and custom software.",
     supporting:
-      "We start by understanding how your business works, identify where time and opportunities are being lost, and build the technology needed to improve it.",
+      "We start by understanding how your business works, identify where time and opportunities are being lost, and build the technology needed to improve it — for the people who run it every day.",
     primaryCta: {
       label: "Explore Opportunities",
       href: "/discovery-call",
     },
     secondaryCta: {
-      label: "Talk to Us",
-      href: "/contact",
+      label: "Talk To Human",
+      href: "/discovery-call",
     },
+    people: [
+      {
+        title: "Healthcare",
+        caption: "Clinicians and care teams",
+        image: {
+          src: "/images/pages/case-studies/healthcare.jpg",
+          alt: "Doctor speaking with a patient in a hospital setting",
+        },
+      },
+      {
+        title: "Construction",
+        caption: "Engineers and field crews",
+        image: {
+          src: "/images/pages/case-studies/construction.jpg",
+          alt: "Civil engineers and construction workers reviewing plans on site",
+        },
+      },
+    ],
     visualization: {
       center: "System Heuristics",
       nodes: [
@@ -52,6 +70,10 @@ export const AboutData = {
     heading: "One Partner Across Your Business Systems.",
     description:
       "We combine strategy, automation, AI and software engineering to improve how businesses sell, market and operate.",
+    image: {
+      src: "/images/pages/case-studies/collaboration.jpg",
+      alt: "Team collaborating around a table during a planning session",
+    },
     items: [
       {
         id: "sales",
@@ -101,6 +123,10 @@ export const AboutData = {
   principles: {
     eyebrow: "HOW WE THINK",
     heading: "Principles Behind Every System We Build.",
+    image: {
+      src: "/images/pages/case-studies/healthcare-team.jpg",
+      alt: "Healthcare professionals reviewing information together",
+    },
     items: [
       {
         title: "Understand Before Building",
@@ -136,6 +162,18 @@ export const AboutData = {
   process: {
     eyebrow: "OUR PROCESS",
     heading: "From Business Problem to Working System.",
+    images: [
+      {
+        label: "Healthcare teams",
+        src: "/images/pages/case-studies/healthcare-team.jpg",
+        alt: "Healthcare professionals reviewing patient information together",
+      },
+      {
+        label: "Construction crews",
+        src: "/images/pages/case-studies/construction-site.jpg",
+        alt: "Construction crew coordinating work on an active site",
+      },
+    ],
     steps: [
       {
         number: "01",
@@ -207,8 +245,12 @@ export const AboutData = {
     heading: "Have a Process That Should Work Better?",
     description:
       "Tell us where your team is losing time, where opportunities are being missed, or where your current systems aren't keeping up.",
+    image: {
+      src: "/images/pages/case-studies/collaboration.jpg",
+      alt: "",
+    },
     primaryCta: {
-      label: "Book Free Consultation",
+      label: "Talk To Human",
       href: "/discovery-call",
     },
     secondaryCta: {

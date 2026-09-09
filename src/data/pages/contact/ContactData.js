@@ -10,6 +10,11 @@ export const ContactData = {
       label: "Send Your Request",
       href: "#contact-form",
     },
+    image: {
+      src: "/images/pages/contact/hero-conversation.jpg",
+      alt: "Professionals talking through a business challenge together",
+      caption: "A real conversation about your process",
+    },
   },
 
   formSection: {

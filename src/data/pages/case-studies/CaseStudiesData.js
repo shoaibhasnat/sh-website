@@ -8,14 +8,24 @@ export const CaseStudiesData = {
       {
         name: "Healthcare",
         description:
-          "Connected administrative workflows, communication and operational systems.",
+          "Connected administrative workflows, communication and operational systems for clinics, hospitals, and care teams.",
         href: "/projects?industry=healthcare",
+        image: {
+          src: "/images/pages/case-studies/healthcare.jpg",
+          alt: "Doctor speaking with a patient in a hospital setting",
+        },
+        caption: "Clinicians and care teams",
       },
       {
         name: "Construction",
         description:
-          "Practical systems for sales, project operations, scheduling and reporting.",
+          "Practical systems for sales, project operations, scheduling and reporting on active job sites.",
         href: "/projects?industry=construction",
+        image: {
+          src: "/images/pages/case-studies/construction.jpg",
+          alt: "Civil engineers and construction workers reviewing plans on site",
+        },
+        caption: "Engineers and field crews",
       },
     ],
   },
@@ -24,6 +34,10 @@ export const CaseStudiesData = {
     heading: "How We Turn Business Friction Into Case Studies.",
     description:
       "Every engagement starts with the operating problem, not a pre-selected tool. We map the workflow, design the right system, and measure what changes.",
+    image: {
+      src: "/images/pages/case-studies/collaboration.jpg",
+      alt: "Team collaborating around a table during a planning session",
+    },
     steps: [
       {
         number: "01",
@@ -94,6 +108,14 @@ export const CaseStudiesData = {
     heading: "Outcomes We Design For.",
     description:
       "Case studies matter when the system creates durable operational improvement — not just another dashboard.",
+    image: {
+      src: "/images/pages/case-studies/healthcare-team.jpg",
+      alt: "Healthcare professionals reviewing patient information together",
+    },
+    secondaryImage: {
+      src: "/images/pages/case-studies/construction-site.jpg",
+      alt: "Construction crew coordinating work on an active site",
+    },
     items: [
       {
         title: "Faster execution",
@@ -123,7 +145,7 @@ export const CaseStudiesData = {
     description:
       "Tell us what is slowing your team down, creating manual work or limiting growth. We'll help you find the right solution.",
     primaryCta: {
-      label: "Book Free Consultation",
+      label: "Talk To Human",
       href: "/discovery-call",
     },
     secondaryCta: {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ContactData } from "@/data/pages/contact/ContactData";
 import { PrimaryButton } from "@/utils/buttons";
 import styles from "./contact-hero.module.css";
@@ -21,32 +22,45 @@ export default function ContactHero() {
       <div className={styles.bgGlow} aria-hidden="true" />
 
       <div className={styles.inner}>
-        <div className={styles.eyebrowRow}>
-          <span className={styles.rule} aria-hidden="true" />
-          <p className={styles.eyebrow}>{hero.eyebrow}</p>
-          <span className={styles.rule} aria-hidden="true" />
+        <div className={styles.content}>
+          <div className={styles.eyebrowRow}>
+            <span className={styles.rule} aria-hidden="true" />
+            <p className={styles.eyebrow}>{hero.eyebrow}</p>
+          </div>
+
+          <h1 id="contact-hero-heading" className={styles.heading}>
+            {hero.heading}
+          </h1>
+
+          <p className={styles.description}>{hero.description}</p>
+          <p className={styles.supporting}>{hero.supporting}</p>
+
+          <div className={styles.actions}>
+            <PrimaryButton
+              text={hero.primaryCta.label}
+              href={hero.primaryCta.href}
+              onClick={scrollToForm}
+              height={48}
+            />
+          </div>
+
+          <p className={styles.note}>
+            <span className={styles.noteDot} aria-hidden="true" />
+            {formSection.responseNote}
+          </p>
         </div>
 
-        <h1 id="contact-hero-heading" className={styles.heading}>
-          {hero.heading}
-        </h1>
-
-        <p className={styles.description}>{hero.description}</p>
-        <p className={styles.supporting}>{hero.supporting}</p>
-
-        <div className={styles.actions}>
-          <PrimaryButton
-            text={hero.primaryCta.label}
-            href={hero.primaryCta.href}
-            onClick={scrollToForm}
-            height={48}
+        <figure className={styles.media}>
+          <Image
+            src={hero.image.src}
+            alt={hero.image.alt}
+            fill
+            sizes="(max-width: 900px) 100vw, 48vw"
+            className={styles.image}
+            priority
           />
-        </div>
-
-        <p className={styles.note}>
-          <span className={styles.noteDot} aria-hidden="true" />
-          {formSection.responseNote}
-        </p>
+          <figcaption className={styles.caption}>{hero.image.caption}</figcaption>
+        </figure>
       </div>
     </section>
   );
