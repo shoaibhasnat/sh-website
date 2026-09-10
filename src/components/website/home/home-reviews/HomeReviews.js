@@ -6,9 +6,29 @@ import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
 import styles from "./home-reviews.module.css";
 
+function StarRating({ rating }) {
+  return (
+    <div className={styles.stars} aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, index) => {
+        const filled = index < rating;
+        return (
+          <svg
+            key={index}
+            className={`${styles.star} ${filled ? styles.starFilled : ""}`}
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+          >
+            <path d="M10 1.6l2.35 4.76 5.25.76-3.8 3.7.9 5.24L10 13.7l-4.7 2.46.9-5.24-3.8-3.7 5.25-.76L10 1.6z" />
+          </svg>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function HomeReviews() {
-  const { reviews } = HomeData;
-  const items = reviews.items;
+  const { testimonialsSection } = HomeData;
+  const items = testimonialsSection.items;
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -44,11 +64,13 @@ export default function HomeReviews() {
     >
       <div className={shared.inner}>
         <div className={`${shared.header} ${shared.headerCenter}`}>
-          <p className={shared.eyebrow}>{reviews.eyebrow}</p>
+          <p className={shared.eyebrow}>{testimonialsSection.intro.title}</p>
           <h2 id="home-reviews-heading" className={shared.heading}>
-            {reviews.heading}
+            Trusted by Teams Who Ship Real Work.
           </h2>
-          <p className={shared.description}>{reviews.description}</p>
+          <p className={shared.description}>
+            {testimonialsSection.intro.description}
+          </p>
         </div>
 
         <div className={styles.slider} aria-live="polite">
@@ -65,7 +87,7 @@ export default function HomeReviews() {
 
               return (
                 <article
-                  key={`${review.author}-${review.role}`}
+                  key={review.name}
                   className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
                   style={{
                     "--offset": offset,
@@ -77,14 +99,17 @@ export default function HomeReviews() {
                   aria-hidden={!isActive}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <span className={styles.quoteMark} aria-hidden="true">
-                    “
-                  </span>
-                  <p className={styles.quote}>{review.quote}</p>
+                  <div className={styles.cardTop}>
+                    <span className={styles.quoteMark} aria-hidden="true">
+                      “
+                    </span>
+                    <StarRating rating={review.rating} />
+                  </div>
+                  <p className={styles.quote}>{review.text}</p>
                   <div className={styles.authorRow}>
                     <div className={styles.avatar}>
                       <Image
-                        src={review.avatar}
+                        src={review.url}
                         alt=""
                         width={48}
                         height={48}
@@ -92,8 +117,7 @@ export default function HomeReviews() {
                       />
                     </div>
                     <div>
-                      <p className={styles.author}>{review.author}</p>
-                      <p className={styles.role}>{review.role}</p>
+                      <p className={styles.author}>{review.name}</p>
                     </div>
                   </div>
                 </article>

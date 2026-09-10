@@ -271,123 +271,66 @@ export const HomeData = {
     ],
   },
 
-  reviews: {
-    eyebrow: "CLIENT REVIEWS",
-    heading: "Trusted by Teams Who Ship Real Work.",
-    description:
-      "Feedback from operators, clinicians, builders, and founders who use systems we designed with them.",
+  testimonialsSection: {
+    intro: {
+      title: "TESTIMONIALS",
+      description:
+        "Hear directly from business leaders who partner with System Heuristics to build high-impact AI solutions that streamline operations and drive measurable growth.",
+    },
     items: [
       {
-        quote:
-          "ATARA reduced our patient intake time by 50% and significantly decreased documentation errors. The AI assistant handles preliminary assessments consistently, allowing our staff to focus on critical cases.",
-        author: "Hospital Administrator",
-        role: "Director of Emergency Services",
-        avatar: "/images/pages/home/testimonials/natalie.png",
+        name: "Jacob Rothefield",
+        rating: 5,
+        url: "/images/pages/home/testimonials/jacob.png",
+        text: "Professional team and after a short briefing was able to work independently to produce an excellent product at a very high level of quality. He is a smart guy and a pleasure to work with. I would work with him again, thank you.",
       },
       {
-        quote:
-          "The workflow customization feature lets us tailor assessments to specific medical conditions. The automated summaries save me valuable time during patient reviews.",
-        author: "Dr. Sarah Chen",
-        role: "Emergency Medicine Physician",
-        avatar: "/images/pages/home/testimonials/andrew_andrawes.png",
+        name: "Michael Pedersen",
+        rating: 5,
+        url: "/images/pages/home/testimonials/mike.png",
+        text: "They were excellent to work with. The team brought passion, collaboration, and enthusiasm to the project, which we truly appreciated. They will continue to be a valued partner on our projects moving forward.",
       },
       {
-        quote:
-          "The Magento store allowed us to manage a massive inventory efficiently while providing our customers with a smooth shopping experience.",
-        author: "Ichiban Parts Team",
-        role: "Operations Manager",
-        avatar: "/images/pages/home/testimonials/mike.png",
+        name: "Abdullah Koc",
+        rating: 5,
+        url: "/images/pages/home/testimonials/abdullah.png",
+        text: "A professional and passionate team with a strong drive to solve problems. Communication was clear and efficient throughout the project. We would be happy to work with them again.",
       },
       {
-        quote:
-          "AIDN has revolutionized how I manage my patients. The blood report analysis feature saves me hours of manual review, and the personalized recommendations help me provide better care.",
-        author: "Dr. Sarah Johnson",
-        role: "Private Practice Physician",
-        avatar: "/images/pages/home/testimonials/jacob.png",
+        name: "Willy Danenberg",
+        rating: 5,
+        url: "/images/pages/home/testimonials/willy.png",
+        text: "Did a great job on time and to my satisfaction. Communicated well and followed up step by step making sure what he delivers is what I needed. Many thanks!",
       },
       {
-        quote:
-          "The comprehensive patient profiles give me a complete picture of my patients' health journey. Tracking onboarding data, health goals, and ongoing check-ins in one place improved practice efficiency.",
-        author: "Dr. Michael Chen",
-        role: "Family Medicine Specialist",
-        avatar: "/images/pages/home/testimonials/evan.png",
+        name: "Evan Cheney",
+        rating: 5,
+        url: "/images/pages/home/testimonials/evan.png",
+        text: "Did a fantastic job with this project. He was fantastic with his communication, and did exactly what was asked of him in a timely manner.",
       },
       {
-        quote:
-          "One5 Health has revolutionized how we manage patient intake. The AI-generated summaries save us hours of documentation time, and comprehensive health profiles give us immediate insights.",
-        author: "Dr. Sarah Mitchell",
-        role: "Private Practice Physician",
-        avatar: "/images/pages/home/testimonials/aloysius.png",
+        name: "Veltio Inc.",
+        rating: 5,
+        url: "/images/pages/home/testimonials/veltio.png",
+        text: "It was an absolute pleasure working with System Heuristics. The expertise can be seen in their work and how they communicates their effort.",
       },
       {
-        quote:
-          "As a patient, I love being able to track my health goals and see my progress over time. The platform makes it easy to communicate with my doctor and keep all my health information in one place.",
-        author: "Patient User",
-        role: "One5 Health Patient",
-        avatar: "/images/pages/home/testimonials/willy.png",
+        name: "Andrew Andrawes",
+        rating: 5,
+        url: "/images/pages/home/testimonials/andrew_andrawes.png",
+        text: "It was great working with their team, and we will be reaching out again for future automation projects.",
       },
       {
-        quote:
-          "Drexel Construction Management reduced our document creation time by 70% and eliminated formatting inconsistencies. The wizard interface makes it easy to generate professional documents.",
-        author: "Project Manager",
-        role: "Senior Construction Project Manager",
-        avatar: "/images/pages/home/testimonials/abdullah.png",
+        name: "Aloysius Fobi",
+        rating: 5,
+        url: "/images/pages/home/testimonials/aloysius.png",
+        text: "An extremely knowledgeable team with both practical and theoretical expertise.",
       },
       {
-        quote:
-          "The template system allows us to maintain consistency across all our construction projects. Automated PDF and DOCX conversion saves hours of manual work.",
-        author: "Documentation Specialist",
-        role: "Construction Documentation Lead",
-        avatar: "/images/pages/home/testimonials/veltio.png",
-      },
-      {
-        quote:
-          "MCSGPT helped me work through workbook activities systematically. The mentor kept me accountable and provided insights I hadn't considered.",
-        author: "Sarah Johnson",
-        role: "Career Transition Professional",
-        avatar: "/images/pages/home/testimonials/natalie.png",
-      },
-      {
-        quote:
-          "The WhatsApp booking system with Lesta has revolutionized our customer service. We handle bookings 24/7 without additional staff, and booking efficiency increased by 70%.",
-        author: "Resort Manager",
-        role: "Operations Director",
-        avatar: "/images/pages/home/testimonials/mike.png",
-      },
-      {
-        quote:
-          "The QuickBooks integration saves us hours of manual data entry. All bookings are automatically synced, and invoice generation is seamless.",
-        author: "Finance Manager",
-        role: "Accounting Department",
-        avatar: "/images/pages/home/testimonials/evan.png",
-      },
-      {
-        quote:
-          "This automation eliminated manual order handling completely. Everything updates instantly and our team stays informed at all times.",
-        author: "Operations Manager",
-        role: "E-commerce Business",
-        avatar: "/images/pages/home/testimonials/jacob.png",
-      },
-      {
-        quote:
-          "This chatbot saved us countless hours by automatically answering common client questions with accurate and natural responses.",
-        author: "Business Owner",
-        role: "Creative Services",
-        avatar: "/images/pages/home/testimonials/andrew_andrawes.png",
-      },
-      {
-        quote:
-          "This automation replaced hours of manual hashtag research. Now we get structured influencer profile data in minutes—ready for outreach and analysis.",
-        author: "Marketing Team",
-        role: "Growth & Influencer Research",
-        avatar: "/images/pages/home/testimonials/aloysius.png",
-      },
-      {
-        quote:
-          "This scraping solution enabled us to collect large volumes of product data reliably without being blocked. The automation significantly reduced manual effort.",
-        author: "Data Engineer",
-        role: "E-commerce Analytics Team",
-        avatar: "/images/pages/home/testimonials/abdullah.png",
+        name: "Natalie Carlson",
+        rating: 5,
+        url: "/images/pages/home/testimonials/natalie.png",
+        text: "A Pro, communicative and highly competent.",
       },
     ],
   },
