@@ -86,6 +86,7 @@ export default function HomeHero() {
                   alt={item.alt}
                   fill
                   priority={index === 0}
+                  loading={index === 0 ? "eager" : undefined}
                   sizes="(max-width: 900px) 100vw, 55vw"
                   className={styles.mediaImage}
                 />

@@ -4,7 +4,7 @@ import { CaseStudiesData } from "@/data/pages/case-studies/CaseStudiesData";
 import styles from "./case-studies-hero.module.css";
 
 export default function CaseStudiesHero() {
-  const industries = CaseStudiesData.categories.items;
+  const industries = CaseStudiesData.hero.industries;
 
   return (
     <section className={styles.hero} aria-labelledby="case-studies-hero-heading">

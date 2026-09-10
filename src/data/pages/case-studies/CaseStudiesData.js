@@ -1,4 +1,24 @@
 export const CaseStudiesData = {
+  hero: {
+    industries: [
+      {
+        name: "Healthcare",
+        caption: "Clinicians and care teams",
+        image: {
+          src: "/images/pages/case-studies/woman-with-stethoscope-holding-clipboard.jpg",
+          alt: "Healthcare professional with stethoscope holding a clipboard",
+        },
+      },
+      {
+        name: "Construction",
+        caption: "Engineers and field crews",
+        image: {
+          src: "/images/pages/case-studies/construction.jpg",
+          alt: "Construction crew working with rebar on an active job site",
+        },
+      },
+    ],
+  },
   categories: {
     eyebrow: "INDUSTRY EXPERIENCE",
     heading: "Explore Case Studies by Industry.",
@@ -11,8 +31,8 @@ export const CaseStudiesData = {
           "Connected administrative workflows, communication and operational systems for clinics, hospitals, and care teams.",
         href: "/projects?industry=healthcare",
         image: {
-          src: "/images/pages/case-studies/healthcare.jpg",
-          alt: "Doctor speaking with a patient in a hospital setting",
+          src: "/images/pages/case-studies/premium_photo-1681843126728-04eab730febe.avif",
+          alt: "Healthcare team of clinicians standing together in a medical facility",
         },
         caption: "Clinicians and care teams",
       },
@@ -22,8 +42,8 @@ export const CaseStudiesData = {
           "Practical systems for sales, project operations, scheduling and reporting on active job sites.",
         href: "/projects?industry=construction",
         image: {
-          src: "/images/pages/case-studies/construction.jpg",
-          alt: "Civil engineers and construction workers reviewing plans on site",
+          src: "/images/pages/case-studies/pointing-sketch.jpg",
+          alt: "Engineers reviewing blueprints on an active construction site",
         },
         caption: "Engineers and field crews",
       },
@@ -108,14 +128,6 @@ export const CaseStudiesData = {
     heading: "Outcomes We Design For.",
     description:
       "Case studies matter when the system creates durable operational improvement — not just another dashboard.",
-    image: {
-      src: "/images/pages/case-studies/healthcare-team.jpg",
-      alt: "Healthcare professionals reviewing patient information together",
-    },
-    secondaryImage: {
-      src: "/images/pages/case-studies/construction-site.jpg",
-      alt: "Construction crew coordinating work on an active site",
-    },
     items: [
       {
         title: "Faster execution",

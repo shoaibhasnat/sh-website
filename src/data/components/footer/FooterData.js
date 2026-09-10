@@ -36,7 +36,7 @@ export const FooterData = {
   ],
   columns: [
     {
-      title: "Capabilities",
+      title: "What We Offer",
       links: [
         { label: "Sales Automation", href: "/#sales-automation" },
         { label: "Marketing Automation", href: "/#marketing-automation" },
@@ -46,7 +46,7 @@ export const FooterData = {
       ],
     },
     {
-      title: "Industries",
+      title: "Case Studies",
       links: [
         { label: "Healthcare", href: "/projects?industry=healthcare" },
         { label: "Construction", href: "/projects?industry=construction" },
