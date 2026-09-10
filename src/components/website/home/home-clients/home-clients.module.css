@@ -17,17 +17,9 @@
   pointer-events: none;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 48px;
-  align-items: center;
-}
-
-.copy {
-  position: relative;
-  z-index: 1;
-  max-width: 420px;
+.header {
+  max-width: 720px;
+  margin-bottom: 36px;
 }
 
 .heading {
@@ -43,8 +35,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 28px 0;
+  gap: 12px;
+  padding: 22px 0;
   border-radius: calc(var(--radius) + 8px);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(247, 251, 255, 0.9)),
@@ -60,15 +52,15 @@
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 8%,
-    #000 92%,
+    #000 4%,
+    #000 96%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 8%,
-    #000 92%,
+    #000 4%,
+    #000 96%,
     transparent 100%
   );
 }
@@ -83,11 +75,11 @@
 }
 
 .rowLeft .rowTrack {
-  animation: clientsScrollLeft 22s linear infinite;
+  animation: clientsScrollLeft 28s linear infinite;
 }
 
 .rowRight .rowTrack {
-  animation: clientsScrollRight 26s linear infinite;
+  animation: clientsScrollRight 32s linear infinite;
 }
 
 .row:hover .rowTrack {
@@ -96,51 +88,106 @@
 
 .rowItems {
   display: flex;
-  gap: 14px;
-  padding-right: 14px;
+  gap: 10px;
+  padding-right: 10px;
 }
 
 .logoCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-width: 168px;
-  height: 118px;
-  padding: 16px 18px;
+  gap: 8px;
+  min-width: 132px;
+  height: 96px;
+  padding: 12px 14px;
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(0, 24, 48, 0.06);
-  box-shadow: 0 12px 28px rgba(0, 24, 48, 0.04);
+  box-shadow: 0 10px 22px rgba(0, 24, 48, 0.04);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.logoCard:hover,
+.logoCard:focus-visible {
+  border-color: rgba(0, 179, 255, 0.35);
+  box-shadow: 0 14px 28px rgba(0, 24, 48, 0.08);
+  transform: translateY(-2px);
+}
+
+.logoCard:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.logoCard::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #001830;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+  z-index: 2;
+}
+
+.logoCard::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #001830;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 2;
+}
+
+.logoCard:hover::after,
+.logoCard:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.logoCard:hover::before,
+.logoCard:focus-visible::before {
+  opacity: 1;
 }
 
 .logo {
   width: auto;
-  height: 42px;
-  max-width: 132px;
+  height: 34px;
+  max-width: 110px;
   object-fit: contain;
 }
 
 .logoName {
   color: var(--color-secondary);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: center;
-}
-
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 @keyframes clientsScrollLeft {
@@ -163,25 +210,23 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rowLeft .rowTrack,
-  .rowRight .rowTrack {
+  .rowRight .rowTrack,
+  .logoCard,
+  .logoCard::after,
+  .logoCard::before {
     animation: none;
-  }
-}
-
-@media (max-width: 980px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .copy {
-    max-width: none;
+    transition: none;
   }
 }
 
 @media (max-width: 560px) {
   .logoCard {
-    min-width: 148px;
-    height: 108px;
+    min-width: 118px;
+    height: 88px;
+  }
+
+  .logo {
+    height: 28px;
+    max-width: 96px;
   }
 }

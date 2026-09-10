@@ -1,73 +1,41 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
 import styles from "./home-reviews.module.css";
 
-function ReviewCard({ review }) {
-  return (
-    <article className={styles.card}>
-      <p className={styles.quote}>&ldquo;{review.quote}&rdquo;</p>
-      <div className={styles.authorRow}>
-        <div className={styles.avatar}>
-          <Image
-            src={review.avatar}
-            alt=""
-            width={44}
-            height={44}
-            className={styles.avatarImage}
-          />
-        </div>
-        <div>
-          <p className={styles.author}>{review.author}</p>
-          <p className={styles.role}>{review.role}</p>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function ReviewColumn({ reviews, direction, duration }) {
-  const trackClass =
-    direction === "down" ? styles.trackDown : styles.trackUp;
-
-  return (
-    <div className={styles.column} aria-hidden="true">
-      <div
-        className={`${styles.track} ${trackClass}`}
-        style={{ "--marquee-duration": duration }}
-      >
-        <div className={styles.stack}>
-          {reviews.map((review, index) => (
-            <ReviewCard
-              key={`${review.author}-${index}-a`}
-              review={review}
-            />
-          ))}
-        </div>
-        <div className={styles.stack} aria-hidden="true">
-          {reviews.map((review, index) => (
-            <ReviewCard
-              key={`${review.author}-${index}-b`}
-              review={review}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function HomeReviews() {
   const { reviews } = HomeData;
-  const ascending = reviews.items;
-  const descending = [...reviews.items].reverse();
+  const items = reviews.items;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  const columns = [
-    { reviews: ascending, direction: "down", duration: "70s" },
-    { reviews: descending, direction: "up", duration: "78s" },
-    { reviews: ascending, direction: "down", duration: "74s" },
-    { reviews: descending, direction: "up", duration: "82s" },
-  ];
+  useEffect(() => {
+    if (paused) return undefined;
+    if (typeof window !== "undefined") {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return undefined;
+      }
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % items.length);
+    }, 2000);
+
+    return () => window.clearInterval(timer);
+  }, [items.length, paused]);
+
+  const getOffset = (index) => {
+    let offset = index - activeIndex;
+    const half = Math.floor(items.length / 2);
+
+    if (offset > half) offset -= items.length;
+    if (offset < -half) offset += items.length;
+
+    return offset;
+  };
 
   return (
     <section
@@ -83,24 +51,113 @@ export default function HomeReviews() {
           <p className={shared.description}>{reviews.description}</p>
         </div>
 
-        <div className={styles.board} role="presentation">
-          {columns.map((column, index) => (
-            <ReviewColumn
-              key={`review-col-${index}`}
-              reviews={column.reviews}
-              direction={column.direction}
-              duration={column.duration}
-            />
-          ))}
-        </div>
+        <div className={styles.slider} aria-live="polite">
+          <div
+            className={styles.stage}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {items.map((review, index) => {
+              const offset = getOffset(index);
+              const isActive = offset === 0;
+              const abs = Math.abs(offset);
+              const visible = abs <= 2;
 
-        <ul className={styles.srOnly}>
-          {reviews.items.map((review) => (
-            <li key={`${review.author}-${review.role}`}>
-              {review.author}, {review.role}: {review.quote}
-            </li>
-          ))}
-        </ul>
+              return (
+                <article
+                  key={`${review.author}-${review.role}`}
+                  className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
+                  style={{
+                    "--offset": offset,
+                    "--abs": abs,
+                    opacity: visible ? 1 - abs * 0.22 : 0,
+                    pointerEvents: visible ? "auto" : "none",
+                    zIndex: 10 - abs,
+                  }}
+                  aria-hidden={!isActive}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <span className={styles.quoteMark} aria-hidden="true">
+                    “
+                  </span>
+                  <p className={styles.quote}>{review.quote}</p>
+                  <div className={styles.authorRow}>
+                    <div className={styles.avatar}>
+                      <Image
+                        src={review.avatar}
+                        alt=""
+                        width={48}
+                        height={48}
+                        className={styles.avatarImage}
+                      />
+                    </div>
+                    <div>
+                      <p className={styles.author}>{review.author}</p>
+                      <p className={styles.role}>{review.role}</p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className={styles.controls}>
+            <button
+              type="button"
+              className={styles.navBtn}
+              aria-label="Previous review"
+              onClick={() =>
+                setActiveIndex(
+                  (current) => (current - 1 + items.length) % items.length,
+                )
+              }
+            >
+              <svg
+                className={styles.navIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14.5 6.5 9 12l5.5 5.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <p className={styles.counter}>
+              {String(activeIndex + 1).padStart(2, "0")} /{" "}
+              {String(items.length).padStart(2, "0")}
+            </p>
+            <button
+              type="button"
+              className={styles.navBtn}
+              aria-label="Next review"
+              onClick={() =>
+                setActiveIndex((current) => (current + 1) % items.length)
+              }
+            >
+              <svg
+                className={styles.navIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9.5 6.5 15 12l-5.5 5.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

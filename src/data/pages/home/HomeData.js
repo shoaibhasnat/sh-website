@@ -1,11 +1,10 @@
 export const HomeData = {
   hero: {
-    eyebrow: "AI • AUTOMATION • SOFTWARE • GROWTH",
-    heading: "Turn Manual Work Into Intelligent Systems.",
+    eyebrow: "GROW SALES • AUTOMATE FOLLOW-UPS • SCALE FASTER",
+    heading: "Close More Deals. Automate the Busywork.",
     description:
-      "We help businesses increase sales, automate marketing, deploy AI agents, connect their systems and build custom software that makes work simpler and growth easier.",
-    supporting: "Start with the problem. We'll help you find the right solution.",
-    primaryCta: {
+      "System Heuristics helps teams capture leads, follow up faster, run AI agents, and turn disconnected tools into one revenue system.",
+   primaryCta: {
       label: "See our Agents",
       href: "#ai-agents",
     },
@@ -13,6 +12,33 @@ export const HomeData = {
       label: "Talk To Human",
       href: "/discovery-call",
     },
+    proofPoints: [
+      "Automated outreach & follow-ups",
+      "CRM that stays current",
+      "AI agents that do the work",
+    ],
+    media: [
+      {
+        src: "/images/pages/home/hero/sales-team.jpg",
+        alt: "Sales team collaborating on pipeline growth",
+        label: "Sales teams moving faster",
+      },
+      {
+        src: "/images/pages/home/hero/growth-dashboard.jpg",
+        alt: "Growth dashboard and performance metrics",
+        label: "Clearer pipeline visibility",
+      },
+      {
+        src: "/images/pages/home/hero/strategy-meeting.jpg",
+        alt: "Strategy meeting focused on business growth",
+        label: "Systems built for growth",
+      },
+      {
+        src: "/images/pages/home/agents/sales-marketing.jpg",
+        alt: "Sales and marketing collaboration",
+        label: "Marketing that feeds sales",
+      },
+    ],
     visualization: {
       center: "SYSTEM HEURISTICS",
       nodes: [
@@ -142,7 +168,7 @@ export const HomeData = {
           "Business problem assessment",
           "Recommended next step",
         ],
-        cta: { label: "Start Free", href: "/contact" },
+        cta: { label: "Talk To Human", href: "/discovery-call" },
         recommended: false,
       },
       {
@@ -150,18 +176,15 @@ export const HomeData = {
         title: "The Audit",
         price: "$2,000",
         description:
-          "We audit all types of systems, then suggest the best automation for your business. If our suggested improvement is not the actual improvement, the audit is free of cost — we will not charge for that audit.",
+          "We audit all types of systems, then suggest the best automation for your business.",
         guarantee:
-          "Guarantee: if the recommended improvement is not the right one, you pay nothing for the audit.",
+          "If our suggested improvement is not the actual improvement, the audit is free of cost, we will not charge for that audit.",
         includes: [
-          "Audit of any system type",
-          "Process discovery",
           "Workflow mapping",
           "Best automation recommendation",
           "AI opportunities",
           "Solution architecture",
           "Implementation roadmap",
-          "Free if recommendation misses",
         ],
         cta: { label: "Start The Audit", href: "/contact" },
         recommended: true,
@@ -378,34 +401,42 @@ export const HomeData = {
       {
         name: "AIDN",
         logo: "/images/pages/home/clients/aidn.avif",
+        website: "https://www.askaidn.com/",
       },
       {
         name: "One5 Health",
         logo: "/images/pages/home/clients/one5.avif",
+        website: "https://www.one5.health/",
       },
       {
         name: "US Medical",
         logo: "/images/pages/home/clients/usmedical.avif",
+        website: "https://usmedicaldirectors.com/",
       },
       {
         name: "AZ Net Marketing",
         logo: "/images/pages/home/clients/clients-AZNetMarketing.avif",
+        website: "https://aznetmarketing.com/",
       },
       {
         name: "Bayu Lestari",
         logo: "/images/pages/home/clients/clients-BayuLestari.avif",
+        website: "https://www.bayulestari.com/",
       },
       {
         name: "Carmichael",
         logo: "/images/pages/home/clients/clients-Carmichael.avif",
+        website: "https://www.askaidn.com/",
       },
       {
         name: "Ichiban Parts",
         logo: "/images/pages/home/clients/clients-Ichiban-Parts.avif",
+        website: "https://www.ichibanparts.com/",
       },
       {
         name: "Visual Artistry",
         logo: "/images/pages/home/clients/clients-Visual-Artistry.avif",
+        website: "https://www.visualartistry.co/",
       },
     ],
   },
@@ -485,7 +516,7 @@ export const HomeData = {
     heading: "What Would You Automate If You Could Start Today?",
     description:
       "Tell us where your team is losing time, where opportunities are being missed, or where your current systems aren't keeping up.",
-    primaryCta: { label: "Start Free", href: "/contact" },
+    primaryCta: { label: "Talk To Human", href: "/discovery-call" },
     secondaryCta: { label: "Explore Our Projects", href: "/projects" },
   },
 };

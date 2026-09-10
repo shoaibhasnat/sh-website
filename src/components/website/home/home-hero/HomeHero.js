@@ -1,115 +1,125 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { HomeData } from "@/data/pages/home/HomeData";
 import { PrimaryButton, SecondaryButton } from "@/utils/buttons";
 import styles from "./home-hero.module.css";
 
-const STAGE_SIZE = 420;
-const STAGE_CENTER = STAGE_SIZE / 2;
-const NODE_RADIUS = 40;
-const CONNECTOR_RADIUS = 150;
-
-/** Distributes nodes evenly around the circle, starting at the top. */
-function pointAt(index, total, radius) {
-  const angle = (-90 + (360 / total) * index) * (Math.PI / 180);
-  return {
-    x: Math.cos(angle) * radius,
-    y: Math.sin(angle) * radius,
-  };
-}
-
 export default function HomeHero() {
   const { hero } = HomeData;
-  const { visualization } = hero;
-  const nodeCount = visualization.nodes.length;
+  const media = hero.media || [];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (media.length < 2) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % media.length);
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, [media.length]);
+
+  const activeMedia = media[activeIndex] || media[0];
 
   return (
     <section className={styles.hero} aria-labelledby="home-hero-heading">
-      <div className={styles.bgBase} aria-hidden="true" />
-      <div className={styles.bgGrid} aria-hidden="true" />
-      <div className={styles.bgGlow} aria-hidden="true" />
-      <div className={styles.bgWash} aria-hidden="true" />
+      <div className={styles.split}>
+        <div className={styles.copyPanel}>
+          <div className={styles.copyInner}>
+            <div className={styles.eyebrowRow}>
+              <span className={styles.eyebrowMark} aria-hidden="true" />
+              <p className={styles.eyebrow}>{hero.eyebrow}</p>
+            </div>
 
-      <div className={styles.inner}>
-        <div className={styles.content}>
-          <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrowMark} aria-hidden="true" />
-            <p className={styles.eyebrow}>{hero.eyebrow}</p>
-          </div>
+            <h1 id="home-hero-heading" className={styles.heading}>
+              {hero.heading}
+            </h1>
 
-          <h1 id="home-hero-heading" className={styles.heading}>
-            {hero.heading}
-          </h1>
+            <p className={styles.description}>{hero.description}</p>
+            <p className={styles.supporting}>{hero.supporting}</p>
 
-          <p className={styles.description}>{hero.description}</p>
-          <p className={styles.supporting}>{hero.supporting}</p>
+            {hero.proofPoints?.length ? (
+              <ul className={styles.proofList}>
+                {hero.proofPoints.map((point) => (
+                  <li key={point} className={styles.proofItem}>
+                    <span className={styles.proofDot} aria-hidden="true" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
-          <div className={styles.actions}>
-            <PrimaryButton
-              text={hero.primaryCta.label}
-              href={hero.primaryCta.href}
-              height={46}
-            />
-            <SecondaryButton
-              text={hero.secondaryCta.label}
-              href={hero.secondaryCta.href}
-              height={46}
-            />
+            <div className={styles.actions}>
+              <PrimaryButton
+                text={hero.primaryCta.label}
+                href={hero.primaryCta.href}
+                height={48}
+              />
+              <SecondaryButton
+                text={hero.secondaryCta.label}
+                href={hero.secondaryCta.href}
+                height={48}
+              />
+            </div>
           </div>
         </div>
 
-        <div className={styles.visual} aria-hidden="true">
-          <div className={styles.stage}>
-            <div className={styles.ring} />
-            <div className={`${styles.ring} ${styles.ringMid}`} />
-            <div className={`${styles.ring} ${styles.ringOuter}`} />
+        <div className={styles.mediaPanel}>
+          <div className={styles.diagonal} aria-hidden="true" />
 
-            <svg
-              className={styles.connectors}
-              viewBox={`0 0 ${STAGE_SIZE} ${STAGE_SIZE}`}
-              fill="none"
-            >
-              {visualization.nodes.map((node, index) => {
-                const point = pointAt(index, nodeCount, CONNECTOR_RADIUS);
+          <div className={styles.mediaStage}>
+            {media.map((item, index) => (
+              <div
+                key={item.src}
+                className={`${styles.mediaSlide} ${
+                  index === activeIndex ? styles.mediaSlideActive : ""
+                }`}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 900px) 100vw, 55vw"
+                  className={styles.mediaImage}
+                />
+              </div>
+            ))}
 
-                return (
-                  <line
-                    key={node.id}
-                    x1={STAGE_CENTER}
-                    y1={STAGE_CENTER}
-                    x2={STAGE_CENTER + point.x}
-                    y2={STAGE_CENTER + point.y}
-                    style={{ animationDelay: `${index * 0.12}s` }}
-                  />
-                );
-              })}
-            </svg>
+            <div className={styles.mediaShade} aria-hidden="true" />
+            <div className={styles.mediaGrain} aria-hidden="true" />
 
-            <div className={`${styles.node} ${styles.center}`}>
-              <span className={styles.coreEyebrow}>Platform</span>
-              <span className={styles.nodeLabel}>{visualization.center}</span>
-              <span className={styles.coreSub}>Connected systems</span>
+            <div className={styles.mediaCaption}>
+              <span className={styles.mediaLive} aria-hidden="true" />
+              <span>{activeMedia?.label}</span>
             </div>
 
-            {visualization.nodes.map((node, index) => {
-              const point = pointAt(index, nodeCount, NODE_RADIUS);
+            <div className={styles.mediaStats} aria-hidden="true">
+              <div className={styles.statCard}>
+                <span className={styles.statValue}>2x</span>
+                <span className={styles.statLabel}>Faster follow-ups</span>
+              </div>
+              <div className={styles.statCard}>
+                <span className={styles.statValue}>24/7</span>
+                <span className={styles.statLabel}>Agents that work</span>
+              </div>
+            </div>
 
-              return (
-                <div
-                  key={node.id}
-                  className={styles.node}
-                  style={{
-                    top: `${50 + point.y}%`,
-                    left: `${50 + point.x}%`,
-                    animationDelay: `${index * 0.15}s`,
-                  }}
-                >
-                  <span className={styles.nodeDot} />
-                  <span className={styles.nodeLabel}>{node.label}</span>
-                </div>
-              );
-            })}
-
-            <div className={styles.frameTL} />
-            <div className={styles.frameBR} />
+            <div className={styles.mediaDots} aria-hidden="true">
+              {media.map((item, index) => (
+                <span
+                  key={item.src}
+                  className={`${styles.mediaDot} ${
+                    index === activeIndex ? styles.mediaDotActive : ""
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

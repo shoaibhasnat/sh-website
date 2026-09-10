@@ -8,21 +8,30 @@ function LogoRow({ items, direction }) {
     direction === "left" ? styles.rowLeft : styles.rowRight;
 
   return (
-    <div className={`${styles.row} ${rowClass}`} aria-hidden="true">
+    <div className={`${styles.row} ${rowClass}`}>
       <div className={styles.rowTrack}>
         {[0, 1].map((copy) => (
           <div key={copy} className={styles.rowItems}>
             {items.map((client) => (
-              <div key={`${client.name}-${copy}`} className={styles.logoCard}>
+              <a
+                key={`${client.name}-${copy}`}
+                href={client.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.logoCard}
+                title="Open Website"
+                aria-label={`Open ${client.name} website`}
+                data-tooltip="Open Website"
+              >
                 <Image
                   src={client.logo}
                   alt=""
-                  width={160}
-                  height={64}
+                  width={140}
+                  height={48}
                   className={styles.logo}
                 />
                 <span className={styles.logoName}>{client.name}</span>
-              </div>
+              </a>
             ))}
           </div>
         ))}
@@ -33,9 +42,6 @@ function LogoRow({ items, direction }) {
 
 export default function HomeClients() {
   const { clients } = HomeData;
-  const mid = Math.ceil(clients.items.length / 2);
-  const topRow = clients.items.slice(0, mid);
-  const bottomRow = clients.items.slice(mid);
 
   return (
     <section
@@ -44,29 +50,17 @@ export default function HomeClients() {
     >
       <div className={styles.glow} aria-hidden="true" />
       <div className={shared.inner}>
-        <div className={styles.layout}>
-          <div className={styles.copy}>
-            <p className={shared.eyebrow}>{clients.eyebrow}</p>
-            <h2 id="home-clients-heading" className={styles.heading}>
-              {clients.heading}
-            </h2>
-            <p className={shared.description}>{clients.description}</p>
-          </div>
-
-          <div className={styles.marqueeWrap}>
-            <LogoRow items={topRow} direction="left" />
-            <LogoRow
-              items={bottomRow.length ? bottomRow : topRow}
-              direction="right"
-            />
-          </div>
+        <div className={`${shared.header} ${styles.header}`}>
+          <p className={shared.eyebrow}>{clients.eyebrow}</p>
+          <h2 id="home-clients-heading" className={styles.heading}>
+            {clients.heading}
+          </h2>
+          <p className={shared.description}>{clients.description}</p>
         </div>
 
-        <ul className={styles.srOnly}>
-          {clients.items.map((client) => (
-            <li key={client.name}>{client.name}</li>
-          ))}
-        </ul>
+        <div className={styles.marqueeWrap}>
+          <LogoRow items={clients.items} direction="left" />
+        </div>
       </div>
     </section>
   );
