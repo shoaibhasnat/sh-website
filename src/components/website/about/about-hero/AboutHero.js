@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { AboutData } from "@/data/pages/about/AboutData";
 import { PrimaryButton, SecondaryButton } from "@/utils/buttons";
 import styles from "./about-hero.module.css";
@@ -6,6 +9,7 @@ const STAGE_SIZE = 420;
 const STAGE_CENTER = STAGE_SIZE / 2;
 const NODE_RADIUS = 40;
 const CONNECTOR_RADIUS = 150;
+const CHIP_CYCLE_MS = 1400;
 
 /** Distributes nodes evenly around the circle, starting at the top. */
 function pointAt(index, total, radius) {
@@ -20,6 +24,20 @@ export default function AboutHero() {
   const { hero } = AboutData;
   const { visualization } = hero;
   const nodeCount = visualization.nodes.length;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (nodeCount < 1) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % nodeCount);
+    }, CHIP_CYCLE_MS);
+
+    return () => window.clearInterval(timer);
+  }, [nodeCount]);
 
   return (
     <section className={styles.hero} aria-labelledby="about-hero-heading">
@@ -75,6 +93,9 @@ export default function AboutHero() {
                 return (
                   <line
                     key={node.id}
+                    className={
+                      index === activeIndex ? styles.connectorActive : undefined
+                    }
                     x1={STAGE_CENTER}
                     y1={STAGE_CENTER}
                     x2={STAGE_CENTER + point.x}
@@ -93,11 +114,12 @@ export default function AboutHero() {
 
             {visualization.nodes.map((node, index) => {
               const point = pointAt(index, nodeCount, NODE_RADIUS);
+              const isActive = index === activeIndex;
 
               return (
                 <div
                   key={node.id}
-                  className={styles.node}
+                  className={`${styles.node}${isActive ? ` ${styles.nodeActive}` : ""}`}
                   style={{
                     top: `${50 + point.y}%`,
                     left: `${50 + point.x}%`,

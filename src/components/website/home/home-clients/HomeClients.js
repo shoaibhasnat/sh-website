@@ -19,9 +19,7 @@ function LogoRow({ items, direction }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.logoCard}
-                title="Open Website"
                 aria-label={`Open ${client.name} website`}
-                data-tooltip="Open Website"
               >
                 <Image
                   src={client.logo}
@@ -31,6 +29,23 @@ function LogoRow({ items, direction }) {
                   className={styles.logo}
                 />
                 <span className={styles.logoName}>{client.name}</span>
+                <span className={styles.tooltip} role="tooltip">
+                  <svg
+                    className={styles.tooltipIcon}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6.5 3.5H4.2A1.7 1.7 0 0 0 2.5 5.2v6.6A1.7 1.7 0 0 0 4.2 13.5h6.6a1.7 1.7 0 0 0 1.7-1.7V9.5M9.5 2.5H13.5V6.5M7.5 8.5 13.5 2.5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Open Website
+                </span>
               </a>
             ))}
           </div>

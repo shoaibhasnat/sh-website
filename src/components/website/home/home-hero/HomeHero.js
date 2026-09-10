@@ -64,6 +64,7 @@ export default function HomeHero() {
                 text={hero.secondaryCta.label}
                 href={hero.secondaryCta.href}
                 height={48}
+                className={styles.ctaPulse}
               />
             </div>
           </div>

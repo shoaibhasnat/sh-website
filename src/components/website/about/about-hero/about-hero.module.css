@@ -247,6 +247,12 @@
   stroke-linecap: round;
   stroke-dasharray: 4 6;
   animation: dashFlow 6.5s linear infinite;
+  transition: stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.connectorActive {
+  stroke: rgba(0, 179, 255, 0.9) !important;
+  stroke-width: 2.1 !important;
 }
 
 .node {
@@ -271,6 +277,28 @@
   transform: translate(-50%, -50%) translateY(-3px);
   border-color: rgba(0, 179, 255, 0.48);
   box-shadow: 0 14px 30px rgba(0, 179, 255, 0.14);
+}
+
+.nodeActive {
+  z-index: 4;
+  border-color: rgba(0, 179, 255, 0.95);
+  box-shadow:
+    0 0 0 3px rgba(0, 179, 255, 0.22),
+    0 14px 30px rgba(0, 179, 255, 0.2);
+}
+
+.nodeActive::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  border: 2px solid rgba(0, 179, 255, 0.7);
+  pointer-events: none;
+  animation: chipRingPulse 1.35s ease-out;
+}
+
+.nodeActive .nodeDot {
+  box-shadow: 0 0 0 5px rgba(0, 179, 255, 0.28);
 }
 
 .nodeDot {
@@ -408,6 +436,23 @@
   }
 }
 
+@keyframes chipRingPulse {
+  0% {
+    opacity: 0.95;
+    transform: scale(0.96);
+  }
+
+  70% {
+    opacity: 0.35;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .content,
   .visual,
@@ -415,12 +460,17 @@
   .node,
   .ringMid,
   .ringOuter,
-  .connectors line {
+  .connectors line,
+  .nodeActive::after {
     animation: none;
   }
 
   .node {
     transition: none;
+  }
+
+  .nodeActive::after {
+    display: none;
   }
 }
 

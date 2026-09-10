@@ -32,6 +32,7 @@ export default function HomeFaq() {
             accordion
             bordered={false}
             items={items}
+            defaultActiveKey={["0"]}
             className={styles.collapse}
             expandIconPlacement="end"
           />

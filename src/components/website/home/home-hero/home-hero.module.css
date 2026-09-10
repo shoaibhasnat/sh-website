@@ -121,6 +121,58 @@
   margin-top: 24px;
 }
 
+.ctaPulse {
+  position: relative;
+  animation: heroCtaPulse 2.2s ease-in-out infinite;
+}
+
+.ctaPulse:hover,
+.ctaPulse:focus-visible {
+  animation: none;
+}
+
+.ctaPulse:hover::after,
+.ctaPulse:focus-visible::after {
+  animation: none;
+  opacity: 0;
+}
+
+.ctaPulse::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 2px solid rgba(0, 179, 255, 0.55);
+  pointer-events: none;
+  animation: heroCtaRing 2.2s ease-out infinite;
+}
+
+@keyframes heroCtaPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 179, 255, 0);
+    transform: scale(1);
+  }
+
+  45% {
+    box-shadow: 0 0 0 8px rgba(0, 179, 255, 0.12);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes heroCtaRing {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
 .mediaPanel {
   position: relative;
   z-index: 1;
@@ -312,13 +364,24 @@
   .copyInner,
   .mediaSlide,
   .mediaLive,
-  .mediaDot {
+  .mediaDot,
+  .ctaPulse,
+  .ctaPulse::after {
     animation: none;
     transition: none;
   }
 
   .mediaSlide {
     transform: none;
+  }
+
+  .ctaPulse {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .ctaPulse::after {
+    display: none;
   }
 }
 

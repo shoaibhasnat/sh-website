@@ -12,7 +12,8 @@
 }
 
 .fab:hover,
-.fab:focus-visible {
+.fab:focus-visible,
+.fab.peek {
   transform: translateY(-2px);
 }
 
@@ -47,7 +48,8 @@
 }
 
 .fab:hover .label,
-.fab:focus-visible .label {
+.fab:focus-visible .label,
+.fab.peek .label {
   max-width: 220px;
   margin-right: -24px;
   padding: 0 28px 0 22px;
@@ -70,7 +72,8 @@
 }
 
 .fab:hover .icon,
-.fab:focus-visible .icon {
+.fab:focus-visible .icon,
+.fab.peek .icon {
   background: #00a3e8;
   box-shadow: 0 10px 24px rgba(0, 179, 255, 0.45);
 }
@@ -96,7 +99,8 @@
   }
 
   .fab:hover .label,
-  .fab:focus-visible .label {
+  .fab:focus-visible .label,
+  .fab.peek .label {
     max-width: 190px;
     padding: 0 24px 0 18px;
     font-size: 14px;
