@@ -21,8 +21,8 @@ export const Constants = {
   },
   socials: {
     whatsapp: "https://wa.me/923349989995",
-    linkedin: "https://www.linkedin.com/company/system-heuristics/",
+    linkedin: "https://www.linkedin.com/company/system-heuristics-sh/posts/?feedView=all",
     facebook: "https://www.facebook.com/share/1G4fA8pz4h/?mibextid=wwXIfr",
-    instagram: "https://www.instagram.com/system.heuristics/",
+    instagram: "https://www.instagram.com/systemheuristics/",
   },
 };

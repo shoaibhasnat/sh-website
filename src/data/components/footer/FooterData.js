@@ -21,6 +21,30 @@ export const FooterData = {
       href: Constants.socials.linkedin,
       external: true,
     },
+    // {
+    //   key: "whatsapp",
+    //   label: "WhatsApp",
+    //   href: Constants.socials.whatsapp,
+    //   external: true,
+    // },
+    {
+      key: "instagram",
+      label: "Instagram",
+      href: Constants.socials.instagram,
+      external: true,
+    },
+    {
+      key: "facebook",
+      label: "Facebook",
+      href: Constants.socials.facebook,
+      external: true,
+    },
+    {
+      key: "location",
+      label: "Location",
+      href: Constants.company.addressMapsUrl,
+      external: true,
+    },
     {
       key: "email",
       label: "Email",

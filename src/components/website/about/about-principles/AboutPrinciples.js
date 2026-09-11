@@ -11,43 +11,45 @@ export default function AboutPrinciples() {
       className={`${shared.section} ${styles.section}`}
       aria-labelledby="about-principles-heading"
     >
-      <div className={styles.bgGrid} aria-hidden="true" />
-      <div className={styles.bgGlow} aria-hidden="true" />
-
       <div className={shared.inner}>
-        <div className={styles.layout}>
-          <div className={styles.intro}>
-            <div className={styles.eyebrowRow}>
-              <span className={styles.eyebrowMark} aria-hidden="true" />
-              <p className={styles.eyebrow}>{principles.eyebrow}</p>
-            </div>
-            <h2 id="about-principles-heading" className={styles.heading}>
-              {principles.heading}
-            </h2>
-            <div className={styles.photo}>
-              <Image
-                src={principles.image.src}
-                alt={principles.image.alt}
-                fill
-                sizes="(max-width: 900px) 100vw, 360px"
-                className={styles.photoImage}
-              />
-            </div>
+        <div className={styles.stage}>
+          <div className={styles.visual}>
+            <Image
+              src={principles.image.src}
+              alt={principles.image.alt}
+              fill
+              sizes="(max-width: 900px) 100vw, 70vw"
+              className={styles.visualImage}
+            />
+            <div className={styles.visualShade} aria-hidden="true" />
+            <p className={styles.visualTag}>
+              <span className={styles.visualDot} aria-hidden="true" />
+              Real decisions. Better systems.
+            </p>
           </div>
 
-          <ol className={styles.list}>
-            {principles.items.map((item, index) => (
-              <li key={item.title} className={styles.row}>
-                <span className={styles.index} aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className={styles.body}>
-                  <h3 className={styles.title}>{item.title}</h3>
-                  <p className={styles.description}>{item.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div className={styles.panel}>
+            <div className={styles.panelHead}>
+              <p className={styles.eyebrow}>{principles.eyebrow}</p>
+              <h2 id="about-principles-heading" className={styles.heading}>
+                {principles.heading}
+              </h2>
+            </div>
+
+            <ol className={styles.list}>
+              {principles.items.map((item, index) => (
+                <li key={item.title} className={styles.item}>
+                  <span className={styles.index} aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className={styles.copy}>
+                    <h3 className={styles.title}>{item.title}</h3>
+                    <p className={styles.description}>{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>

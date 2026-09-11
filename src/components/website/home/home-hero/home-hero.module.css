@@ -252,7 +252,7 @@
   position: absolute;
   z-index: 4;
   left: clamp(48px, 7vw, 84px);
-  bottom: 28px;
+  bottom: 118px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -278,16 +278,17 @@
 .mediaStats {
   position: absolute;
   z-index: 4;
-  top: 28px;
-  right: 24px;
+  left: clamp(48px, 7vw, 84px);
+  bottom: 28px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: stretch;
   gap: 10px;
 }
 
 .statCard {
-  min-width: 148px;
-  padding: 14px 16px;
+  min-width: 132px;
+  padding: 12px 14px;
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -315,11 +316,10 @@
 .mediaDots {
   position: absolute;
   z-index: 4;
-  left: 50%;
+  right: 24px;
   bottom: 28px;
   display: flex;
   gap: 8px;
-  transform: translateX(-50%);
 }
 
 .mediaDot {
@@ -396,9 +396,7 @@
   }
 
   .mediaDots {
-    left: auto;
     right: 24px;
-    transform: none;
   }
 }
 
@@ -447,12 +445,14 @@
 
   .mediaCaption {
     left: 16px;
-    bottom: 18px;
+    bottom: 96px;
   }
 
   .mediaStats {
-    top: 58px;
+    left: 16px;
     right: 16px;
+    bottom: 18px;
+    top: auto;
   }
 
   .mediaDots {
@@ -479,7 +479,8 @@
   }
 
   .statCard {
-    min-width: 126px;
+    min-width: 0;
+    flex: 1;
     padding: 12px 14px;
   }
 

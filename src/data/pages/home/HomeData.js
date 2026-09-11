@@ -1,9 +1,9 @@
 export const HomeData = {
   hero: {
     eyebrow: "GROW SALES • AUTOMATE FOLLOW-UPS • SCALE FASTER",
-    heading: "Close More Deals. Automate the Busywork.",
+    heading: "Automate the busywork. Do what actually matters",
     description:
-      "System Heuristics helps teams capture leads, follow up faster, run AI agents, and turn disconnected tools into one revenue system.",
+      "We connect your tools and automate repetitive tasks, giving your team more time for customers, projects, and growth.",
    primaryCta: {
       label: "See our Agents",
       href: "#ai-agents",
@@ -29,7 +29,7 @@ export const HomeData = {
         label: "Clearer pipeline visibility",
       },
       {
-        src: "/images/pages/home/hero/strategy-meeting.jpg",
+        src: "/images/pages/home/hero/financial-planning-project-management-session.jpg",
         alt: "Strategy meeting focused on business growth",
         label: "Systems built for growth",
       },

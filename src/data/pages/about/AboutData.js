@@ -124,8 +124,8 @@ export const AboutData = {
     eyebrow: "HOW WE THINK",
     heading: "Principles Behind Every System We Build.",
     image: {
-      src: "/images/pages/case-studies/healthcare-team.jpg",
-      alt: "Healthcare professionals reviewing information together",
+      src: "/images/pages/about-us/close-up-young-colleagues-having-meeting_23-2149060248.jpg",
+      alt: "Young colleagues collaborating around a table in a modern office",
     },
     items: [
       {
@@ -162,18 +162,6 @@ export const AboutData = {
   process: {
     eyebrow: "OUR PROCESS",
     heading: "From Business Problem to Working System.",
-    images: [
-      {
-        label: "Healthcare teams",
-        src: "/images/pages/case-studies/healthcare-team.jpg",
-        alt: "Healthcare professionals reviewing patient information together",
-      },
-      {
-        label: "Construction crews",
-        src: "/images/pages/case-studies/construction-site.jpg",
-        alt: "Construction crew coordinating work on an active site",
-      },
-    ],
     steps: [
       {
         number: "01",

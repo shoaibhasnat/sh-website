@@ -6,12 +6,20 @@ import {
   LinkedinOutlined,
   MailOutlined,
   PhoneOutlined,
+  WhatsAppOutlined,
+  InstagramOutlined,
+  FacebookOutlined,
+  EnvironmentOutlined,
 } from "@ant-design/icons";
 import { FooterData } from "@/data/components/footer/FooterData";
 import styles from "./footer.module.css";
 
 const CONTACT_ICONS = {
   linkedin: LinkedinOutlined,
+  whatsapp: WhatsAppOutlined,
+  instagram: InstagramOutlined,
+  facebook: FacebookOutlined,
+  location: EnvironmentOutlined,
   email: MailOutlined,
   call: PhoneOutlined,
 };
