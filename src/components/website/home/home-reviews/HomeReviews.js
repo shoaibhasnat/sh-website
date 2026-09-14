@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { LinkedinOutlined } from "@ant-design/icons";
 import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
 import styles from "./home-reviews.module.css";
@@ -116,8 +117,25 @@ export default function HomeReviews() {
                         className={styles.avatarImage}
                       />
                     </div>
-                    <div>
-                      <p className={styles.author}>{review.name}</p>
+                    <div className={styles.authorMeta}>
+                      {review.linkedin ? (
+                        <a
+                          href={review.linkedin}
+                          className={styles.authorLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${review.name} on LinkedIn`}
+                          onClick={(event) => event.stopPropagation()}
+                        >
+                          <LinkedinOutlined
+                            className={styles.linkedinIcon}
+                            aria-hidden
+                          />
+                          <span className={styles.author}>{review.name}</span>
+                        </a>
+                      ) : (
+                        <p className={styles.author}>{review.name}</p>
+                      )}
                     </div>
                   </div>
                 </article>

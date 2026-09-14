@@ -136,6 +136,41 @@
   line-height: 1.3;
 }
 
+.authorMeta {
+  min-width: 0;
+}
+
+.authorLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.authorLink:hover,
+.authorLink:focus-visible {
+  color: var(--color-primary);
+}
+
+.authorLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.linkedinIcon {
+  color: #0a66c2;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.authorLink:hover .linkedinIcon,
+.authorLink:focus-visible .linkedinIcon {
+  color: #004182;
+}
+
 .controls {
   display: flex;
   align-items: center;

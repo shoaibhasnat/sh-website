@@ -130,13 +130,13 @@ export function buildDetailRows(rows) {
       const isLast = index === rows.length - 1;
       return `
         <tr>
-          <td style="padding:14px 0 ${isLast ? "0" : "14px"};border-bottom:${isLast ? "none" : "1px solid #e7eef5"};vertical-align:top;width:38%;">
-            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#7a8fa3;font-weight:bold;">
+          <td style="padding:3px 8px 3px 0;border-bottom:${isLast ? "none" : "1px solid #e7eef5"};vertical-align:middle;width:34%;">
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:#7a8fa3;font-weight:bold;line-height:1.25;">
               ${escapeHtml(label)}
             </p>
           </td>
-          <td style="padding:14px 0 ${isLast ? "0" : "14px"} 16px;border-bottom:${isLast ? "none" : "1px solid #e7eef5"};vertical-align:top;">
-            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#00213a;white-space:pre-wrap;">
+          <td style="padding:3px 0;border-bottom:${isLast ? "none" : "1px solid #e7eef5"};vertical-align:middle;">
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.25;color:#00213a;white-space:pre-wrap;">
               ${displayValue(value)}
             </p>
           </td>

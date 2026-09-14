@@ -41,7 +41,7 @@ export function buildCareersNotification(data) {
         </td>
       </tr>
       <tr>
-        <td style="padding:20px 32px 32px;">
+        <td style="padding:14px 32px 28px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
             ${buildDetailRows(rows)}
           </table>

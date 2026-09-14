@@ -26,14 +26,14 @@ export function buildContactNotification(data) {
   const bodyHtml = `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       <tr>
-        <td style="padding:28px 32px 8px;">
+        <td style="padding:20px 32px 6px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f9fd;border:1px solid #dceef9;border-radius:12px;">
             <tr>
-              <td style="padding:18px 20px;">
-                <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#00b3ff;font-weight:bold;">
+              <td style="padding:14px 16px;">
+                <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#00b3ff;font-weight:bold;">
                   Lead summary
                 </p>
-                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#3a5166;">
+                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.45;color:#3a5166;">
                   <strong style="color:#00213a;">${escapeHtml(data.name)}</strong>
                   from
                   <strong style="color:#00213a;">${escapeHtml(data.companyName)}</strong>
@@ -45,7 +45,7 @@ export function buildContactNotification(data) {
         </td>
       </tr>
       <tr>
-        <td style="padding:20px 32px 32px;">
+        <td style="padding:10px 32px 24px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
             ${buildDetailRows(rows)}
           </table>
