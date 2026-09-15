@@ -105,10 +105,18 @@
 .authorRow {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(0, 24, 48, 0.08);
+}
+
+.authorIdentity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
 
 .avatar {
@@ -136,39 +144,37 @@
   line-height: 1.3;
 }
 
-.authorMeta {
-  min-width: 0;
-}
-
-.authorLink {
+.linkedinLink {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #0a66c2;
+  color: #ffffff;
   text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.authorLink:hover,
-.authorLink:focus-visible {
-  color: var(--color-primary);
+.linkedinLink:hover,
+.linkedinLink:focus-visible {
+  background: #004182;
+  transform: translateY(-1px);
 }
 
-.authorLink:focus-visible {
+.linkedinLink:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 .linkedinIcon {
-  color: #0a66c2;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-
-.authorLink:hover .linkedinIcon,
-.authorLink:focus-visible .linkedinIcon {
-  color: #004182;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1;
 }
 
 .controls {

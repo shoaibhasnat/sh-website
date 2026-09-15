@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { LinkedinOutlined } from "@ant-design/icons";
+import { LinkedinFilled } from "@ant-design/icons";
 import { HomeData } from "@/data/pages/home/HomeData";
 import shared from "../home-shared.module.css";
 import styles from "./home-reviews.module.css";
@@ -108,35 +108,30 @@ export default function HomeReviews() {
                   </div>
                   <p className={styles.quote}>{review.text}</p>
                   <div className={styles.authorRow}>
-                    <div className={styles.avatar}>
-                      <Image
-                        src={review.url}
-                        alt=""
-                        width={48}
-                        height={48}
-                        className={styles.avatarImage}
-                      />
+                    <div className={styles.authorIdentity}>
+                      <div className={styles.avatar}>
+                        <Image
+                          src={review.url}
+                          alt=""
+                          width={48}
+                          height={48}
+                          className={styles.avatarImage}
+                        />
+                      </div>
+                      <p className={styles.author}>{review.name}</p>
                     </div>
-                    <div className={styles.authorMeta}>
-                      {review.linkedin ? (
-                        <a
-                          href={review.linkedin}
-                          className={styles.authorLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${review.name} on LinkedIn`}
-                          onClick={(event) => event.stopPropagation()}
-                        >
-                          <LinkedinOutlined
-                            className={styles.linkedinIcon}
-                            aria-hidden
-                          />
-                          <span className={styles.author}>{review.name}</span>
-                        </a>
-                      ) : (
-                        <p className={styles.author}>{review.name}</p>
-                      )}
-                    </div>
+                    {review.linkedin ? (
+                      <a
+                        href={review.linkedin}
+                        className={styles.linkedinLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${review.name} on LinkedIn`}
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        <LinkedinFilled className={styles.linkedinIcon} />
+                      </a>
+                    ) : null}
                   </div>
                 </article>
               );
