@@ -97,21 +97,32 @@
 }
 
 .proofItem {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   gap: 10px;
+  max-width: 44ch;
   color: var(--color-dark);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.45;
 }
 
-.proofDot {
-  width: 8px;
-  height: 8px;
+.proofCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
   border-radius: 50%;
-  background: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(0, 179, 255, 0.16);
+  background: rgba(0, 179, 255, 0.14);
+  color: var(--color-primary);
   flex-shrink: 0;
+}
+
+.proofCheck svg {
+  width: 11px;
+  height: 11px;
 }
 
 .actions {

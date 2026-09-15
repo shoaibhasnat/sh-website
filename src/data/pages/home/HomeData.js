@@ -13,9 +13,9 @@ export const HomeData = {
       href: "/discovery-call",
     },
     proofPoints: [
-      "Automated outreach & follow-ups",
-      "CRM that stays current",
-      "AI agents that do the work",
+      "AI follows up with every lead within 60 seconds, no one falls through the cracks",
+      "Your CRM updates itself from calls, emails, and forms, no manual data entry",
+      "Custom AI agents handle FAQs, qualify leads, and book meetings 24/7",
     ],
     media: [
       {
@@ -56,17 +56,17 @@ export const HomeData = {
     eyebrow: "WHAT WE SOLVE",
     heading: "Your Business Has More Automation Opportunities Than You Think.",
     description:
-      "Growing businesses lose time through repetitive tasks, disconnected systems, manual follow-ups and processes that don't scale. We identify those gaps and turn them into connected systems.",
+      "Between job sites, client work, and paperwork, most operations lose hours to repetitive tasks, disconnected tools, and manual follow-ups. We find those gaps and turn them into connected systems",
     items: [
       {
         title: "Increase Sales",
         description:
-          "Automate lead capture, qualification, follow-ups, CRM updates and sales workflows.",
+          "Automate inquiry capture, qualification, follow-ups, and CRM updates so no lead or referral falls through the cracks.",
       },
       {
-        title: "Automate Marketing",
+        title: "Automate Intake & Scheduling",
         description:
-          "Connect campaigns, lead nurturing, CRM data and customer journeys.",
+          "Automate client or patient intake, scheduling, and reminders so requests get triaged and routed without staff manually managing every step.",
       },
       {
         title: "Deploy AI Agents",
@@ -217,40 +217,71 @@ export const HomeData = {
       "We build AI agents that can understand requests, retrieve information, interact with business systems and complete defined workflows.",
     items: [
       {
-        title: "Sales & Marketing",
+        title: "Client & Lead Follow-Up",
         boldLine:
-          "We automate the sales and marketing of the business, automated outreach and follow-up, CRM management, and automations inside your CRM.",
-        description:
-          "Qualify leads, nurture prospects, keep pipelines current, and keep campaigns moving without manual busywork.",
+          "We automate outreach, follow-ups, and CRM updates so new leads and inquiries get a fast, consistent response without manual chasing.",
         image: {
-          src: "/images/pages/home/agents/sales-marketing.jpg",
-          alt: "Sales and marketing team collaborating in a modern office",
+          src: "/images/pages/home/agents/healthcare-clinic-desk.jpg",
+          alt: "Healthcare staff reviewing patient records and scheduling at a clinic desk",
         },
       },
       {
-        title: "Support",
+        title: "Intake & Scheduling",
         boldLine:
-          "We automate customer support so common questions, ticket routing, and follow-ups are handled reliably around the clock.",
-        description:
-          "Answer customer questions, escalate complex cases, and keep support teams focused on work that needs a human.",
+          "We automate intake forms, scheduling, and routine questions so requests get triaged and routed correctly, 24/7, without staff manually sorting through them.",
         image: {
-          src: "/images/pages/home/agents/support.jpg",
-          alt: "Customer support specialist assisting a client",
+          src: "/images/pages/home/agents/construction-blueprint-review.jpg",
+          alt: "Construction team reviewing blueprints together on a job site",
         },
       },
       {
-        title: "Assistant",
+        title: "Back-Office Operations",
         boldLine:
-          "We automate day-to-day assistant work, research, scheduling, summaries, and repetitive operational tasks for your team.",
-        description:
-          "Support internal teams with research, documentation, coordination, and the recurring work that slows everyone down.",
+          "We automate the paperwork behind the scenes, proposals, documentation, reporting, and repetitive admin work, so your team spends less time on busywork and more time on the job.",
         image: {
-          src: "/images/pages/home/agents/assistant.jpg",
-          alt: "Professional team collaborating on daily operations",
+          src: "/images/pages/home/agents/back-office-operations.png",
+          alt: "Office team reviewing analytics dashboards in a meeting",
         },
       },
     ],
     cta: { label: "Build an AI Agent", href: "/contact" },
+  },
+
+  stats: {
+    eyebrow: "WHAT CLIENTS GAIN",
+    heading: "The Outcomes We Design For.",
+    description:
+      "When follow-ups, intake, and back-office work run as systems — not inbox chores — the numbers look different.",
+    items: [
+      {
+        value: 60,
+        suffix: "s",
+        unit: "",
+        body: "Target response time for new leads and inquiries — so nothing sits unanswered.",
+        footer: "LEAD FOLLOW-UP",
+      },
+      {
+        value: 24,
+        suffix: "/7",
+        unit: "",
+        body: "AI agents that qualify, answer routine questions, and book meetings while your team sleeps.",
+        footer: "ALWAYS-ON AGENTS",
+      },
+      {
+        value: 2,
+        suffix: "x",
+        unit: "",
+        body: "Faster follow-ups when outreach and CRM updates stop depending on manual chasing.",
+        footer: "SALES MOMENTUM",
+      },
+      {
+        value: 6,
+        suffix: "",
+        unit: "weeks",
+        body: "From clarity to first automation in production — weeks of building, not months of waiting.",
+        footer: "TIME TO FIRST SHIP",
+      },
+    ],
   },
 
   automation: {
@@ -458,6 +489,11 @@ export const HomeData = {
       {
         title: "Custom Software",
         description: "Business systems, dashboards, portals and applications.",
+      },
+      {
+        title: "Operations & Workflow",
+        description:
+          "Intake, scheduling, proposals, and back-office paperwork.",
       },
     ],
     note: "Start with the problem. We'll help you determine the next step.",

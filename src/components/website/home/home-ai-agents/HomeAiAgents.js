@@ -40,7 +40,9 @@ export default function HomeAiAgents() {
                 </span>
                 <h3 className={styles.cardTitle}>{item.title}</h3>
                 <p className={styles.boldLine}>{item.boldLine}</p>
-                <p className={styles.cardCopy}>{item.description}</p>
+                {item.description ? (
+                  <p className={styles.cardCopy}>{item.description}</p>
+                ) : null}
               </div>
             </li>
           ))}

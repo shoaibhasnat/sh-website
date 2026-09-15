@@ -47,7 +47,17 @@ export default function HomeHero() {
               <ul className={styles.proofList}>
                 {hero.proofPoints.map((point) => (
                   <li key={point} className={styles.proofItem}>
-                    <span className={styles.proofDot} aria-hidden="true" />
+                    <span className={styles.proofCheck} aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M3.5 8.5 6.5 11.5 12.5 4.5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                     {point}
                   </li>
                 ))}
