@@ -27,7 +27,7 @@
 
 .visualImage {
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center;
 }
 
 .visualShade {
@@ -190,6 +190,10 @@
     aspect-ratio: 16 / 10;
   }
 
+  .visualImage {
+    object-position: center;
+  }
+
   .panel {
     border-left: none;
     border-top: 1px solid rgba(0, 179, 255, 0.12);
@@ -204,6 +208,10 @@
 
   .visual {
     min-height: 220px;
+  }
+
+  .visualImage {
+    object-position: center;
   }
 
   .visualTag {

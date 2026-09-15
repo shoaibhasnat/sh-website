@@ -173,6 +173,7 @@
 
 .mosaicImage {
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.5s ease;
 }
 
@@ -556,6 +557,10 @@
 
   .peopleMosaic {
     grid-template-columns: 1fr;
-    grid-template-rows: 220px 220px;
+    grid-template-rows: 260px 260px;
+  }
+
+  .mosaicImage {
+    object-position: top center;
   }
 }
