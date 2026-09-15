@@ -444,14 +444,7 @@
   }
 
   .diagonal {
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    width: 100%;
-    height: 56px;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    box-shadow: none;
+    display: none;
   }
 
   .mediaCaption {
