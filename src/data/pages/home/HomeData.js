@@ -230,7 +230,7 @@ export const HomeData = {
         boldLine:
           "We automate intake forms, scheduling, and routine questions so requests get triaged and routed correctly, 24/7, without staff manually sorting through them.",
         image: {
-          src: "/images/pages/home/agents/construction-blueprint-review.jpg",
+          src: "/images/pages/home/agents/construction-blueprint.jpg",
           alt: "Construction team reviewing blueprints together on a job site",
         },
       },
