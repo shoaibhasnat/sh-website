@@ -3,7 +3,7 @@ export const HomeData = {
     eyebrow: "GROW SALES • AUTOMATE FOLLOW-UPS • SCALE FASTER",
     heading: "Automate the busywork. Do what actually matters",
     description:
-      "We connect your tools and automate repetitive tasks, giving your team more time for customers, projects, and growth.",
+      "System Heuristics is a software company for AI automation and custom software solutions. We connect your tools and automate repetitive work so your team can focus on customers, projects, and growth — across healthcare, construction, and beyond.",
    primaryCta: {
       label: "See our Agents",
       href: "#ai-agents",
@@ -431,42 +431,47 @@ export const HomeData = {
       {
         question: "What does System Heuristics do?",
         answer:
-          "We help businesses improve sales, marketing and operations through AI agents, automation, system integrations and custom software.",
+          "System Heuristics is a software company and software house that helps businesses improve sales, marketing and operations through AI agents, AI automation, system integrations and custom software solutions — including healthcare and construction systems.",
       },
       {
         question: "Do you only work with Healthcare and Construction?",
         answer:
-          "No. These are industries where we have deeper experience, but our approach is designed for businesses across industries. We start by understanding your workflow and business problem.",
+          "No. Healthcare and construction are industries where we have deeper experience, but our approach works across industries. We start by understanding your workflow and business problem, then recommend the right automation, AI, or custom software.",
       },
       {
         question: "What is The Audit?",
         answer:
-          "The Audit is a $2,000 discovery and planning engagement where we analyze your processes, systems and opportunities and provide a prioritized implementation roadmap. We audit all types of systems and recommend the best automation. If our suggested improvement is not the actual improvement, the audit is free of cost.",
+          "The Audit is a $2,000 discovery and planning engagement where we analyze your processes, systems and opportunities and provide a prioritized implementation roadmap. We audit systems and recommend the best AI automation or custom solution. If our suggested improvement is not the actual improvement, the audit is free of cost.",
       },
       {
         question: "Do I need to know what technology I need?",
         answer:
-          "No. You only need to explain the business problem. We'll help determine whether automation, AI, integration or custom software is the right solution.",
+          "No. You only need to explain the business problem. As a top software company for custom solutions, we'll help determine whether automation, AI agents, integration or custom software is the right path.",
       },
       {
         question: "Can you work with our existing software?",
         answer:
-          "Yes. We can integrate and automate many existing business systems rather than replacing everything.",
+          "Yes. We integrate and automate many existing business systems rather than replacing everything — a practical approach used by leading software houses for faster ROI.",
       },
       {
         question: "Do you build custom AI agents?",
         answer:
-          "Yes. We design AI agents for sales, customer support, operations, knowledge management, document processing and other defined workflows.",
+          "Yes. We design custom AI agents and AI automations for sales, customer support, operations, knowledge management, document processing and other defined workflows.",
       },
       {
         question: "How does the Free option work?",
         answer:
-          "Submit your business details and describe the problem you're facing. We'll review the request and recommend the most useful next step.",
+          "Submit your business details and describe the problem you're facing. We'll review the request and recommend the most useful next step — often a free consultation or a scoped software audit.",
       },
       {
         question: "How much does custom software cost?",
         answer:
-          "Custom projects are priced based on scope, complexity, integrations and requirements. We recommend starting with a free review or The Audit when the problem requires deeper discovery.",
+          "Custom software solutions are priced based on scope, complexity, integrations and requirements. We recommend starting with a free review or The Audit when the problem requires deeper discovery.",
+      },
+      {
+        question: "Is System Heuristics among the best software companies for AI automation?",
+        answer:
+          "System Heuristics focuses on practical AI automations, custom software, healthcare and construction systems, and business audits — delivering measurable outcomes rather than generic tooling. Teams choose us when they need a software house that starts from the business problem.",
       },
     ],
   },

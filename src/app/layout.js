@@ -4,6 +4,19 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 import { colors, cssVariables, fonts } from "./variables";
 import { Constants } from "@/utils/Constants";
+import JsonLd from "@/utils/seo/JsonLd";
+import {
+  organizationSchema,
+  serviceSchema,
+  siteNavigationSchema,
+  websiteSchema,
+} from "@/utils/seo/schemas";
+import {
+  DEFAULT_DESCRIPTION,
+  PRIMARY_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/utils/seo/siteSeo";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -12,19 +25,25 @@ const quicksand = Quicksand({
   variable: "--font-quicksand",
 });
 
-const siteName = Constants.company.name;
-const siteUrl = Constants.company.website;
-const siteDescription =
-  "System Heuristics builds software, systems, and product engineering solutions.";
-
 export const metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: siteName,
-    template: `%s | ${siteName}`,
+    default: `${SITE_NAME} | Best Software Company for AI Automation & Custom Software`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: siteDescription,
-  applicationName: siteName,
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: PRIMARY_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: "/favicon/favicon.ico", sizes: "48x48" },
@@ -44,27 +63,48 @@ export const metadata = {
     ],
   },
   manifest: "/favicon/site.webmanifest",
+  alternates: {
+    canonical: SITE_URL,
+    types: {
+      "application/xml": `${SITE_URL}/sitemap.xml`,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
-    siteName,
-    title: siteName,
-    description: siteDescription,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Best Software Company for AI Automation & Custom Software`,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
         url: "/images/og/system-heuristics-og.png",
         width: 1200,
         height: 630,
-        alt: siteName,
+        alt: `${SITE_NAME} — AI automation and custom software company`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
-    description: siteDescription,
+    title: `${SITE_NAME} | Best Software Company for AI Automation`,
+    description: DEFAULT_DESCRIPTION,
     images: ["/images/og/system-heuristics-og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  other: {
+    "geo.region": "PK",
+    "revisit-after": "7 days",
   },
 };
 
@@ -76,6 +116,14 @@ export default function RootLayout({ children }) {
       style={cssVariables}
     >
       <body>
+        <JsonLd
+          data={[
+            organizationSchema(),
+            websiteSchema(),
+            siteNavigationSchema(),
+            serviceSchema(),
+          ]}
+        />
         <AntdRegistry>
           <ConfigProvider
             theme={{

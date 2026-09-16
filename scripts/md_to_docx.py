@@ -7,8 +7,10 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 ROOT = Path(__file__).resolve().parents[1]
-MD_PATH = ROOT / "documentation" / "complete-project" / "complete-documentation.md"
-DOCX_PATH = ROOT / "documentation" / "complete-project" / "complete-documentation.docx"
+DEFAULT_MD = ROOT / "documentation" / "complete-project" / "complete-documentation.md"
+DEFAULT_DOCX = ROOT / "documentation" / "complete-project" / "complete-documentation.docx"
+MD_PATH = DEFAULT_MD
+DOCX_PATH = DEFAULT_DOCX
 
 
 def set_run_font(run, size=11, bold=False, italic=False, code=False, color=None):
@@ -124,8 +126,10 @@ def add_table(doc, header, rows):
     doc.add_paragraph()
 
 
-def main():
-    lines = MD_PATH.read_text(encoding="utf-8").splitlines()
+def main(md_path=None, docx_path=None):
+    md_file = Path(md_path) if md_path else MD_PATH
+    docx_file = Path(docx_path) if docx_path else DOCX_PATH
+    lines = md_file.read_text(encoding="utf-8").splitlines()
     doc = Document()
 
     for section in doc.sections:
@@ -228,9 +232,18 @@ def main():
         add_formatted_runs(p, stripped)
         i += 1
 
-    doc.save(DOCX_PATH)
-    print(f"Wrote {DOCX_PATH} ({DOCX_PATH.stat().st_size} bytes)")
+    doc.save(docx_file)
+    print(f"Wrote {docx_file} ({docx_file.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    args = sys.argv[1:]
+    if len(args) >= 2:
+        main(args[0], args[1])
+    elif len(args) == 1:
+        md = Path(args[0])
+        main(md, md.with_suffix(".docx"))
+    else:
+        main()
