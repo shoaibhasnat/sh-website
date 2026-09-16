@@ -13,7 +13,7 @@ export const NavbarData = {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Case Studies", href: "/case-studies" },
-    // { label: "Projects", href: "/projects" },
+    { label: "Projects", href: "/projects" },
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],

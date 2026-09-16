@@ -6,6 +6,13 @@ import {
 import { OutlineButton, PrimaryButton } from "@/utils/buttons";
 import shared from "@/components/website/careers/careers-shared.module.css";
 import styles from "./job-detail.module.css";
+import JsonLd from "@/utils/seo/JsonLd";
+import {
+  breadcrumbSchema,
+  jobPostingSchema,
+  webPageSchema,
+} from "@/utils/seo/schemas";
+import { buildPageMetadata } from "@/utils/seo/siteSeo";
 
 export function generateStaticParams() {
   return (CareersData.jobs || [])
@@ -21,11 +28,19 @@ export async function generateMetadata({ params }) {
     return { title: "Position Not Found" };
   }
 
-  return {
-    title: `${job.title} — Careers`,
+  return buildPageMetadata({
+    title: `${job.title} — Careers at a Top Software House`,
     description:
-      job.shortDescription || `Join System Heuristics as a ${job.title}.`,
-  };
+      job.shortDescription ||
+      `Join System Heuristics as a ${job.title}. Work with a leading software company on AI automation, custom software, and business systems.`,
+    path: `/careers/${job.slug}`,
+    keywords: [
+      job.title,
+      "software company careers",
+      "software house jobs",
+      "System Heuristics careers",
+    ],
+  });
 }
 
 export default async function CareerJobPage({ params }) {
@@ -40,8 +55,26 @@ export default async function CareerJobPage({ params }) {
     .filter(Boolean)
     .join(" · ");
 
+  const description =
+    job.shortDescription || `Join System Heuristics as a ${job.title}.`;
+
   return (
     <main className={styles.page}>
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: `/careers/${job.slug}`,
+            name: job.title,
+            description,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Careers", path: "/careers" },
+            { name: job.title, path: `/careers/${job.slug}` },
+          ]),
+          jobPostingSchema(job),
+        ]}
+      />
       <div className={shared.inner}>
         <p className={shared.eyebrow}>{job.department}</p>
         <h1 className={styles.title}>{job.title}</h1>
