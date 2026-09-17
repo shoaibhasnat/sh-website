@@ -62,11 +62,11 @@ export const FooterData = {
     {
       title: "What We Offer",
       links: [
-        { label: "Sales Automation", href: "/#sales-automation" },
-        { label: "Marketing Automation", href: "/#marketing-automation" },
+        { label: "Sales Automation", href: "/#what-we-solve" },
+        { label: "Marketing Automation", href: "/#what-we-solve" },
         { label: "AI Agents", href: "/#ai-agents" },
-        { label: "Business Automation", href: "/#business-automation" },
-        { label: "Custom Software", href: "/#custom-software" },
+        { label: "Business Automation", href: "/#what-we-solve" },
+        { label: "Custom Software", href: "/#what-we-solve" },
       ],
     },
     {

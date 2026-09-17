@@ -102,6 +102,9 @@ export const metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "br2IDEsEOGnMfp-l0IQVJXuunr5q-mGucJ4vQtHhhGs",
+  },
   other: {
     "geo.region": "PK",
     "revisit-after": "7 days",

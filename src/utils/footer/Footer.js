@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LinkedinOutlined,
   MailOutlined,
@@ -24,9 +25,42 @@ const CONTACT_ICONS = {
   call: PhoneOutlined,
 };
 
+function scrollToHash(hash) {
+  if (!hash) return;
+  const id = hash.replace(/^#/, "");
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export default function Footer() {
   const { brand, columns, legal, contactLinks = [] } = FooterData;
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function handleNavClick(event, href) {
+    if (!href?.includes("#")) return;
+
+    const [pathPart, hashPart] = href.split("#");
+    const targetPath = pathPart || "/";
+    const hash = hashPart ? `#${hashPart}` : "";
+
+    if (!hash) return;
+
+    // Same-page hash: scroll instead of relying on Next Link alone
+    if (targetPath === pathname || (targetPath === "/" && pathname === "/")) {
+      event.preventDefault();
+      window.history.pushState(null, "", hash);
+      scrollToHash(hash);
+      return;
+    }
+
+    // Navigating from another page to home#section
+    event.preventDefault();
+    router.push(href);
+    window.setTimeout(() => scrollToHash(hash), 120);
+  }
 
   return (
     <footer className={styles.footer}>
@@ -96,7 +130,11 @@ export default function Footer() {
                 <ul className={styles.linkList}>
                   {column.links.map(({ label, href }) => (
                     <li key={`${column.title}-${label}`}>
-                      <Link href={href} className={styles.link}>
+                      <Link
+                        href={href}
+                        className={styles.link}
+                        onClick={(event) => handleNavClick(event, href)}
+                      >
                         {label}
                       </Link>
                     </li>
