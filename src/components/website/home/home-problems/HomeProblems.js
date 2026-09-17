@@ -6,7 +6,7 @@ export default function HomeProblems() {
   const { problems } = HomeData;
 
   return (
-    <section
+    <section id="what-we-solve"
       className={`${shared.section} ${shared.sectionLight} ${styles.section}`}
       aria-labelledby="home-problems-heading"
     >
