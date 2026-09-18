@@ -70,7 +70,7 @@
   border-radius: 50%;
   background: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 112, 153, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 179, 255, 0.35);
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
