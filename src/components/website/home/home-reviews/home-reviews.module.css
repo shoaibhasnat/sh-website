@@ -42,7 +42,7 @@
 }
 
 .cardActive {
-  border-color: rgba(0, 112, 153, 0.28);
+  border-color: rgba(0, 179, 255, 0.28);
   background: #ffffff;
   box-shadow: 0 22px 48px rgba(0, 24, 48, 0.1);
   cursor: default;

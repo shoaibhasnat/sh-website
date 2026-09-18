@@ -45,15 +45,14 @@ body {
   border: 0;
 }
 
-/* Ant Design placeholder contrast (WCAG AA) */
 .ant-select-selection-placeholder,
 .ant-select .ant-select-selection-placeholder {
-  color: #5a6b7c !important;
+  color: var(--color-secondary) !important;
   opacity: 1 !important;
 }
 
 .ant-input::placeholder,
 .ant-input-textarea textarea::placeholder {
-  color: #5a6b7c !important;
+  color: var(--color-secondary) !important;
   opacity: 1 !important;
 }

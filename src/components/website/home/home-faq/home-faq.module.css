@@ -1,7 +1,7 @@
 .panel {
   max-width: 820px;
   margin: 0 auto;
-  border: 1px solid rgba(0, 112, 153, 0.18);
+  border: 1px solid rgba(0, 179, 255, 0.14);
   border-radius: var(--radius);
   background: #f7fbff;
   overflow: hidden;
@@ -13,7 +13,7 @@
 }
 
 .item {
-  border-bottom: 1px solid rgba(0, 112, 153, 0.12);
+  border-bottom: 1px solid rgba(0, 179, 255, 0.12);
 }
 
 .item:last-child {
