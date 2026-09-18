@@ -102,7 +102,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "br2IDEsEOGnMfp-l0IQVJXuunr5q-mGucJ4vQtHhhGs",
+    google: "Noef1QuMkxy8h4wGZiUOPDOKh3G94PYmrOExD_SU9YQ",
   },
   other: {
     "geo.region": "PK",
