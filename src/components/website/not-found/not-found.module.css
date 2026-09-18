@@ -1,0 +1,115 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: min(70vh, 720px);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(165deg, #001830 0%, #00284a 55%, #001426 100%);
+  color: #ffffff;
+  font-family: var(--font-family-primary);
+}
+
+.gridOverlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.07;
+  background-image:
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
+}
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  width: min(50vw, 420px);
+  height: min(50vw, 420px);
+  right: -6%;
+  top: -10%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 179, 255, 0.22) 0%,
+    transparent 68%
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 64px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.code {
+  margin: 0 0 8px;
+  color: var(--color-primary);
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.description {
+  margin: 0 auto;
+  max-width: 48ch;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 80px 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 64px 16px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+}

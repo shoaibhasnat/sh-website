@@ -44,7 +44,7 @@
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 10px 24px rgba(0, 179, 255, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 112, 153, 0.22);
 }
 
 .primary:hover:not(:disabled):not(.disabled) {
@@ -52,7 +52,7 @@
   border-color: var(--color-primary-hover);
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(0, 179, 255, 0.28);
+  box-shadow: 0 14px 28px rgba(0, 112, 153, 0.28);
 }
 
 /* Secondary — white filled */

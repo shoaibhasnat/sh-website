@@ -9,7 +9,8 @@ import styles from "./home-reviews.module.css";
 
 function StarRating({ rating }) {
   return (
-    <div className={styles.stars} aria-label={`${rating} out of 5 stars`}>
+    <p className={styles.stars}>
+      <span className={styles.srOnly}>{rating} out of 5 stars</span>
       {Array.from({ length: 5 }, (_, index) => {
         const filled = index < rating;
         return (
@@ -18,12 +19,13 @@ function StarRating({ rating }) {
             className={`${styles.star} ${filled ? styles.starFilled : ""}`}
             viewBox="0 0 20 20"
             aria-hidden="true"
+            focusable="false"
           >
             <path d="M10 1.6l2.35 4.76 5.25.76-3.8 3.7.9 5.24L10 13.7l-4.7 2.46.9-5.24-3.8-3.7 5.25-.76L10 1.6z" />
           </svg>
         );
       })}
-    </div>
+    </p>
   );
 }
 
@@ -97,7 +99,7 @@ export default function HomeReviews() {
                     pointerEvents: visible ? "auto" : "none",
                     zIndex: 10 - abs,
                   }}
-                  aria-hidden={!isActive}
+                  {...(!isActive ? { "aria-hidden": true, inert: true } : {})}
                   onClick={() => setActiveIndex(index)}
                 >
                   <div className={styles.cardTop}>
@@ -120,7 +122,7 @@ export default function HomeReviews() {
                       </div>
                       <p className={styles.author}>{review.name}</p>
                     </div>
-                    {review.linkedin ? (
+                    {isActive && review.linkedin ? (
                       <a
                         href={review.linkedin}
                         className={styles.linkedinLink}

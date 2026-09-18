@@ -96,8 +96,10 @@ export default function HomeHero() {
                   alt={item.alt}
                   fill
                   priority={index === 0}
-                  loading={index === 0 ? "eager" : undefined}
-                  sizes="(max-width: 900px) 100vw, 55vw"
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  quality={index === 0 ? 72 : 65}
+                  sizes="(max-width: 900px) 100vw, 52vw"
                   className={styles.mediaImage}
                 />
               </div>

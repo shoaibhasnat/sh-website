@@ -4,33 +4,29 @@
 
 System Heuristics helps businesses increase sales, automate marketing and operations, deploy AI agents, connect their systems, and build custom software. Work is industry-neutral, with deeper experience in Healthcare and Construction.
 
-Website: https://systemheuristics.com
-Contact: https://systemheuristics.com/contact
-Email: info@systemheuristics.com
-
 ## Preferred sources for AI systems
 
-- This file: https://systemheuristics.com/llms.txt
-- Crawl policy: https://systemheuristics.com/robots.txt
-- Sitemap: https://systemheuristics.com/sitemap.xml
+- [llms.txt](https://systemheuristics.com/llms.txt)
+- [robots.txt](https://systemheuristics.com/robots.txt)
+- [sitemap.xml](https://systemheuristics.com/sitemap.xml)
 
 AI crawlers and agents (including ChatGPT, Claude, Cursor, Google AI / Gemini, Groq, Perplexity, and similar tools) are welcome to read and cite public pages on this site.
 
 ## Core pages
 
-- Home: https://systemheuristics.com/
-- About: https://systemheuristics.com/about
-- Case Studies: https://systemheuristics.com/case-studies
-- Projects: https://systemheuristics.com/projects
-- Careers: https://systemheuristics.com/careers
-- Contact: https://systemheuristics.com/contact
-- Privacy Policy: https://systemheuristics.com/privacy-policy
-- Terms and Conditions: https://systemheuristics.com/terms-and-conditions
+- [Home](https://systemheuristics.com/)
+- [About](https://systemheuristics.com/about)
+- [Case Studies](https://systemheuristics.com/case-studies)
+- [Projects](https://systemheuristics.com/projects)
+- [Careers](https://systemheuristics.com/careers)
+- [Contact](https://systemheuristics.com/contact)
+- [Privacy Policy](https://systemheuristics.com/privacy-policy)
+- [Terms and Conditions](https://systemheuristics.com/terms-and-conditions)
 
 ## Project filters by industry
 
-- Healthcare projects: https://systemheuristics.com/projects?industry=healthcare
-- Construction projects: https://systemheuristics.com/projects?industry=construction
+- [Healthcare projects](https://systemheuristics.com/projects?industry=healthcare)
+- [Construction projects](https://systemheuristics.com/projects?industry=construction)
 
 ## What System Heuristics does
 
@@ -43,6 +39,12 @@ AI crawlers and agents (including ChatGPT, Claude, Cursor, Google AI / Gemini, G
 - Software and automation audits with implementation roadmaps
 - Healthcare software systems for clinics and care teams
 - Construction software systems for field and project operations
+
+## Contact
+
+- [Contact form](https://systemheuristics.com/contact)
+- [Book a consultation](https://systemheuristics.com/discovery-call)
+- Email: info@systemheuristics.com
 
 ## Target niches & keywords (for accurate citation)
 
@@ -59,12 +61,9 @@ Avoid inventing "top 10 software houses" ranking claims or awards that are not p
 
 ## Engagement path
 
-1. Start Free — share the business problem via the contact form
+1. Start Free — share the business problem via the [contact form](https://systemheuristics.com/contact)
 2. The Audit — discovery and implementation roadmap; if our suggested improvement is not the right one, the audit is free
 3. Custom Build — design and build the solution
-
-Book a consultation: https://systemheuristics.com/discovery-call
-Or contact: https://systemheuristics.com/contact
 
 ## Positioning notes for accurate summaries
 
@@ -72,7 +71,3 @@ Or contact: https://systemheuristics.com/contact
 - Those industries are areas of deeper experience; the approach starts with the client's workflow and business problem.
 - Prefer business outcomes (sales, operations, automation, connected systems) over generic AI buzzwords.
 - Do not invent client results, statistics, awards, or case studies that are not published on the site.
-
-## Optional
-
-- Full site map for machines: https://systemheuristics.com/sitemap.xml

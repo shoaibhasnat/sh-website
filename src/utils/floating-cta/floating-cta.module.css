@@ -62,23 +62,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 64px;
   width: 64px;
   height: 64px;
+  min-width: 64px;
+  min-height: 64px;
   border-radius: 50%;
-  background: #00b3ff;
+  background: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 179, 255, 0.35);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 112, 153, 0.35);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .fab:hover .icon,
 .fab:focus-visible .icon,
 .fab.peek .icon {
-  background: #00a3e8;
-  box-shadow: 0 10px 24px rgba(0, 179, 255, 0.45);
+  background: var(--color-primary-hover);
+  transform: scale(1.03);
 }
 
 .calendar {
+  display: block;
+  width: 26px;
+  height: 26px;
   font-size: 26px;
   line-height: 1;
 }
