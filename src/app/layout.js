@@ -3,7 +3,6 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 import { colors, cssVariables, fonts } from "./variables";
-import { Constants } from "@/utils/Constants";
 import JsonLd from "@/utils/seo/JsonLd";
 import {
   organizationSchema,

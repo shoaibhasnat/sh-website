@@ -49,14 +49,17 @@ export const layout = {
 };
 
 export const colors = {
-  primary: "#00b3ff",
-  primaryHover: "#0092d0",
+  /* Accessible primary: ≥4.5:1 with white text (WCAG AA) */
+  primary: "#007099",
+  primaryHover: "#005f82",
+  primaryBright: "#00b3ff",
   primaryLight: "#daedff",
   primaryLightHover: "#b3d9ff",
 
   text: "#00213a",
-  secondary: "#8f9eae",
-  secondaryLight: "#737e8a",
+  /* Accessible muted text on white */
+  secondary: "#5a6b7c",
+  secondaryLight: "#4a5a6a",
 
   success: "#28a745",
   danger: "#dc3545",
@@ -76,6 +79,7 @@ export const cursor = {
 export const cssVariables = {
   "--color-primary": colors.primary,
   "--color-primary-hover": colors.primaryHover,
+  "--color-primary-bright": colors.primaryBright,
   "--color-primary-light": colors.primaryLight,
   "--color-primary-light-hover": colors.primaryLightHover,
   "--color-text": colors.text,

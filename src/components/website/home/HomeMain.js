@@ -1,13 +1,15 @@
+import dynamic from "next/dynamic";
 import HomeHero from "./home-hero/HomeHero";
 import HomeProblems from "./home-problems/HomeProblems";
 import HomePlans from "./home-plans/HomePlans";
 import HomeAiAgents from "./home-ai-agents/HomeAiAgents";
-import HomeStats from "./home-stats/HomeStats";
-import HomeReviews from "./home-reviews/HomeReviews";
-import HomeClients from "./home-clients/HomeClients";
-import HomeFaq from "./home-faq/HomeFaq";
-import HomeContact from "./home-contact/HomeContact";
-import HomeCta from "./home-cta/HomeCta";
+
+const HomeStats = dynamic(() => import("./home-stats/HomeStats"));
+const HomeReviews = dynamic(() => import("./home-reviews/HomeReviews"));
+const HomeClients = dynamic(() => import("./home-clients/HomeClients"));
+const HomeFaq = dynamic(() => import("./home-faq/HomeFaq"));
+const HomeContact = dynamic(() => import("./home-contact/HomeContact"));
+const HomeCta = dynamic(() => import("./home-cta/HomeCta"));
 
 export default function HomeMain() {
   return (

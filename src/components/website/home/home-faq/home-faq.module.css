@@ -1,41 +1,68 @@
 .panel {
   max-width: 820px;
   margin: 0 auto;
-  border: 1px solid rgba(0, 179, 255, 0.14);
+  border: 1px solid rgba(0, 112, 153, 0.18);
   border-radius: var(--radius);
   background: #f7fbff;
   overflow: hidden;
 }
 
-.collapse {
-  background: transparent !important;
+.list {
+  margin: 0;
+  padding: 0;
 }
 
-.collapse :global(.ant-collapse-item) {
-  border-bottom: 1px solid rgba(0, 179, 255, 0.12) !important;
-  border-radius: 0 !important;
+.item {
+  border-bottom: 1px solid rgba(0, 112, 153, 0.12);
 }
 
-.collapse :global(.ant-collapse-item:last-child) {
-  border-bottom: none !important;
+.item:last-child {
+  border-bottom: none;
 }
 
-.collapse :global(.ant-collapse-header) {
-  padding: 18px 22px !important;
-  color: var(--color-dark) !important;
-  font-family: var(--font-family-primary) !important;
-  font-size: var(--font-size-sm) !important;
-  font-weight: var(--font-weight-bold) !important;
-  line-height: 1.45 !important;
-  align-items: center !important;
+.itemHeading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-.collapse :global(.ant-collapse-expand-icon) {
-  color: var(--color-primary) !important;
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 18px 22px;
+  border: 0;
+  background: transparent;
+  color: var(--color-dark);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
 }
 
-.collapse :global(.ant-collapse-content-box) {
-  padding: 0 22px 20px !important;
+.trigger:hover {
+  background: rgba(0, 179, 255, 0.06);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.panelBody {
+  padding: 0 22px 20px;
 }
 
 .answer {
@@ -46,11 +73,11 @@
 }
 
 @media (max-width: 560px) {
-  .collapse :global(.ant-collapse-header) {
-    padding: 16px 16px !important;
+  .trigger {
+    padding: 16px;
   }
 
-  .collapse :global(.ant-collapse-content-box) {
-    padding: 0 16px 16px !important;
+  .panelBody {
+    padding: 0 16px 16px;
   }
 }

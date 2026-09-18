@@ -32,3 +32,28 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ant Design placeholder contrast (WCAG AA) */
+.ant-select-selection-placeholder,
+.ant-select .ant-select-selection-placeholder {
+  color: #5a6b7c !important;
+  opacity: 1 !important;
+}
+
+.ant-input::placeholder,
+.ant-input-textarea textarea::placeholder {
+  color: #5a6b7c !important;
+  opacity: 1 !important;
+}
