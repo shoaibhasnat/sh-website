@@ -9,6 +9,9 @@ import {
 
 export const runtime = "nodejs";
 
+/** Flip to `true` to re-enable thank-you emails to applicants. Team notification still sends. */
+const SEND_USER_AUTO_REPLY = false;
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_RESUME_BYTES = 5 * 1024 * 1024;
 const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx"];
@@ -166,30 +169,32 @@ export async function POST(request) {
       ],
     });
 
-    const autoReply = buildCareersAutoReply({
-      fullName: data.fullName,
-      expertise: data.expertise,
-      careersUrl: CAREERS_PAGE_URL,
-    });
+    if (SEND_USER_AUTO_REPLY) {
+      const autoReply = buildCareersAutoReply({
+        fullName: data.fullName,
+        expertise: data.expertise,
+        careersUrl: CAREERS_PAGE_URL,
+      });
 
-    await sleep(1500);
+      await sleep(1500);
 
-    try {
-      await sendMailWithRetry(
-        transporter,
-        {
-          from: fromAddress,
-          to: data.email,
-          replyTo: CAREERS_RECEIVER_EMAIL,
-          subject: autoReply.subject,
-          text: autoReply.text,
-          html: autoReply.html,
-          attachments: [logoAttachment],
-        },
-        { retries: 5, baseDelayMs: 1800 },
-      );
-    } catch (autoReplyError) {
-      console.error("[careers/apply] auto-reply failed", autoReplyError);
+      try {
+        await sendMailWithRetry(
+          transporter,
+          {
+            from: fromAddress,
+            to: data.email,
+            replyTo: CAREERS_RECEIVER_EMAIL,
+            subject: autoReply.subject,
+            text: autoReply.text,
+            html: autoReply.html,
+            attachments: [logoAttachment],
+          },
+          { retries: 5, baseDelayMs: 1800 },
+        );
+      } catch (autoReplyError) {
+        console.error("[careers/apply] auto-reply failed", autoReplyError);
+      }
     }
 
     return Response.json({ ok: true });

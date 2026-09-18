@@ -9,6 +9,9 @@ import {
 
 export const runtime = "nodejs";
 
+/** Flip to `true` to re-enable thank-you emails to submitters. Team notification still sends. */
+const SEND_USER_AUTO_REPLY = false;
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const FALLBACK_BOOKING_LINK =
   "https://calendar.app.google/ZnSSS2B9R7mkmfBc6";
@@ -116,32 +119,34 @@ export async function POST(request) {
       attachments: [logoAttachment],
     });
 
-    const autoReply = buildContactAutoReply({
-      name: data.name,
-      companyName: data.companyName,
-      bookingUrl: BOOKING_CALENDAR_LINK?.trim() || FALLBACK_BOOKING_LINK,
-    });
+    if (SEND_USER_AUTO_REPLY) {
+      const autoReply = buildContactAutoReply({
+        name: data.name,
+        companyName: data.companyName,
+        bookingUrl: BOOKING_CALENDAR_LINK?.trim() || FALLBACK_BOOKING_LINK,
+      });
 
-    // Gmail often returns 421 if a second message is sent immediately.
-    await sleep(1500);
+      // Gmail often returns 421 if a second message is sent immediately.
+      await sleep(1500);
 
-    try {
-      await sendMailWithRetry(
-        transporter,
-        {
-          from: fromAddress,
-          to: data.email,
-          replyTo: CONTACT_RECEIVER_EMAIL,
-          subject: autoReply.subject,
-          text: autoReply.text,
-          html: autoReply.html,
-          attachments: [logoAttachment],
-        },
-        { retries: 5, baseDelayMs: 1800 },
-      );
-    } catch (autoReplyError) {
-      // Do not fail the API if the lead email already succeeded.
-      console.error("[contact] auto-reply failed", autoReplyError);
+      try {
+        await sendMailWithRetry(
+          transporter,
+          {
+            from: fromAddress,
+            to: data.email,
+            replyTo: CONTACT_RECEIVER_EMAIL,
+            subject: autoReply.subject,
+            text: autoReply.text,
+            html: autoReply.html,
+            attachments: [logoAttachment],
+          },
+          { retries: 5, baseDelayMs: 1800 },
+        );
+      } catch (autoReplyError) {
+        // Do not fail the API if the lead email already succeeded.
+        console.error("[contact] auto-reply failed", autoReplyError);
+      }
     }
 
     return Response.json({ ok: true });
