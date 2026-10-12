@@ -1,0 +1,146 @@
+/* ================================
+   MAIN SECTION WRAPPER
+================================ */
+.containerMain {
+  padding: 50px 0;
+  position: relative;
+  width: 100%;
+}
+
+/* ================================
+   STICKY / PINNED SCROLL AREA
+================================ */
+.steps {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* ================================
+   SECTION INTRO POSITIONING
+================================ */
+.stepCounter {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 7%;
+  left: 0;
+}
+
+/* ================================
+   CARDS CONTAINER (ARC SPACE)
+================================ */
+.cardsWrapper {
+  position: absolute;
+  top: 340px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 600px;
+}
+
+/* ================================
+   INDIVIDUAL TESTIMONIAL CARD
+================================ */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  border-radius: var(--radius);
+  padding: var(--padding-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 380px;
+  height: 250px;
+  gap: 10px;
+}
+
+/* Hidden spacer cards used for scroll layout */
+.card.empty {
+  opacity: 0;
+}
+
+/* ================================
+   CARD HEADER (AVATAR + NAME)
+================================ */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Icon size for fallback user icon */
+.cardHeader svg {
+  font-size: 40px;
+}
+
+/* User avatar image */
+.cardUserImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Fallback user icon */
+.cardUserIcon {
+  color: var(--color-text);
+}
+
+/* User name */
+.cardName {
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+  font-size: var(--font-standard);
+}
+
+/* User relation / company */
+.relation {
+  color: var(--color-secondary);
+  font-weight: var(--font-light);
+}
+
+/* ================================
+   CARD CONTENT (TESTIMONIAL TEXT)
+================================ */
+.cardContent {
+  width: 100%;
+  height: 60px;
+  text-align: justify;
+  font-size: var(--description);
+  font-weight: var(--font-regular);
+  line-height: 1.25rem;
+  color: var(--color-secondary);
+  margin-bottom: 5px;
+}
+
+/* ================================
+   CARD FOOTER (RATING)
+================================ */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: var(--color-text);
+  /* margin-bottom: 20px; */
+}
+
+/* ================================
+   RESPONSIVE ADJUSTMENTS
+================================ */
+@media screen and (max-width: 450px) {
+  .cardContent {
+    font-size: var(--font-sm);
+  }
+
+  .relation {
+    font-size: var(--font-sm);
+  }
+}

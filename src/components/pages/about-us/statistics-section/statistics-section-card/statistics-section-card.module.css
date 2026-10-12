@@ -1,0 +1,152 @@
+/* =========================
+   Statistics Section Card CSS
+   ------------------------
+   - Styles for individual statistic cards in the statistics section
+   - Includes card wrapper, background particles, number, and title
+   - Responsive adjustments for tablet and mobile
+========================= */
+
+/* Card wrapper */
+.card {
+  z-index: 0;
+  position: relative;
+  width: 375px;
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+  border-radius: var(--radius);
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Right card adjustment for staggered layout */
+.right {
+  position: relative;
+  top: 80px;
+}
+
+/* Particle background inside card */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cardBg canvas {
+  height: 500px !important;
+  width: 600px !important;
+}
+
+/* Card content overlay */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  padding: var(--padding-card);
+  color: var(--color-primary-light);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Optional index text (not currently used) */
+.index {
+  font-size: var(--font-lg);
+  font-weight: var(--font-bold);
+  line-height: 1;
+  display: inline-block;
+  transform: scaleY(1.15);
+  transform-origin: center;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+/* Animated number */
+.number {
+  font-size: var(--heading-3xl);
+  font-weight: var(--font-bold);
+  margin-bottom: 8px;
+  z-index: 2;
+  line-height: 1;
+}
+
+/* Title wrapper */
+.titleWrapper {
+  display: flex;
+  justify-content: end;
+}
+
+/* Title text inside card */
+.title {
+  font-size: var(--font-standard);
+  line-height: 1.5;
+  display: flex;
+  justify-content: end;
+  opacity: 1;
+  filter: drop-shadow(var(--box-shadow));
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
+/* =========================
+   Responsive Media Queries
+========================= */
+
+
+
+/* Tablet screens */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 270px;
+    height: 180px;
+  }
+
+  .number {
+    font-size: var(--heading-2xl);
+  }
+
+  .title {
+    font-size: var(--font-md-lg);
+  }
+
+  .cardContent {
+    padding: 10px;
+  }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 576px) {
+  .card {
+    width: 225px;
+    height: 150px;
+  }
+
+  .number {
+    font-size: var(--heading-xl);
+  }
+
+  .title {
+    font-size: var(--font-md);
+  }
+}
+
+/* Extra small mobile */
+@media screen and (max-width: 450px) {
+  .card {
+    width: 190px;
+    height: 140px;
+  }
+
+  .title {
+    display: inline-block; /* required */
+    transform: scaleY(1.1);
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 400px) {
+  .card {
+    width: 170px;
+  }
+}

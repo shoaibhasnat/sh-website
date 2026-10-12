@@ -1,0 +1,67 @@
+.tc-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 4rem 1.5rem;
+  color: var(--color-text, #eaeaea);
+  line-height: 1.7;
+}
+
+.tc-header {
+  margin-bottom: 3rem;
+}
+
+.tc-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.tc-meta {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.tc-section {
+  margin-bottom: 1rem;
+  padding: 15px 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.147);
+
+  border: 1px solid white;
+  filter: drop-shadow(0 0 15px rgb(182, 227, 255));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10px);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tc-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.tc-section p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.tc-section ul {
+  padding-left: 1.2rem;
+}
+
+.tc-section li {
+  margin-bottom: 0.5rem;
+}
+
+.tc-contact {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .tc-container {
+    padding: 3rem 1rem;
+  }
+
+  .tc-section p {
+    text-align: left;
+  }
+}

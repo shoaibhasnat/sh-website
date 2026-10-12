@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-height: 100vh; /* ensure full viewport height */
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1;
+  max-width: 800px;
+}
+.header p {
+  margin: 0;
+}
+.logo {
+  height: clamp(60px, 80vw, 100px);
+  width: auto;
+}
+
+.description {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  font-weight: var(--font-regular);
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.contacts {
+  display: flex;
+  justify-content: center; /* centers all items horizontally */
+  gap: 40px; /* space between items */
+  margin-top: 20px;
+  flex-wrap: wrap; /* wrap on smaller screens */
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: var(--font-regular);
+  min-width: 150px; /* optional to keep items consistent */
+  justify-content: center;
+  text-align: center;
+}
+
+.contactItem span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap; /* allow wrapping if text is long */
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-text);
+}
+
+/* ============================= */
+/* Responsive adjustments */
+/* ============================= */
+
+/* Medium screens: reduce gap, wrap contacts */
+@media (max-width: 991px) {
+  .contacts {
+    gap: 25px;
+  }
+}
+
+/* Small screens: stack contacts vertically */
+@media (max-width: 575px) {
+  .contacts {
+    /* flex-direction: column; */
+    gap: 10px;
+    /* align-items: center; */
+    /* background-color: red; */
+    width: 100%;
+
+  }
+
+  .contactItem {
+    flex-direction: row;
+    justify-content: flex-start;
+    min-width: auto;
+  }
+}

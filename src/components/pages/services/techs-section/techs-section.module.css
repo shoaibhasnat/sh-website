@@ -1,0 +1,179 @@
+/* =========================
+   Section Container
+========================= */
+.container {
+  margin: 50px 0 0 0;
+  padding-top: 50px;
+}
+
+/* =========================
+   Footer / Bottom section
+========================= */
+.footer {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  background: var(--background);
+}
+
+/* =========================
+   Objects Container & Objects
+========================= */
+.objectContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.object {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 70px;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-weight: var(--font-regular);
+  font-size: var(--font-md);
+  text-align: center;
+  padding: 10px 15px;
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+  transform: translate(-150px, -150px);
+}
+
+.object img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.object p {
+  margin: 0;
+  word-break: break-word;
+}
+
+.object:active {
+  cursor: grabbing;
+}
+
+/* =========================
+   Tabs
+========================= */
+.tablist {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tab {
+  border-radius: var(--radius);
+  padding: 10px 30px;
+  width: 170px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+
+  cursor: var(--hover-cursor);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.tab:hover {
+  background-color: rgba(176, 229, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 10px 25px rgba(182, 227, 255, 0.55),
+    inset 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.active {
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary) !important;
+  transform: scale(1.05);
+}
+
+.tab:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   Tab content
+========================= */
+.tabContent {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.tabContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/public/images/pages/home/technologies/brick-wall.avif");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* =========================
+   Gradient overlay
+========================= */
+.gradientBox {
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 24px;
+  background: radial-gradient(
+    ellipse at top center,
+    rgba(99, 189, 241, 0.35),
+    rgba(99, 182, 241, 0.2) 35%,
+    rgba(99, 177, 241, 0.1) 55%,
+    rgba(99, 184, 241, 0) 75%
+  );
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+@media screen and (max-width: 768px) {
+  .object {
+    gap: 5px;
+    min-width: 60px;
+    border-radius: 8px;
+    font-size: var(--font-sm);
+    padding: 4px 8px;
+  }
+
+  .object img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .tab {
+    padding: 8px 16px;
+    width: 120px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .tab {
+    width: auto;
+    padding: 6px 10px;
+  }
+}

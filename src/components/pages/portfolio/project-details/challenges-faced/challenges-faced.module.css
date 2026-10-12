@@ -1,0 +1,74 @@
+.scrollContainer {
+  position: relative;
+  height: 300vh;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.aboutCopy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.copyBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+  /* justify-content: center; */
+  width: 100%;
+  padding: 35px 25px;
+  border-radius: var(--radius);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: var(--font-medium);
+}
+.copyBlock p {
+  line-height: 1.2;
+}
+
+.copyBlock p .word {
+  will-change: transform;
+}
+
+
+@media (max-width: 992px) {
+  .aboutCopy {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero {
+    height: 120vh;
+    justify-content: start;
+  }
+}
+
+@media (max-width: 750px) {
+  .aboutCopy {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .hero {
+    /* height: 170vh; */
+    justify-content: start;
+  }
+}
+
+@media (max-width: 576px) {
+  .copyBlock {
+    padding: 24px 16px;
+    gap: 5px;
+  }
+}

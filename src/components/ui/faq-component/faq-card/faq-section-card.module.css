@@ -1,0 +1,103 @@
+.cardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cardBox {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
+  padding: var(--padding-card);
+  overflow: hidden;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+
+  cursor: var(--hover-cursor);
+  color: inherit;
+}
+
+.question {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: transform 300ms ease, background 300ms ease, color 300ms ease;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cardBox.open {
+  border-color: var(--color-primary);
+  box-shadow: var(--box-shadow);
+}
+
+.cardBox.open .icon {
+  background: var(--box-shadow);
+  color: var(--color-primary);
+  transform: rotate(0deg);
+}
+
+.answer {
+  max-height: 0;
+  font-size: 14px;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--color-text);
+  transition: max-height 300ms ease, opacity 300ms ease, padding 300ms ease;
+  padding: 0 0;
+  text-align: justify;
+}
+
+.answer.open {
+  max-height: 500px;
+  opacity: 1;
+  padding: 10px 0 16px 0;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary-hover);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media screen and (max-width: 1300px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 576px) {
+  .cardBox {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+}

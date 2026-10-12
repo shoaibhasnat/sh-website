@@ -1,0 +1,15 @@
+.image {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+  display: block;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.error {
+  width: 100%;
+  height: auto;
+  background: #ffe0e0;
+}

@@ -1,0 +1,62 @@
+.container {
+  position: relative;
+  width: 100%;
+  align-content: center;
+}
+
+.turnstile {
+  background-color: var(--color-primary-light);
+  height: 70px;
+  border-radius: 4px;
+  border: 1px solid var(--color-primary-light-hover);
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  align-items: center;
+}
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.statusContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+
+.logo {
+  width: 90px;
+}
+
+.turnstileWrapper {
+  position: relative;
+  height: 70px;
+  z-index: 0;
+  padding: 2px;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+.turnstileWrapper {
+  margin: 0px 10px;
+  overflow: hidden;
+}
+}

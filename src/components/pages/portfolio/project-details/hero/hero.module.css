@@ -1,0 +1,46 @@
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 450px;
+  max-width: 100%;
+  margin-bottom: 12px;
+  align-items: start;
+}
+.btns button {
+  flex: 1;
+  max-width: 350px;
+}
+.btnsWrapper {
+  width: 450px;
+  max-width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.pdfWrapper {
+  width: 100%;
+  flex: none; /* important */
+}
+@media (min-width: 1100px) {
+  .btns {
+    flex-direction: row;
+  }
+
+  .btns button {
+    flex: 1;
+    width: 50%;
+  }
+}
+
+.btns button {
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .btns {
+    align-items: center;
+  }
+  .btnsWrapper {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,71 @@
+/* =========================
+   Layout Container
+========================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 100vh;
+}
+/* =========================
+   Header / Title Block
+========================= */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  max-width: 800px;
+
+  font-weight: var(--font-bold);
+  text-align: center;
+  line-height: 1;
+  color: var(--color-text);
+}
+.header p {
+  margin: 0;
+}
+
+/* =========================
+   Logo
+========================= */
+.logo {
+  height: clamp(60px, 80vw, 100px);
+}
+
+.description {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+
+@media screen and (max-width: 1200px) {
+  .description {
+    max-width: 550px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .description {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .description {
+    max-width: 420px;
+  }
+
+  .container {
+    height: 70vh;
+  }
+}

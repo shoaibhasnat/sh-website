@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabsWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px !important;
+}
+.section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 90%;
+}
+
+@media screen and (max-width: 992px) {
+  .section {
+    padding: 32px 0px;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 16px 0px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tabsWrapper {
+    width: 100%;
+    overflow-x: auto;
+    display: block; 
+  }
+}
