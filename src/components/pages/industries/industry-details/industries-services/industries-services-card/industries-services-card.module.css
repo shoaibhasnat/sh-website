@@ -1,0 +1,68 @@
+.card {
+  width: 100%;
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* vertically center */
+  flex-wrap: nowrap; /* prevent shrinking to new line */
+  gap: 20px; /* optional spacing between text and button */
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1; /* take remaining space */
+}
+
+.info h6 {
+  font-weight: 600;
+  color: var(--color-text);
+  width: 100%;
+}
+
+/* Ensure button never shrinks */
+.info button {
+  flex-shrink: 0;
+  width: 150px; /* use the same width as the prop */
+}
+.tags {
+  margin-top: 5px;
+  display: flex;
+  /* justify-content: center; */
+  gap: 10px;
+  align-items: center;
+}
+.tag {
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  background-color: rgba(255, 255, 255, 0.327);
+
+  border-radius: 15px;
+  border: 1px solid white;
+  filter: drop-shadow(0 0 15px rgb(182, 227, 255));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10px);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+@media screen and (max-width: 768px) {
+  .info h6 {
+    font-size: var(--font-lg);
+  }
+}
+@media screen and (max-width: 576px) {
+}
+@media screen and (max-width: 450px) {
+}

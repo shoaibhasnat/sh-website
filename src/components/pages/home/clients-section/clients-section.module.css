@@ -1,0 +1,122 @@
+/* =========================
+   Section Container
+========================= */
+.section {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* =========================
+   Images Layer (Scattered Logos)
+========================= */
+.images {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+}
+
+/* Individual image container */
+.imgWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Logo block */
+.img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(300px, 80vw);
+  will-change: transform;
+  z-index: 2000;
+  pointer-events: auto;
+}
+
+/* Actual logo image */
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Client name under logo */
+.imgName {
+  font-size: var(--font-standard);
+  font-weight: var(--font-medium);
+  color: var(--color-secondary);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* =========================
+   Center Text Overlay
+========================= */
+.textWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Text container */
+.text {
+  max-width: 450px;
+  padding: var(--padding-card);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+/* Heading */
+.heading {
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+}
+
+/* Description text */
+.description {
+  font-size: var(--description);
+  text-align: center;
+}
+
+/* =========================
+   Responsive Tweaks
+========================= */
+
+/* ≤ 1000px */
+@media (max-width: 1000px) {
+  .img {
+    width: min(220px, 80vw);
+    height: auto;
+  }
+}
+
+/* ≤ 576px */
+@media (max-width: 576px) {
+  .textWrapper {
+    max-width: calc(100% - 32px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

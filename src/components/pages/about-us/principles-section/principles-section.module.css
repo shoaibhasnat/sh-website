@@ -1,0 +1,75 @@
+/* Scrollable container for the Principles section */
+.scrollContainer {
+  position: relative;
+  height: 300vh; /* height to allow scrolling and pinning */
+}
+
+/* Hero section (title + description) */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Container for Vision/Mission/Values blocks */
+.aboutCopy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Individual principle block styling */
+.copyBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+  width: 100%;
+  padding: 35px 25px;
+  border-radius: var(--radius);
+}
+
+/* Paragraph inside copy block */
+.copyBlock p {
+  line-height: 1.2;
+  text-align: justify;
+}
+
+/* Words inside paragraph (SplitText) */
+.copyBlock p .word {
+  will-change: transform; /* optimize for animation */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .aboutCopy {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero {
+    height: 120vh;
+    justify-content: start;
+  }
+}
+
+@media (max-width: 750px) {
+  .aboutCopy {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .hero {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 576px) {
+  .copyBlock {
+    padding: 24px 16px;
+    gap: 5px;
+  }
+}

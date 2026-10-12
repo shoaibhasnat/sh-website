@@ -1,0 +1,112 @@
+/* Default gradient button */
+.dsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  padding: 12px 28px;
+  border-radius: var(--radius);
+
+  transition: all 0.25s ease;
+
+  font-size: var(--font-standard);
+  font-weight: var(--font-regular);
+  line-height: 1;
+
+  border: none;
+
+  cursor: var(--hover-cursor);
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Hover lift + glow */
+.dsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(51, 150, 255, 0.35);
+}
+
+/* Press */
+.dsButton:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(51, 150, 255, 0.25);
+}
+
+/* Disabled */
+.dsButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Outlined variant */
+.dsButtonOutlined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  color: var(--color-primary);
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+
+  transition: all 0.25s ease;
+
+  font-size: var(--font-standard);
+  font-weight: var(--font-regular);
+  line-height: 1;
+
+  cursor: var(--hover-cursor);
+  position: relative;
+  overflow: hidden;
+}
+
+.dsButtonOutlined:hover {
+  background-color: var(--color-primary-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(51, 150, 255, 0.35);
+}
+
+.dsButtonOutlined:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(51, 150, 255, 0.25);
+}
+
+.dsButtonOutlined:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Responsive adjustments remain the same */
+@media screen and (max-width: 992px) {
+  .dsButton,
+  .dsButtonOutlined {
+    gap: 8px;
+    height: 40px;
+    padding: 12px 28px;
+
+    font-size: var(--font-md);
+    font-weight: var(--font-regular);
+    line-height: 1;
+    border-radius: 8px;
+  }
+}
+
+.buttonLink {
+  text-decoration: none;
+}

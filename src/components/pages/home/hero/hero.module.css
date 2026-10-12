@@ -1,0 +1,287 @@
+/* =======================================================
+   hero.module.css
+   - Styles for Home Page Hero Section
+   - Includes:
+       * Main hero container
+       * Robot visual (3D robot, eyes, lids, glow)
+       * Hero content (title, subtitle, description, button)
+       * Secondary section with chip & description
+   - Responsive layout handled with media queries
+======================================================= */
+/* =========================
+   Hero Layout
+========================= */
+.hero {
+  width: 100%;
+  height: calc(100vh - 88px);
+  max-height: 850px;
+  min-height: 500px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  z-index: 1;
+
+  border-radius: var(--radius);
+  margin-top: 80px;
+  padding: 0px 40px;
+}
+
+/* =========================
+   Content
+========================= */
+.section1 {
+  /* left section wrapper */
+}
+
+.content {
+  width: 100%;
+  max-width: 550px;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.title {
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.title span {
+  color: var(--color-primary);
+}
+
+.description {
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+.heroBtn {
+  width: 350px;
+}
+/* =========================
+   Visual (Robot)
+========================= */
+.visual {
+  position: absolute;
+  left: 40%;
+  bottom: 0%;
+  transform: translateY(0%);
+
+  width: 500px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatRobot 4s ease-in-out infinite;
+}
+.robotCard {
+  position: relative; /* important for stacking */
+  display: inline-block;
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-out;
+}
+
+.robotCard:hover {
+  transition-duration: 0.15s;
+}
+
+/* Robot body */
+.robotBody {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  will-change: transform;
+  z-index: 1;
+}
+
+.eyesContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* hide rest of the PNG */
+  pointer-events: none;
+  z-index: 6;
+}
+/* Move the large PNG inside the container */
+.robotEyes {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  will-change: transform;
+  z-index: 1;
+}
+.lidsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lidsMask {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0% 0% 100% 0%);
+  /* background-color: red; */
+
+}
+
+.robotLids {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  /* stay in place */
+}
+
+@keyframes floatRobot {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.robot {
+  /* position: absolute;
+  top: 0;
+  bottom: 0; */
+
+  animation: floatRobot 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* =========================
+   Right Floating Box
+========================= */
+.section2 {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+  transform: translateY(0%);
+  width: 320px;
+}
+.chipImg {
+  width: 20px;
+}
+/* =========================
+   Responsive
+========================= */
+@media screen and (max-width: 1350px) {
+  .visual {
+    left: 35%;
+  }
+
+  .content {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .description {
+    max-width: 420px;
+  }
+
+  .visual {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .section2 {
+    display: none;
+  }
+
+  .visual {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    max-width: 380px;
+  }
+
+  .visual {
+    width: 320px;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 20px;
+  }
+
+  .heroBtn {
+    width: 100%;
+  }
+  .visual {
+    position: relative;
+    left: 0%;
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+  }
+
+  .section1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    max-width: 550px;
+    align-items: center;
+  }
+
+  .description {
+    max-width: 100% !important;
+  }
+
+  .robotCard {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hero {
+    height: calc(100vh - 70px);
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+}

@@ -1,0 +1,29 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 5rem;
+  height: 100vh;
+  width: 100%;
+}
+
+.image {
+  width: 450px;
+  max-width: 100%;
+}
+
+.title {
+  font-size: var(--heading-xl);
+  font-weight: var(font-bold);
+  color: var(--color-text); /* adjust color to match your theme */
+  margin: 0;
+}
+
+.description {
+  font-size: var(--description);
+  color: var(--color-secondary); /* adjust color to match your theme */
+  max-width: 500px;
+}

@@ -1,0 +1,79 @@
+/* =========================
+   variables.css
+========================= */
+
+/*
+Variables:
+- Fonts
+- Font sizes
+- Heading sizes (fixed + fluid)
+- Weights
+- Colors
+- Layout / radius
+*/
+
+:root {
+  /* Fonts */
+  --font-family-primary: "Quicksand", sans-serif;
+  --font-family-secondary: "Arial", sans-serif;
+  --font-family-tertiary: "Times New Roman", serif;
+
+  /* Body font sizes */
+  --font-xxs: 10px;
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-md-lg: 18px;
+  --font-standard: 20px;
+  --font-lg: 24px;
+  --font-xl: 28px;
+  --font-2xl: 32px;
+
+  /* Fixed heading sizes (your original values) */
+  --heading-xs: 20px;
+  --heading-sm: 26px;
+  --heading: 32px;
+  --heading-lg: 38px;
+  --heading-xl: 48px;
+  --heading-2xl: 58px;
+  --heading-3xl: 68px;
+  --heading-4xl: 80px;
+
+  --description: 16px;
+
+  /* Weights */
+  --font-light: 400;
+  --font-regular: 500;
+  --font-medium: 600;
+  --font-bold: 700;
+
+  /* Layout */
+  --padding-card: 16px 24px;
+  --padding-layout: 32px 64px;
+
+  /* Colors */
+  --color-primary: #00b3ff;
+  --color-primary-hover: #0092d0;
+  --color-primary-light: #daedff;
+  --color-primary-light-hover: #b3d9ff;
+
+  --color-text: #00213a;
+  --color-secondary: #8f9eae;
+  --color-secondary-light: #737e8a;
+
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+
+  --color-light: #daedff;
+  --color-dark: #001830;
+
+  /* Borders and Shadows */
+  --radius: 8px;
+  --rounded: 100px; 
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  --cursor: url("/images/pages/cursor/cursor.png") 8 8, auto;
+  --hover-cursor: url("/images/pages/cursor/cursor-hover.png") 8 8, auto;
+}

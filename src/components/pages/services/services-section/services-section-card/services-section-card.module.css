@@ -1,0 +1,204 @@
+/* =========================
+   Card
+========================= */
+.card {
+  position: relative;
+  width: 450px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+  cursor: var(--hover-cursor);
+  border-radius: var(--radius);
+  filter: drop-shadow(var(--box-shadow));
+}
+
+/* Card background */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(135deg, #ffffff 0%, #a3c9ff 100%);
+  pointer-events: none;
+}
+
+/* =========================
+   Overlay
+========================= */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    15deg,
+    #00aeff65 0%,
+    #00a6ff42 15%,
+    rgba(255, 255, 255, 0) 45%
+  );
+}
+
+/* =========================
+   Card Content
+========================= */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: var(--padding-card);
+  color: #00364f;
+}
+
+.index {
+  font-size: var(--font-xl);
+  font-weight: var(--font-bold);
+  line-height: 1;
+
+  display: inline-block;
+  transform: scaleY(1.15);
+  transform-origin: center;
+
+  margin-bottom: 5px;
+  color: var(--color-primary);
+  filter: drop-shadow(var(--box-shadow));
+}
+
+.title {
+  font-size: var(--font-lg);
+  font-weight: var(--font-medium);
+  margin-bottom: 8px;
+  filter: drop-shadow(var(--box-shadow));
+}
+
+.description {
+  font-size: var(--font-md);
+  line-height: 1.1;
+  opacity: 0.9;
+  filter: drop-shadow(var(--box-shadow));
+}
+
+/* =========================
+   Image Wrapper
+========================= */
+.imageWrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-top: 8px;
+}
+
+.imageWrapper img {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+
+/* ≤ 1300px */
+@media screen and (max-width: 1300px) {
+  .card {
+    width: 360px;
+    height: 240px;
+  }
+
+  .title {
+    font-size: var(--font-standard);
+  }
+
+  .description {
+    font-size: var(--font-sm);
+  }
+
+  .imageWrapper img {
+    height: 150px;
+  }
+}
+
+/* ≤ 768px */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 450px;
+    height: 300px;
+  }
+  .imageWrapper {
+  }
+  .imageWrapper img {
+    height: 180px;
+  }
+
+  .title {
+    font-size: var(--font-lg);
+  }
+
+  .description {
+    font-size: var(--font-md);
+  }
+}
+
+/* ≤ 576px */
+@media screen and (max-width: 576px) {
+  .card {
+    width: 375px;
+    height: 250px;
+    min-width: calc(100vw - 32px);
+  }
+
+  .title {
+    font-size: var(--font-standard);
+  }
+
+  .description {
+    font-size: var(--font-sm);
+  }
+
+  .imageWrapper img {
+    height: 150px;
+  }
+}
+
+/* ≤ 400px */
+@media screen and (max-width: 400px) {
+  .card {
+    width: 330px;
+    height: 220px;
+  }
+
+  .title {
+    font-size: var(--font-md-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: 0;
+  }
+
+  .description {
+    font-size: var(--font-sm);
+    line-height: 1;
+  }
+
+  .imageWrapper img {
+    height: 130px;
+  }
+
+  .content {
+    padding: 16px 20px;
+  }
+
+  .index {
+    font-size: var(--font-lg);
+    margin-bottom: 0;
+  }
+}

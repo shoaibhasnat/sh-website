@@ -1,0 +1,319 @@
+/* =============================================================
+   project-videos-section.module.css
+   Sequential card conveyor — transparent bg, light theme
+   ============================================================= */
+
+.outerWrapper {
+  width: 100%;
+  /* clip prevents off-screen GSAP x transforms from expanding document width.
+     Unlike overflow:hidden this does not create a new scroll container,
+     so it won't interfere with ScrollTrigger pinning. */
+  overflow-x: clip;
+}
+
+/* ── Pinned scene — transparent, inherits page bg ─────────── */
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* No background — page shows through */
+}
+
+/* ── Card stage ────────────────────────────────────────────── */
+.stage {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: end;
+  padding-bottom: 70px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Individual video card ─────────────────────────────────── */
+.card {
+  position: absolute;
+  width: min(36vw, 540px);
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  /* overflow visible so per-card title below is not clipped */
+  overflow: visible;
+  box-shadow:
+    0 8px 32px rgba(0, 33, 58, 0.12),
+    0 24px 64px rgba(0, 33, 58, 0.08),
+    0 0 0 1px rgba(0, 33, 58, 0.06);
+  will-change: transform, opacity;
+  flex-shrink: 0;
+}
+
+/* Portrait card */
+.portrait {
+  width: auto;
+  height: min(65vh, 520px);
+  aspect-ratio: 9 / 16;
+}
+
+.cardVideo {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  object-fit: contain;
+  background: var(--color-dark);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INFO BLOCK — top-left, stacked: counter / name / desc / chips
+══════════════════════════════════════════════════════════════ */
+.infoBlock {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Counter */
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  will-change: opacity;
+}
+
+.counterCurrent {
+  font-size: var(--heading-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.counterSep {
+  font-size: var(--font-standard);
+  color: var(--color-secondary);
+  opacity: 0.5;
+}
+
+.counterTotal {
+  font-size: var(--font-standard);
+  font-weight: 500;
+  color: var(--color-secondary);
+  opacity: 0.5;
+}
+
+/* Per-card title — shown on desktop below each video card */
+.cardTitle {
+  position: absolute;
+  bottom: -55px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: var(--font-standard);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  pointer-events: none;
+}
+
+/* Scene-level name — hidden on desktop, shown on mobile */
+.nameLabelMobile {
+  display: none;
+  font-size: clamp(18px, 2.4vw, 34px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  will-change: transform, opacity;
+}
+
+/* Project name (kept for mobile override below) */
+.nameLabelText {
+  display: block;
+  font-size: clamp(18px, 2.4vw, 34px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  will-change: transform, opacity;
+}
+
+/* Description — directly below name */
+.descText {
+  font-size: var(--font-sm);
+  color: var(--color-secondary);
+  line-height: 1.65;
+  margin: 0;
+  will-change: opacity, transform;
+}
+
+/* Category chips */
+.nameMeta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  will-change: transform, opacity;
+}
+
+.nameCat,
+.nameMeta [data-chip] {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-primary-hover);
+  background: var(--color-primary-light);
+  padding: 3px 10px;
+  border-radius: 100px;
+}.videoWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+
+.videoSkeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.12)
+  );
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transition:
+    opacity 0.45s ease 0.15s,
+    visibility 0.45s ease 0.15s;
+}
+
+.videoSkeleton::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 65%
+  );
+  transform: translateX(-60%);
+  animation: videoSkeletonShimmer 1.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.videoSkeletonHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.videoHidden {
+  opacity: 0;
+}
+
+.videoVisible {
+  opacity: 1;
+  transition: opacity 0.45s ease 0.2s;
+}
+
+@keyframes videoSkeletonShimmer {
+  0% {
+    transform: translateX(-60%);
+  }
+
+  100% {
+    transform: translateX(60%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .videoSkeleton::before {
+    animation: none;
+  }
+
+  .videoVisible,
+  .videoSkeleton {
+    transition: none;
+  }
+}
+/* ── Responsive ────────────────────────────────────────────── */
+
+/* ── Tablet: two columns still work, reduce card width slightly ── */
+@media screen and (max-width: 1024px) {
+  .card {
+    width: min(44vw, 500px);
+  }
+}
+
+/* ── Mobile: one card at a time, conveyor exit-left behaviour ── */
+@media screen and (max-width: 768px) {
+  .showcase {
+    height: 100vh;
+  }
+
+  /* Keep stage centred — GSAP x drives the horizontal conveyor */
+  .stage {
+    align-items: center;
+  }
+
+  /* Single card — same aspect ratio as desktop, just wider */
+  .card {
+    width: 88vw;
+  }
+
+  .portrait {
+    width: auto;
+    height: min(55vh, 420px);
+  }
+
+  /* Info block: full-width strip at the top */
+  .infoBlock {
+    top: 0px;
+    left: 0px;
+    width: auto;
+    max-width: none;
+    gap: 6px;
+  }
+
+  .counterCurrent {
+    font-size: var(--font-xl);
+  }
+
+  .nameLabelText {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+
+  .descText {
+    font-size: var(--font-xs);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 295px;
+    height: 525px;
+    top :170px
+  }
+
+  .infoBlock {
+    top: 0px;
+    left: 0px;
+  }
+}

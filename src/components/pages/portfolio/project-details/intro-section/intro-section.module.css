@@ -1,0 +1,199 @@
+.wrapper {
+  width: 100%;
+  max-width: 90%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+  border-radius: var(--radius);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ================= CLIENT ================= */
+
+.clientSection {
+  width: 100%;
+  /* max-width: 800px; */
+  height: 100%;
+}
+
+.clientHeading {
+  font-weight: var(--font-bold);
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.clientGrid {
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius);
+  padding: 20px 40px;
+  height: 100%;
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.companyName {
+  font-size: var(--description);
+}
+
+.clientIndustry {
+  font-size: var(--description);
+}
+
+.clientName {
+  font-size: var(--heading);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.clientServices {
+  margin-top: 10px;
+  padding-bottom: 40px;
+}
+
+.servicesHeading {
+  font-size: var(--font-standard);
+  font-weight: var(--font-bold);
+  padding: 10px 0px;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.serviceIcon {
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ================= PROBLEM ================= */
+
+.problemSection {
+  width: 100%;
+  margin-top: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+  border-radius: var(--radius);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.problemHeading {
+  font-size: var(--heading);
+  line-height: 1.15;
+  font-weight: var(--font-bold);
+  padding: 20px 0px;
+}
+
+.problemList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--description);
+}
+
+.problemItem {
+  display: flex;
+  gap: 5px;
+}
+
+.problemIcon {
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  padding: 20px;
+}
+.title {
+  font-size: var(--heading);
+  line-height: 1.15;
+  font-weight: var(--font-bold);
+}
+
+.highlight {
+  font-size: var(--font-standard);
+  font-weight: var(--font-bold);
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: var(--description);
+  color: var(--color-secondary);
+  max-width: 500px;
+}
+@media screen and (max-width: 1300px) {
+  .wrapper {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .clientGrid {
+    padding: 16px;
+  }
+  .problemSection {
+    padding: 16px;
+  }
+  .header {
+    padding: 16px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .clientHeading {
+    padding-bottom: 10px;
+  }
+  .clientGrid {
+    width: 100%;
+  }
+  .wrapper {
+    padding: 16px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .clientSection {
+    width: 100%;
+    height: auto;
+  }
+  .clientServices {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 576px) {
+.title {
+  text-align: center;
+}
+
+.highlight {
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
+.problemHeading{
+  
+  text-align: center;
+}
+}
+@media screen and (max-width: 450px) {
+}

@@ -1,0 +1,40 @@
+.default {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+
+    #a3d3ff 50%,
+
+    var(--color-primary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s linear infinite;
+  background-clip: text;
+  background-size: 200% auto;
+}
+
+.light {
+  background: linear-gradient(
+    135deg,
+    #e6f8ff 0%,
+    #cfeeff 30%,
+    #e4e9ff 60%,
+    #cfeeff 80%,
+    #e6f8ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s linear infinite;
+  background-clip: text;
+  background-size: 200% auto;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}

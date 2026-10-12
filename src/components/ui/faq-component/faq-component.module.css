@@ -1,0 +1,23 @@
+.containerMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin: 40px 0 70px 0;
+}
+
+.sectionCards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+@media (max-width: 575px) {
+  .containerMain {
+    margin: 0px;
+  }
+}

@@ -1,0 +1,114 @@
+/* =========================
+   Section container
+========================= */
+.container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  overflow: visible;
+  padding: 150px 0 50px;
+}
+
+/* =========================
+   Cards container
+========================= */
+.cards {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* =========================
+   Individual card
+========================= */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  gap: 10px;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+/* =========================
+   Card title
+========================= */
+.cardTitle {
+  font-size: var(--font-standard);
+  font-weight: var(--font-bold);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  height: 100px;
+}
+
+.cardTitle h3 {
+  font-size: var(--heading);
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* =========================
+   Card content
+========================= */
+.cardContent {
+  color: var(--color-text);
+  font-size: var(--font-sm);
+  text-align: center;
+}
+
+/* =========================
+   Card icon
+========================= */
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  height: 18px;
+}
+
+/* =========================
+   Responsive styles
+========================= */
+@media screen and (max-width: 850px) {
+  .section {
+    position: relative;
+    width: 100%;
+    min-height: 110vh;
+    overflow: visible;
+    padding: 150px 0 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 100%;
+    max-width: calc(100vw - 32px);
+  }
+
+  .cardTitle {
+    height: 80px;
+  }
+}

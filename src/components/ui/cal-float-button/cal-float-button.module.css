@@ -1,0 +1,97 @@
+/* cal-float-button.module.css */
+
+/* ── Outer anchor — fixed position container ───────────────── */
+.wrapper {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  /* Group for hover coordination */
+}
+
+/* ── The round icon button ─────────────────────────────────── */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  color: #fff;
+  box-shadow:
+    0 4px 16px rgba(0, 179, 255, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  cursor: var(--hover-cursor);
+}
+
+.wrapper:hover .btn {
+  transform: scale(1.08);
+  box-shadow:
+    0 8px 28px rgba(0, 179, 255, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Text ribbon — hidden by default, slides in on hover ───── */
+.ribbon {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px 0 16px;
+  margin-right: -6px; /* tucks behind the button slightly */
+  border-radius: 100px 0 0 100px;
+  background: var(--color-text);
+  color: #fff;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  z-index: -1; /* behind the button */
+  /* Hidden state */
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  transition:
+    max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    padding 0.35s ease;
+}
+
+/* Visible state */
+.ribbonVisible {
+  max-width: 180px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Mobile: slightly smaller, lower position ──────────────── */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  /* Hide ribbon on mobile — too cramped */
+  .ribbon {
+    display: none;
+  }
+}

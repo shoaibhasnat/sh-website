@@ -1,0 +1,18 @@
+
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px 15px;
+  color: var(--color-secondary);
+  font-size: var(--font-md);
+  border-radius: var(--radius);
+  font-weight: var(--font-regular);
+  width: max-content;
+  filter: drop-shadow(var(--box-shadow));
+}
+.chip p {
+  margin: 0;
+}

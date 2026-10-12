@@ -1,0 +1,93 @@
+.websiteContent {
+  position: relative;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  width: 100%;
+  z-index: 2;
+}
+
+.letters {
+  color: var(--color-text);
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+
+  justify-content: space-evenly;
+}
+
+.letters > div {
+  /* flex: 1; */
+  font-size: 220px;
+  font-weight: 900;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  padding-bottom: 20%;
+  justify-content: center;
+  transform: scale(0);
+}
+@media screen and (max-width: 1300px) {
+  .letters > div {
+    font-size: 200px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .letters > div {
+    font-size: 160px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .letters > div {
+    font-size: 130px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .letters > div {
+    font-size: 100px;
+  }
+  .reveal {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    margin-top: 150%;
+    height: 0px;
+    justify-content: center;
+    transform: scale(0);
+  }
+}
+@media screen and (max-width: 576px) {
+  .letters > div {
+    font-size: 90px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .letters > div {
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .letters > div {
+    font-size: 65px;
+  }
+}

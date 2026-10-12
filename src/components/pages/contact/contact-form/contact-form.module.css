@@ -1,0 +1,260 @@
+/* =========================
+   Container & Layout
+========================= */
+.background {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0;
+  padding: var(--padding-layout);
+  border-radius: var(--radius);
+  /* max-height: 100vh; */
+}
+
+.leftHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leftTitle {
+  font-weight: var(--font-bold) !important;
+  margin: 0;
+  line-height: 1.1 !important;
+  word-break: break-word;
+  max-width: 400px;
+}
+
+/* =========================
+   Contact Cards
+========================= */
+.contactCards .card {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cardIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-weight: 600 !important;
+  color: var(--color-secondary);
+  margin-bottom: 4px;
+}
+
+.cardSubtitle {
+  font-size: 14px;
+  color: var(--color-secondary-light);
+  margin-bottom: 4px;
+}
+
+.cardLink {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: var(--font-regular);
+}
+
+/* =========================
+   Social Buttons
+========================= */
+.socialIcons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.social {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: var(--color-primary-light);
+  padding: 12px;
+  cursor: var(--hover-cursor);
+  transition: 0.3s;
+}
+
+.social:hover {
+  background: var(--color-primary-hover);
+}
+
+/* =========================
+   Form Fields
+========================= */
+.field {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: var(--radius);
+  padding: var(--padding-card);
+  align-items: end;
+  width: 400px;
+}
+
+.label {
+  font-weight: 600 !important;
+  color: var(--color-secondary);
+  font-size: var(--font-standard);
+  display: flex;
+  align-items: center;
+}
+
+.label img {
+  height: 19px;
+  width: auto;
+}
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  /* margin-bottom: 16px; */
+}
+
+/* =========================
+   Chip / Interest Button
+========================= */
+.chip {
+  border-radius: 8px;
+  font-weight: var(--font-regular);
+
+  cursor: var(--hover-cursor);
+  padding: 4px 12px;
+  font-size: var(--font-sm);
+  transition: 0.3s;
+  border: 1px solid rgb(164, 225, 255);
+  background-color: rgba(255, 255, 255, 0.332);
+}
+
+.chip:hover {
+  background: var(--color-primary-light-hover);
+}
+
+.active {
+  background: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+  color: var(--color-primary-light) !important;
+}
+
+/* =========================
+   Input Styles (MUI Overrides)
+========================= */
+.input :global(.MuiInputBase-input) {
+  padding: 0px 10px;
+}
+
+.input :global(.MuiOutlinedInput-root) {
+  border-radius: var(--radius);
+  border: 1px solid white;
+  height: 40px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-top: 5px;
+}
+
+.input :global(.MuiInputBase-multiline) {
+  height: 150px;
+}
+
+.input :global(.MuiOutlinedInput-root fieldset) {
+  border-color: #e0e0e0;
+}
+
+.input :global(.MuiOutlinedInput-root:hover fieldset) {
+  border-color: var(--color-primary);
+}
+
+.input :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+  border-color: var(--color-primary);
+}
+
+/* Adjust font sizes for card text */
+.cardSubtitle,
+.cardLink {
+  font-size: var(--font-sm) !important;
+}
+
+/* =========================
+   Buttons
+========================= */
+.submit {
+  width: 250px;
+}
+
+.sendBtn {
+  width: 250px;
+}
+
+/* =========================
+   Animations
+========================= */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+
+@media screen and (max-width: 900px) {
+  .background {
+    max-height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .background {
+    padding: 30px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .cardIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    display: none;
+  }
+
+  .sendBtn {
+    width: 100%;
+  }
+
+  .contactCards .card {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .background {
+    padding: 30px 16px;
+  }
+}

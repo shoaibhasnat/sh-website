@@ -1,0 +1,54 @@
+.card {
+  width: 90%;
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* vertically center */
+  flex-wrap: nowrap; /* prevent shrinking to new line */
+  gap: 20px; /* optional spacing between text and button */
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--color-text);
+  flex: 1; /* take remaining space */
+}
+
+.info h3 {
+  font-size: var(--heading);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+
+.info p {
+  max-width: 1000px;
+  color: var(--color-text);
+}
+
+/* Ensure button never shrinks */
+.info button {
+  flex-shrink: 0;
+  width: 150px; /* use the same width as the prop */
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .infoText{
+    text-align: center;
+  }
+}
+@media screen and (max-width: 450px) {
+}

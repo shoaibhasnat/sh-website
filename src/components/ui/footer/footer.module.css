@@ -1,0 +1,370 @@
+/* ===================== Container ===================== */
+.container {
+  width: 100%;
+  border-radius: var(--radius);
+  padding: 40px;
+  padding-bottom: 20px;
+  margin: 20px 0px;
+  position: relative;
+  z-index: 1;
+  font-family:"Quicksand", sans-serif !important;
+}
+
+/* ===================== Top Section ===================== */
+.top {
+  display: grid;
+  grid-template-columns: 1fr; /* default single column on small screens */
+  gap: 3rem;
+}
+
+/* Left Column */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 250px;
+}
+
+/* Logo */
+.logoGroup {
+
+  cursor: var(--hover-cursor);
+  width: fit-content;
+}
+
+.logo {
+  font-size: var(--font-standard);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  transition: transform 0.3s;
+}
+
+.logo img {
+  width: 36px;
+  height: auto;
+}
+
+.logoGroup:hover .logo {
+  transform: scale(1.02);
+}
+
+.brand {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color 0.3s;
+}
+
+.logoGroup:hover .brand {
+  color: var(--color-primary);
+}
+
+/* Tagline */
+.tagline {
+  max-width: 28rem;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--color-secondary-light);
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.tagline:hover {
+  color: var(--color-secondary-light);
+}
+
+/* Social Links */
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.social {
+  color: var(--color-text);
+  transition: all 0.3s;
+}
+
+.social svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.social:hover {
+  color: var(--color-secondary);
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* ===================== Links Section ===================== */
+.links {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* default 3 per row on large screens */
+  gap: 2rem;
+}
+
+.links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.list {
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  font-size: 16px;
+}
+
+.list a,
+.bottomLink {
+  color: var(--color-secondary-light);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.list a::after,
+.bottomLink::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  transition: width 0.3s ease;
+}
+
+.list a:hover,
+.bottomLink:hover {
+  color: var(--color-primary);
+}
+
+.list a:hover::after,
+.bottomLink:hover::after {
+  width: 100%;
+}
+
+/* ===================== Divider ===================== */
+.divider {
+  margin: 2rem 0;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ===================== Bottom Section ===================== */
+.bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.copy {
+  color: var(--color-secondary-light);
+  transition: color 0.3s;
+}
+
+.copy:hover {
+  color: var(--color-secondary-light);
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bottomLink {
+  color: var(--color-secondary-light);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.bottomLink:hover {
+  color: #00213a;
+  text-underline-offset: 4px;
+}
+
+/* ===================== Contact Items ===================== */
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #38495a;
+  font-weight: 500;
+}
+
+.contactItem .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-secondary);
+}
+
+/* ===================== Responsive Styles ===================== */
+@media (max-width: 1200px) {
+  .links {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns per row under 992px */
+  }
+}
+@media (max-width: 768px) {
+
+  .divider {
+    margin: 1rem 0;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 20px;
+  }
+  .logo img {
+    width: 28px;
+    height: auto;
+  }
+  .logo {
+    font-size: var(--font-md);
+  }
+  .tagline,
+  .list,
+  .bottom {
+    font-size: var(--font-sm);
+  }
+}
+@media (max-width: 450px) {
+  .links {
+    grid-template-columns: repeat(1, 1fr); /* 1 column per row under 576px */
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr auto;
+    gap: 6rem;
+  }
+}
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 460px;
+  padding: 16px;
+  border: 1px solid rgba(0, 33, 58, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.newsletterHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.newsletterText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #38495a;
+  font-weight: 500;
+}
+
+.newsletterForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.newsletterInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.newsletterInput::placeholder {
+  color: #94a3b8;
+}
+
+.newsletterBtn {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--radius);
+  background: #00213a;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.newsletterBtn:hover {
+  background: #003a63;
+}
+
+.newsletterBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    max-width: 100%;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .newsletterBtn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,193 @@
+/* =========================
+   Portfolio Section: Container
+========================= */
+.horizontalSlider {
+  position: relative;
+  width: 100%;
+  max-height: 1000px;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* =========================
+   Slider wrapper
+========================= */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("/public/images/pages/home/portfolio/background.avif");
+  background-size: cover;
+}
+
+/* =========================
+   Slides container (horizontal flex)
+========================= */
+.slides {
+  position: relative;
+  width: auto;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+  transform: translateX(0);
+  overflow: hidden;
+}
+
+/* =========================
+   Individual slide
+========================= */
+.slide {
+  position: relative;
+  flex: 0 0 auto;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  color: var(--color-primary-light);
+}
+
+/* Intro slide style */
+.introSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   Slide image container
+========================= */
+.img {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 50px 50px 50px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  will-change: transform;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.125));
+  transform: translateX(0);
+}
+
+/* =========================
+   Slide title overlay
+========================= */
+.title {
+  position: absolute;
+  width: max-content;
+  padding: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0px;
+  z-index: 2;
+  color: var(--color-text);
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  text-align: center;
+  will-change: transform;
+}
+
+.title h1 {
+  line-break: auto;
+  max-width: calc(100vw - 32px);
+}
+
+/* =========================
+   Slider fade overlays
+========================= */
+.slider::before,
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 140px; /* adjust fade width */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Left fade overlay */
+.slider::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #daedff 0%,
+    rgba(218, 237, 255, 0.05) 90%,
+    rgba(218, 237, 255, 0) 100%
+  );
+}
+
+/* Right fade overlay */
+.slider::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #daedff 0%,
+    rgba(218, 237, 255, 0.05) 90%,
+    rgba(218, 237, 255, 0) 100%
+  );
+}
+
+/* =========================
+   Responsive adjustments
+========================= */
+@media (max-width: 1600px) {
+  .slider::before,
+  .slider::after {
+    display: none;
+  }
+}
+
+@media (min-width: 1600px) {
+  .slider {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/public/images/pages/home/portfolio/portfolio_background.svg");
+  }
+}
+
+@media (max-width: 768px) {
+  .img {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .img img {
+    width: 90%;
+    height: 90%;
+  }
+
+  .title h1 {
+    font-size: 48px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .title h1 {
+    font-size: 36px !important;
+  }
+
+  .img img {
+    width: 90%;
+    height: 90%;
+  }
+
+  .slides {
+    height: 70vh;
+  }
+}

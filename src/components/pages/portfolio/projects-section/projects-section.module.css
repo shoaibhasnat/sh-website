@@ -1,0 +1,34 @@
+.projectsWrapper {
+  margin-top: -200px;
+  overflow-x: hidden;
+}
+
+.emptyState {
+  width: min(760px, 100%);
+  margin: 0 auto 80px;
+  padding: 40px 28px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.emptyState h4 {
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.emptyState p {
+  color: var(--color-secondary);
+}
+
+@media screen and (max-width: 900px) {
+  .projectsWrapper {
+    margin-top: -100px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .projectsWrapper {
+    margin-top: -40px;
+  }
+}

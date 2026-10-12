@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  padding: 35px 30px;
+  border-radius: var(--radius);
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* space between image and info */
+  width: 100%;
+}
+
+.imgWrapper {
+  flex: 0 0 auto; /* keeps natural width, prevents shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgWrapper img {
+  height: 120px; /* you can adjust height */
+  width: auto; /* maintain aspect ratio */
+}
+
+.infoWrapper {
+  flex: 1; /* take remaining space */
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    padding: 20px 16px;
+  }
+  .section {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .cardContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+.imgWrapper img {
+  height: 100px; 
+}
+
+}
+@media screen and (max-width: 450px) {
+}

@@ -1,0 +1,227 @@
+/* --------------------------------
+   Layout & Section Styling
+--------------------------------- */
+.stickySection {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+}
+
+.main {
+  position: relative;
+  width: 90%;
+  padding: 60px 35px;
+  border-radius: var(--radius);
+}
+
+.sectionIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-weight: var(--font-bold);
+  font-size: var(--font-xl);
+  text-align: center;
+  line-height: 1;
+  max-width: 800px;
+}
+
+.animatedText {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  font-weight: var(--font-regular);
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: var(--font-md);
+}
+
+/* --------------------------------
+   Services List Styling
+--------------------------------- */
+.servicesWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  width: 100%;
+}
+
+.service {
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+.service p {
+  font-size: var(--font-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  white-space: nowrap;
+  letter-spacing: 0.1;
+}
+
+.active p {
+  color: var(--color-primary-light);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  padding: 12px 28px;
+  border-radius: 24px;
+  transition: all 0.25s ease;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* --------------------------------
+   Service Copy & Image
+--------------------------------- */
+.serviceCopy {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.serviceCopy p {
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.serviceImg {
+  height: 260px;
+  margin-bottom: 10px;
+}
+
+/* --------------------------------
+   Indicator & Progress Bar
+--------------------------------- */
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 38px;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.progressBar {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 3px;
+  height: 100%;
+  background: #ffffff;
+}
+
+.progress {
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+/* --------------------------------
+   Index Display
+--------------------------------- */
+.index {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+}
+
+.separator {
+  width: 20px;
+  height: 2px;
+  background: #0099ff;
+}
+
+.totalCount {
+}
+
+/* --------------------------------
+   Responsive Styles
+--------------------------------- */
+@media (max-width: 1000px) {
+  .main {
+    width: 100%;
+  }
+  .servicesWrapper {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stickySection {
+    flex-direction: column;
+  }
+  .servicesWrapper {
+    gap: 10px;
+    padding-left: 15px;
+  }
+  .service img {
+    width: 80%;
+  }
+  .main {
+    width: 100%;
+    padding-bottom: 90px;
+  }
+  .progressBar {
+    left: 0%;
+    bottom: 0%;
+    width: 3px;
+    height: 100%;
+  }
+  .active p {
+    padding: 8px 16px;
+    border-radius: 16px;
+  }
+  .index {
+    bottom: 20px;
+  }
+  .service p {
+    font-size: 26px;
+  }
+  .serviceCopy p {
+    line-height: 1.2;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main {
+    padding: 16px 16px 90px 16px;
+  }
+  .serviceImg {
+    height: 180px;
+  }
+  .service p {
+    font-size: 20px;
+  }
+  .servicesWrapper {
+    gap: 0px;
+  }
+}
