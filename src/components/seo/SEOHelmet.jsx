@@ -269,7 +269,7 @@ const buildStructuredData = ({ normalizedPathname, canonicalUrl, seoData, routeE
       description:
         "System Heuristics builds custom software, AI agents, workflow automation, web platforms, and data-driven digital products for growing businesses.",
       email: "info@systemheuristics.com",
-      telephone: "+92 334 9989995",
+      telephone: "+92 334 4377198",
       sameAs: [
         "https://www.linkedin.com/company/system-heuristics/",
         "https://www.facebook.com/share/1G4fA8pz4h/?mibextid=wwXIfr",

@@ -41,7 +41,7 @@ export const addFooter = (doc, pageNumber) => {
   doc.setTextColor(...color);
 
   // Left
-  doc.text("+92 334 9989995", margin, footerY);
+  doc.text("+92 334 4377198", margin, footerY);
 
   // Center
   const centerText = "systemheuristics.com";

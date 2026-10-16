@@ -63,23 +63,14 @@ export const Constants = {
     ),
     contactNo: (
       <CopyOrLink
-        text={
-          <img
-            src="/images/pages/sensitive-information/phone.png"
-            alt="Phone number"
-            width={130}
-            height={13}
-            decoding="async"
-            style={{ height: "clamp(11px, 12px, 13px)", width: "auto" }}
-          />
-        }
-        copyText={"+92 334 9989995"}
+        text="+92 334 4377198"
+        copyText={"+92 334 4377198"}
       />
     ),
     timings: "Mon-Fri from 9am to 6pm.",
   },
   socials: {
-    whatsapp: "https://wa.me/923349989995",
+    whatsapp: "https://wa.me/923344377198",
     linkedin: "https://www.linkedin.com/company/system-heuristics/",
     facebook: "https://www.facebook.com/share/1G4fA8pz4h/?mibextid=wwXIfr",
     instagram: "https://www.instagram.com/system.heuristics/",
